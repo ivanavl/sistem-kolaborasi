@@ -19,18 +19,20 @@ class CreateOrderIklansTable extends Migration
             $table->integer('jumlah_tayang');
             $table->date('priode_awal');
             $table->date('priode_akhir');
+            $table->string('versi_iklan', 100)->nullable();
             $table->date('tanggal_request');
             $table->date('tanggal_konfirmasi');
             $table->string('status_order', 50)->default('Requested');
             $table->unsignedInteger('id_kategori');
             $table->unsignedInteger('id_client');
             $table->string('username');
+            $table->unsignedInteger('id_jenis_iklan');
             $table->timestamps();
-
 
             $table->foreign('id_kategori')->references('id_kategori')->on('kategoris');
             $table->foreign('id_client')->references('id_client')->on('clients');
             $table->foreign('username')->references('username')->on('users');
+            $table->foreign('id_jenis_iklan')->references('id_jenis_iklan')->on('jenis_iklans');
         });
     }
 

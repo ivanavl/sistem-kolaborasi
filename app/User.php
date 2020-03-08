@@ -44,8 +44,8 @@ class User extends Authenticatable
         return $this->hasMany('App\OrderIklan');
     }
 
-    public function Menus()
+    public function Role()
     {
-        return $this->belogsToMany('App\Menu');
+        return $this->belogsTo('App\Role');
     }
 }

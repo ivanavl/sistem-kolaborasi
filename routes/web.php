@@ -10,39 +10,51 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', 'PagesController@index');
 Route::get('/home', 'PagesController@homeIndex');
+Route::get('/', 'PagesController@index');
 
 //CreateJadwal
 Route::get('/createjadwal', 'JadwalTrafficIklanController@createjadwal');
-Route::put('jadwaltrafficiklan', 'JadwalTrafficIklanController@storejadwal');
+Route::post('/createjadwal', 'JadwalTrafficIklanController@storejadwal');
 
 //CreateTemplate
 Route::get('/createtemplate', 'TemplateJadwalController@createtemplate');
-Route::put('templatejadwal', 'TemplateJadwalController@storetemplate');
+Route::post('/createtemplate', 'TemplateJadwalController@tempstoretemplate');
 Route::get('/lihattemplate', 'TemplateJadwalController@indextemplate');
-Route::get('/lihattemplate/{id}', 'TemplateJadwalcontroller@showtemplate');
+Route::post('/lihattemplate', 'TemplateJadwalcontroller@showtemplate');
 
 //LihatJadwal
-Route::get('/lihatjadwal', 'JadwalTrafficIklan@showjadwal');
+Route::get('/lihatjadwal', 'JadwalTrafficIklanController@showjadwal');
+Route::post('/lihatjadwal', 'JadwalTrafficIklanController@showjadwalresult');
+
+//KonfirmasiBooking
+Route::get('/konfirmasibooking', 'OrderIklanController@indexrequest');
+Route::post('/konfirmasibooking', 'OrderIklanController@searchrequest');
+Route::get('/konfirmasibooking/{id}', 'OrderIklanController@showkonfirmasibooking');
+Route::post('/konfirmasibooking/konfirmasi', 'OrderIklanController@konfirmasibooking');
 
 //CariJadwalKosong
 Route::get('/carijadwal', 'JadwalTrafficIklanController@indexcarijadwal');
-Route::get('/carijadwal/result', 'JadwalTrafficIklanController@result');
+Route::post('/carijadwal/result', 'JadwalTrafficIklanController@carijadwalresult');
 
-//RequestBookingJadwal
-Route::get('/requestbooking/createclient', 'ClientController@createclient');
-Route::get('/requestbooking/cariclient', 'ClientController@indexclient');
-Route::get('/requestbooking/createorder', 'OrderIklan@createiklan');
+//RequestBooking
+Route::get('/createclient', 'ClientController@createclient');
+Route::post('/createclient', 'ClientController@storeclient');
+Route::get('/lihatclient', 'ClientController@indexclient');
+Route::post('/lihatclient', 'ClientController@searchclient');
+Route::get('/createorder', 'OrderIklanController@createorder');
+Route::post('/createorder', 'OrderIklanController@storeorder');
 
 //LihatRequest
-Route::get('/lihatrequest', 'JadwalTrafficIklanController@indexcarijadwal');
-
-//KonfirmasiBooking
-Route::get('/konfirmasibooking', 'JadwalTrafficIklanController@indexcarijadwal');
+Route::get('/lihatrequest', 'OrderIklanController@showrequest');
+Route::get('/lihatrequestdetail/{id}', 'OrderIklanController@showrequestdetail');
 
 //UpdateVersi
+Route::get('/updateversi', 'OrderIklanController@indexorder');
+Route::post('/updateversi', 'OrderIklanController@searchorder');
+Route::get('/updateversi/{id}', 'OrderIklanController@editversi');
+Route::post('/updateversi/update', 'OrderIklanController@updateversi');
 
 //LihatJadwalFinal
-?>
+Route::get('/lihatjadwalfinal','JadwalTrafficIklanController@indexjadwalfinal');
+Route::post('lihatjadwalfinal/result', 'JadwalTrafficIklanController@showjadwalfinal');

@@ -7,9 +7,10 @@ use App\Client;
 
 class ClientController extends Controller
 {
-    public function create()
+    //CreateClient
+    public function createclient()
     {
-        return view('pages.requestbooking.create');
+        return view('pages.requestbooking.createclient');
     }
 
     public function storeclient(Request $request)
@@ -26,8 +27,20 @@ class ClientController extends Controller
         return 123;
     }
 
+    //LihatClient
     public function indexclient()
     {
-        return view('pages.requestbooking.index');
+        $clients = Client::all();
+        return view('pages.requestbooking.indexclient')->with('clients', $clients);
+    }
+
+    public function searchclient(Request $request)
+    {
+        $clients = Client::where('nama_client', 'LIKE','%'.$request->input('search').'%')
+        ->orWhere('alamat_client', 'LIKE','%'.$request->input('search').'%')
+        ->orWhere('contact_person', 'LIKE','%'.$request->input('search').'%')
+        ->get();
+        
+        return view('pages.requestbooking.indexclient')->with('clients', $clients);         
     }
 }

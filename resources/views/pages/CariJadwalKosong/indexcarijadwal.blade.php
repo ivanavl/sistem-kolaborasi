@@ -1,15 +1,15 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('content')
     <div><h3>Cari Jadwal Kosong</h3></div>
     <div>
-        {{ Form::open(['method' => 'PUT']) }}
+        {{ Form::open(['action'=> 'JadwalTrafficIklanController@carijadwalresult', 'method' => 'POST']) }}
                     {{Form::Label('jenis_iklan', 'Jenis Iklan')}}
-                    {{Form::radio('jenis_iklan', 'Spot Iklan', true)}}Spot Iklan
-                    {{Form::radio('jenis_iklan', 'Talkshow')}}Talkshow
+                    {{Form::radio('jenis_iklan', '1', true)}}Spot Iklan
+                    {{Form::radio('jenis_iklan', '2')}}Talkshow
                     <br>
                     {{Form::Label('kategori', 'Kategori Jadwal')}}
-                    {{Form::select('template_jadwal', $waktu_tayang)}}
+                    {{Form::select('id_kategori', $kategoris)}}
                     <br>
                     {{Form::Label('jumlah_tayang', 'Jumlah Tayang')}}
                     {{Form::text('jumlah_tayang')}}
@@ -19,9 +19,11 @@
                     {{Form::date('priode_akhir')}}
                     <br>
                     {{Form::Label('waktu_tayang', 'Waktu Tayang')}}
-                    @foreach($waktu_tayang as $wt)
-                    {{Form::checkbox('watku_tayang', $wt)}}{{$wt}}
-                    @endforeach
+                    {{Form::checkbox('waktu_tayang[]', '1')}}04:00-06:00
+                    {{Form::checkbox('waktu_tayang[]', '2')}}06:00-10:00
+                    {{Form::checkbox('waktu_tayang[]', '3')}}10:00-14:00
+                    {{Form::checkbox('waktu_tayang[]', '4')}}14:00-18:00
+                    {{Form::checkbox('waktu_tayang[]', '5')}}18:00-23.00
                     <br>
                 {{Form::submit('SEARCH')}}
             {{ Form::close() }}

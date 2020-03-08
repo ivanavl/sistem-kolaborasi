@@ -17,28 +17,28 @@ class UsersTableSeeder extends Seeder
                 'password' => 'admin',
                 'name'     => 'traffic iklan dami',
                 'email'    => 'tf@dami.com',
-                'role_user'=> 'traffic_iklan'
+                'id_role'=> '1'
             ],
             [
                 'username' => 'marketing.dami',
                 'password' => 'admin',
                 'name'     => 'marketing dami',
                 'email'    => 'm@dami.com',
-                'role_user'=> 'marketing'
+                'id_role'=> '2'
             ],
             [
                 'username' => 'produksi.dami',
                 'password' => 'admin',
                 'name'     => 'produksi dami',
                 'email'    => 'p@dami.com',
-                'role_user'=> 'produksi'
+                'id_role'=> '3'
             ],
             [
                 'username' => 'studio.dami',
                 'password' => 'admin',
                 'name'     => 'studio dami',
                 'email'    => 's@dami.com',
-                'role_user'=> 'studio'
+                'id_role'=> '4'
             ]
         ]);
     }

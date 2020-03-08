@@ -17,10 +17,13 @@ class CreateJadwalTrafficIklansTable extends Migration
             $table->bigIncrements('id_jadwal');
             $table->date('tanggal_jadwal');
             $table->time('jam_jadwal');
-            $table->string('jenis_iklan', 50);
+            $table->unsignedInteger('prev')->nullable();
+            $table->unsignedInteger('next')->nullable();
+            $table->unsignedInteger('id_jenis_iklan');
             $table->unsignedInteger('id_order_iklan')->nullable();
             $table->timestamps();
-
+            
+            $table->foreign('id_jenis_iklan')->references('id_jenis_iklan')->on('jenis_iklans');
             $table->foreign('id_order_iklan')->references('id_order_iklan')->on('order_iklans');
         });
     }

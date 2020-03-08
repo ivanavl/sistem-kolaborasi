@@ -33,7 +33,8 @@ class KategorisTableSeeder extends Seeder
             ['nama_kategori' => 'Kesehatan'],
             ['nama_kategori' => 'Pelatihan'],
             ['nama_kategori' => 'Himbauan'],
-            ['nama_kategori' => 'Air Minum']
+            ['nama_kategori' => 'Air Minum'],
+            ['nama_kategori' => 'Lain-Lain']
         ]);
     }
 }

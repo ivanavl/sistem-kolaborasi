@@ -13,10 +13,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call ([
             KategorisTableSeeder::class,
+            JenisIklansTableSeeder::class,
             TemplateJadwalsTableSeeder::class,
             MenusTableSeeder::class,
-            UsersMenusTableSeeder::class,
-            UsersTableSeeder::class
+            RolesTableSeeder::class,
+            RolesMenusTableSeeder::class,
+            UsersTableSeeder::class,
         ]);
     }
 }

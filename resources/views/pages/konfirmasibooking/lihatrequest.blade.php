@@ -2,7 +2,10 @@
 
 @section('content')
     <div>
-        <h3>Lihat Request<h3>
+        {{ Form::open(['action' => 'OrderIklanController@searchrequest','menthod' => 'POST']) }}
+        {{Form::text('search', null,['placeholder' => 'input nama client/nama produk/no order'])}}
+        {{Form::submit('SEARCH')}}
+        {{ Form::close() }}
     </div>
     <div>
         @if(isset($lihat_requests))
@@ -14,10 +17,7 @@
                     <th>Jenis Iklan</th>
                     <th>Nama Client</th>
                     <th>Nama Produk</th>
-                    <th>Versi Iklan</th>
                     <th>Priode Tayang</th>
-                    <th>Kategori</th>
-                    <th>AE</th>
                     <th>Tanggal Konfirmasi</th>
                     <th>Status Order</th>
                 </tr>
@@ -30,14 +30,15 @@
                     <td>{{$request->nama_jenis_iklan}}</td>
                     <td>{{$request->nama_client}}</td>
                     <td>{{$request->nama_produk}}</td>
-                    <td>{{$request->versi_iklan}}</td>
-                    <td>{{$request->priode_awal}} - {{$request->priode_akhir}}</td>
-                    <td>{{$request->nama_kategori}}</td>
-                    <td>{{$request->name}}</td>
+                    <td>{{$request->priode_awal}}" - "{{$request->priode_akhir}}</td>
                     <td>{{$request->tanggal_konfirmasi}}</td>
-                    <td><a href="/lihatrequestdetail/{{$request->id_order_iklan}}">
-                        {{$request->status_order}}
-                    </a></td>
+                    @if($request->status_order == 'Requested')
+                        <td><a href="/konfirmasibooking/{{$request->id_order_iklan}}">
+                            {{$request->status_order}}
+                        </a></td>
+                    @else
+                        <td>{{$request->status_order}}</td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>

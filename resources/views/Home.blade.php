@@ -1,12 +1,11 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('content')
-    {{-- Sidebar --}}
-    <div>
-        <ul>
-            @foreach($menus as $menu)
-                <li><a href='/{{$menu->nama_menu}}'>{{$menu->nama_menu}}</a></li>
-            @endforeach
-        </ul>
-    </div>
+<div>
+    <ul>
+        @foreach($menus as $menu)
+            <li><a href="{{$menu->route_name}}">{{$menu->nama_menu}}</a></li>
+        @endforeach
+    </ul>
+</div>
 @endsection

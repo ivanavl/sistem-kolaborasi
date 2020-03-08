@@ -12,4 +12,9 @@ class JadwalTrafficIklan extends Model
     {
         return $this->belogsTo('App\OrderIklan');
     }
+
+    public function JenisIklan()
+    {
+        return $this->belongsTo('App\JenisIklan');
+    }
 }

@@ -27,4 +27,9 @@ class OrderIklan extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function JenisIklan()
+    {
+        return $this->belongsTo('App\JenisIklan');
+    }
 }

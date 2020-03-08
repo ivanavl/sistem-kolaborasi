@@ -12,4 +12,9 @@ class TemplateJadwal extends Model
     {
         return $this->hasMany('App\isiTemplate');
     }
+
+    public function JenisIklan()
+    {
+        return $this->belongsTo('App\JenisIklan');
+    }
 }

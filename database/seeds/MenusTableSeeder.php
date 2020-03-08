@@ -16,7 +16,7 @@ class MenusTableSeeder extends Seeder
              'route_name'=> 'home'
             ],
             ['nama_menu' => 'Create Jadwal',
-             'route_name'=> '/cratejadwal'
+             'route_name'=> '/createjadwal'
             ],
             ['nama_menu' => 'Lihat Jadwal',
              'route_name'=> '/lihatjadwal'

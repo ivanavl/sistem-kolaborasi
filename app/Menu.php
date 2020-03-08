@@ -8,8 +8,8 @@ class Menu extends Model
 {
     protected $primaryKey = 'id_menu';
     
-    public function Users()
+    public function Roles()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\Role');
     }
 }

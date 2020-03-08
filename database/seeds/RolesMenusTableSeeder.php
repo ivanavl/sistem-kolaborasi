@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class UsersMenusTableSeeder extends Seeder
+class RolesMenusTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,53 +11,53 @@ class UsersMenusTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users_menus')->insert([
+        DB::table('roles_menus')->insert([
             [
-                'role_user'=> 'traffic_iklan',
+                'id_role'=> '1',
                 'id_menu' => '1'
             ],
             [
-                'role_user'=> 'traffic_iklan',
+                'id_role'=> '1',
                 'id_menu' => '2'
             ],
             [
-                'role_user'=> 'traffic_iklan',
+                'id_role'=> '1',
                 'id_menu' => '3'
             ],
             [
-                'role_user'=> 'traffic_iklan',
+                'id_role'=> '1',
                 'id_menu' => '4'
             ],
             [
-                'role_user'=> 'traffic_iklan',
+                'id_role'=> '1',
                 'id_menu' => '5'
             ],
             [
-                'role_user'=> 'traffic_iklan',
+                'id_role'=> '1',
                 'id_menu' => '6'
             ],
             [
-                'role_user'=> 'traffic_iklan',
+                'id_role'=> '1',
                 'id_menu' => '7'
             ],
             [
-                'role_user'=> 'traffic_iklan',
+                'id_role'=> '1',
                 'id_menu' => '8'
             ],
             [
-                'role_user'=> 'marketing',
+                'id_role'=> '2',
                 'id_menu' => '5'
             ],
             [
-                'role_user'=> 'marketing',
+                'id_role'=> '2',
                 'id_menu' => '6'
             ],
             [
-                'role_user'=> 'produksi',
+                'id_role'=> '3',
                 'id_menu' => '7'
             ],
             [
-                'role_user'=> 'studio',
+                'id_role'=> '4',
                 'id_menu' => '8'
             ]
         ]);
