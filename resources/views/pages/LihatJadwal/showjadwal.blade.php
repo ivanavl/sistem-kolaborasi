@@ -13,7 +13,7 @@
         {{ Form::close() }}
     </div>
     <div>
-        @if(isset($search))
+        @if(isset($request))
         <p>Hasil Pencarian untuk {{$request->jenis_iklan}} pada tanggal {{$request->tanggal_jadwal}}</p>
         @endif
         

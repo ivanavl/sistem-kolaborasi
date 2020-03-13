@@ -19,7 +19,9 @@ Route::post('/createjadwal', 'JadwalTrafficIklanController@storejadwal');
 
 //CreateTemplate
 Route::get('/createtemplate', 'TemplateJadwalController@createtemplate');
-Route::post('/createtemplate', 'TemplateJadwalController@tempstoretemplate');
+Route::post('/createtemplate/store', 'TemplateJadwalController@tempstoretemplate');
+Route::get('/removesegmen/{id}', 'TemplateJadwalController@removesegmen');
+Route::post('/createtemplate', 'TemplateJadwalController@storetemplate');
 Route::get('/lihattemplate', 'TemplateJadwalController@indextemplate');
 Route::post('/lihattemplate', 'TemplateJadwalcontroller@showtemplate');
 
@@ -36,12 +38,14 @@ Route::post('/konfirmasibooking/konfirmasi', 'OrderIklanController@konfirmasiboo
 //CariJadwalKosong
 Route::get('/carijadwal', 'JadwalTrafficIklanController@indexcarijadwal');
 Route::post('/carijadwal/result', 'JadwalTrafficIklanController@carijadwalresult');
+Route::post('/keepjadwal', 'JadwalTrafficIklanController@keepjadwal');
 
 //RequestBooking
 Route::get('/createclient', 'ClientController@createclient');
 Route::post('/createclient', 'ClientController@storeclient');
 Route::get('/lihatclient', 'ClientController@indexclient');
 Route::post('/lihatclient', 'ClientController@searchclient');
+Route::get('/pilihclient/{id}', 'ClientController@showclient');
 Route::get('/createorder', 'OrderIklanController@createorder');
 Route::post('/createorder', 'OrderIklanController@storeorder');
 

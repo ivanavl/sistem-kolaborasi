@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\TemplateJadwal;
+use App\TempIsiTemplate;
+use App\IsiTemplate;
 use Illuminate\Support\Facades\DB;
+use Session;
 
 class TemplateJadwalController extends Controller
 {
@@ -12,46 +15,87 @@ class TemplateJadwalController extends Controller
     //View Buat Tempalte Baru
     public function createtemplate()
     {
+        Session::forget('template');
         return view('pages.templatejadwal.createtemplate');
     }
-        
+
     public function tempstoretemplate(Request $request)
     {
-        $waktu_tayang = $request->input('waktu_tayang');
-        $durasi_template = $request->input('durasi_tayang');
+        Session::reflash();
 
-        for ($i=0; $i < intval($request->input('n'))+1 ; $i++) 
-        { 
-            if($i >= intval($request->input('n')))
-            {
-                $array_waktu_tayang[$i] = $waktu_tayang;
-                $array_durasi_template[$i] = $durasi_template;
-            }else{
-                $array_waktu_tayang[$i] = $request->input('waktu_tayang'.$i);
-                $array_durasi_template[$i] = $request->input('durasi_template'.$i);
-            }
-        }
-        return view('pages.templatejadwal.createtemplate')->with('waktu_tayang', $array_waktu_tayang)
-        ->with('durasi_template', $array_durasi_template);
+        $collection = collect(['jam_awal' => $request->jam_awal, 
+        'durasi_template' => $request->durasi_template]);
+        Session::push('template', $collection);
+
+        // $tempate = Session::put('template', $request);
+
+        
+        $template = Session::get('template');
+        return view('pages.templatejadwal.createtemplate')->with('template', $template);
     }
 
-    //Buat Template Baru
+    public function removesegmen($id)
+    {
+        Session::reflash();
+        $template = Session::get('template');
+        
+        $count = 0;
+        foreach($template as $t)
+        {
+            if($t->get('jam_awal') == $id)
+            {
+                unset($template[$count])    ;
+            }
+            $count++;
+        }
+        // for ($i=0; $i < count($template); $i++) 
+        // {
+        //     if($template[$i]->get('jam_awal') == $id)
+        //     {
+        //         unset($template[$i]);
+        //     }
+        // }
+
+        foreach($template as $t)
+        {
+            echo $t->get('jam_awal');
+            echo $t->get('durasi_template');
+        }
+        // print_r($template);
+        Session::forget('template');
+        Session::push('template', $template);
+
+        $template = Session::get('template');
+
+        // foreach($template as $t)
+        // {
+        //     echo $t->get('jam_awal');
+        //     echo $t->get('durasi_template');
+        // }
+        return view('pages.templatejadwal.createtemplate')->with('template', $template);
+    }
+        
+     //Buat Template Baru
     public function storetemplate(Request $request)
     {
         $create1 = new TemplateJadwal;
         $create1->nama_template = $request->input('nama_template');
+        $create1->id_jenis_iklan = 1;
         $create1->save();
 
-        foreach ($request as $req) 
+        $temp_isi_template = TempIsiTemplate::all();
+        foreach($temp_isi_template as $temp)
         {
             $create2 = new IsiTemplate;
-            $create2->nama_template = $req->input('nama_template');
-            $create2->jam_awal = $req->input('jam_awal');
-            $create2->durasi_template = $req->input('durasi_template');
+            $create2->nama_template =  $request->input('nama_template');
+            $create2->jam_awal = $temp->jam_awal;
+            $create2->durasi_template = $temp->durasi;
             $create2->save();
         }
 
-        return 123;
+        DB::table('temp_isi_templates')->delete();
+
+        return redirect('/createjadwal')->with('success', 'Template iklan berhasil dibuat');
 
     }
     

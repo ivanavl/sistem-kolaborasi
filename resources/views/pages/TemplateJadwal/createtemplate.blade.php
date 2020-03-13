@@ -5,30 +5,32 @@
         <div>
             <h3>Buat Template Baru</h3>
             <a href="/lihattemplate">Lihat template jadwal</a>
-            {{ Form::open(['menthod' => 'POST']) }}
-                {{Form::Label('waktu_tayang', 'Waktu Tayang')}}
-                {{Form::time('waktu_tayang')}}
+            {{ Form::open(['action' => 'TemplateJadwalController@tempstoretemplate', 'menthod' => 'POST']) }}
+                {{Form::Label('jam_awal', 'Jam Awal')}}
+                {{Form::time('jam_awal')}}
                 {{Form::Label('durasi_template', 'Durasi Segmen Iklan')}}
-                {{Form::text('email')}}
+                {{Form::text('durasi_template')}}
                 {{Form::submit('ADD')}}
+            {{ Form::close() }}
         </div>
         <div>
             <h4>Jadwal Dibuat</h4>
-            @if(isset($waktu_tayang))
-            <ul>
-                {{$n = 0}}
-            @foreach($waktu_tayang as $waktu)
-            @foreach($durasi_template as $durasi)
-                <li>{{$waktu}} - {{$durasi}}</li>
-                {{Form::hidden('waktu'.$n, $waktu)}}
-                {{Form::hidden('durasi'.$n, $durasi)}}
-                {{$n++}}
-            @endforeach
-            @endforeach
-            {{Form::hidden('n', $n)}}
-            </ul>
+            @if(isset($template))
+            <table>
+                @foreach($template as $t)
+                    <tr>
+                        <td><a  href="/removesegmen/{{$t->get('jam_awal')}}">X</a></td>
+                        <td>{{$t->get('jam_awal')}}</td>
+                        <td>{{$t->get('durasi_template')}}</td>
+                    </tr>
+                @endforeach
+            </table>
             @endif
         </div>
+        {{ Form::open(['action' => 'TemplateJadwalController@storetemplate','menthod' => 'POST']) }}
+            {{Form::Label('nama_template', 'Nama Template')}}
+            {{Form::text('nama_template')}}
+        {{Form::submit('CREATE')}}
         {{ Form::close() }}
     </div>
 @endsection

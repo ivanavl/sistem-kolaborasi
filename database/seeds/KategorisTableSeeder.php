@@ -12,6 +12,7 @@ class KategorisTableSeeder extends Seeder
     public function run()
     {
         DB::table('kategoris')->insert([
+            ['nama_kategori' => 'Lain-Lain'],
             ['nama_kategori' => 'Motivasi'],
             ['nama_kategori' => 'Event'],
             ['nama_kategori' => 'Berita'],
@@ -34,7 +35,7 @@ class KategorisTableSeeder extends Seeder
             ['nama_kategori' => 'Pelatihan'],
             ['nama_kategori' => 'Himbauan'],
             ['nama_kategori' => 'Air Minum'],
-            ['nama_kategori' => 'Lain-Lain']
+            ['nama_kategori' => 'Fashion'],
         ]);
     }
 }

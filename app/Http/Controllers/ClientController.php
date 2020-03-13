@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Client;
+use Session;
 
 class ClientController extends Controller
 {
     //CreateClient
     public function createclient()
     {
+        Session::reflash();
         return view('pages.requestbooking.createclient');
     }
 
@@ -24,13 +26,21 @@ class ClientController extends Controller
         $create->email_client = $request->input('email_client');
         $create->save();
 
-        return 123;
+        $id_client = $create->id_client;
+        $clients = Client::find($id_client);
+        $order_detail = Session::get('order_detail');
+
+        Session::reflash();
+        return view('pages.requestbooking.createorder')->with('clients', $clients)
+        ->with('order_detail', $order_detail);
     }
 
     //LihatClient
     public function indexclient()
     {
         $clients = Client::all();
+
+        Session::reflash();
         return view('pages.requestbooking.indexclient')->with('clients', $clients);
     }
 
@@ -41,6 +51,19 @@ class ClientController extends Controller
         ->orWhere('contact_person', 'LIKE','%'.$request->input('search').'%')
         ->get();
         
+        Session::reflash();
         return view('pages.requestbooking.indexclient')->with('clients', $clients);         
+    }
+
+    public function showclient($id)
+    {
+        $clients = Client::find($id);
+        $order_detail = Session::get('order_detail');
+
+        echo $order_detail;
+
+        // Session::reflash();
+        // return view('pages.requestbooking.createorder')->with('clients', $clients)
+        // ->with('order_detail', $order_detail);
     }
 }

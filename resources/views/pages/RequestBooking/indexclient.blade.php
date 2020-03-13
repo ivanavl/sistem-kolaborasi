@@ -29,7 +29,7 @@
                         <td>{{$client->nama_client}}</td>
                         <td>{{$client->alamat_client}}</td>
                         <td>{{$client->contact_person}}</td>
-                        <td><a href="/createorder/"{{$client->id_client}}>
+                        <td><a href="/pilihclient/{{$client->id_client}}">
                             Pilih Client
                         </a></td>
                     </tr>
