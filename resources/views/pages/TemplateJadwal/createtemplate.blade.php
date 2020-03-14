@@ -15,9 +15,9 @@
         </div>
         <div>
             <h4>Jadwal Dibuat</h4>
-            @if(isset($template))
+            @if(Session::has('template'))
             <table>
-                @foreach($template as $t)
+                @foreach(Session::get('template') as $t)
                     <tr>
                         <td><a  href="/removesegmen/{{$t->get('jam_awal')}}">X</a></td>
                         <td>{{$t->get('jam_awal')}}</td>

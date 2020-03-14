@@ -21,7 +21,7 @@ class CreateOrderIklansTable extends Migration
             $table->date('priode_akhir');
             $table->string('versi_iklan', 100)->nullable();
             $table->date('tanggal_request');
-            $table->date('tanggal_konfirmasi');
+            $table->date('tanggal_konfirmasi')->nullable();
             $table->string('status_order', 50)->default('Requested');
             $table->unsignedInteger('id_kategori');
             $table->unsignedInteger('id_client');

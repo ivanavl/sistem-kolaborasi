@@ -5,36 +5,58 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\OrderIklan;
 use App\JadwalTrafficIklan;
+use App\JenisIklan;
+use App\Kategori;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Session;
 
 class OrderIklanController extends Controller
 {
+ 
+    public static function orderdetail()
+    {
+        $jenis_iklan = JenisIklan::select('nama_jenis_iklan')
+        ->where('id_jenis_iklan','=',Session::get('id_jenis_iklan'))->pluck('nama_jenis_iklan');
+        $kategori = Kategori::select('nama_kategori')
+        ->where('id_kategori','=',Session::get('id_kategori'))->pluck('nama_kategori');
+        $jumlah_tayang = Session::get('jumlah_tayang');
+        $priode_awal = Session::get('priode_awal');
+        $priode_akhir = Session::get('priode_akhir');
+
+        $collection = collect(['jenis_iklan' => $jenis_iklan[0], 'kategori' => $kategori[0],
+        'jumlah_tayang' => $jumlah_tayang, 'priode_awal' => $priode_awal, 'priode_akhir' => $priode_akhir]);
+
+        return $collection;
+    }
     //Request Booking
     public function storeorder(Request $request)
     {
         $create = new OrderIklan;
         $create->nama_produk = $request->input('nama_produk');
-        $create->jumlah_tayang = $order_detail->jumlah_tayang;
-        $create->priode_awal = $order_detail->priode_awal;
-        $create->priode_akhir = $order_detail->priode_akhir;
+        $create->jumlah_tayang = Session::get('jumlah_tayang');
+        $create->priode_awal = Session::get('priode_awal');
+        $create->priode_akhir = Session::get('priode_akhir');
+        $create->versi_iklan = null;
         $create->tanggal_request = Carbon::now();
         $create->tanggal_konfirmasi = null;
         $create->status_order = 'Requested';
-        $create->id_kategori = $order_detail->id_kategori;
+        $create->id_kategori = Session::get('id_kategori');
+        $create->id_client = $request->id_client;
         $create->username = 'marketing.dami';
+        $create->id_jenis_iklan = Session::get('id_jenis_iklan');
         $create->save();
+
+        $id = $create->id_order_iklan;
 
         $jadwal = Session::get('jadwal');
         foreach($jadwal as $j)
         {
             JadwalTrafficIklan::where('id_jadwal','=',$j)
-            ->update(['id_order_iklan' => $cerate->id_order_iklan]);
+            ->update(['id_order_iklan' => $id]);
         }
 
-        Session::flush();
-        return 123;
+        return redirect('/carijadwal')->with('success', 'Request booking berhasil');
     }
 
     //Lihat Request

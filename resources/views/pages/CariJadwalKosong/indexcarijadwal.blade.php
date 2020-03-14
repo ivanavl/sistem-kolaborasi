@@ -10,6 +10,7 @@
             <br>
             {{Form::Label('kategori', 'Kategori Jadwal')}}
             {{Form::select('id_kategori', $kategoris)}}
+            {{Form::text('nama_kategori')}}
             <br>
             {{Form::Label('jumlah_tayang', 'Jumlah Tayang')}}
             {{Form::text('jumlah_tayang')}}

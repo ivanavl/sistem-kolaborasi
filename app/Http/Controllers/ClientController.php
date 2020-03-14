@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Client;
+use App\Http\Controllers\OrderIklanController;
 use Session;
 
 class ClientController extends Controller
@@ -17,6 +18,13 @@ class ClientController extends Controller
 
     public function storeclient(Request $request)
     {
+        $this->validate($request,[
+            'nama_client' => 'required',
+            'alamat_client' => 'required',
+            'contact_person' => 'required',
+            'telepon_client' => 'required',
+            'email_client' => 'required|email',
+        ]);
         $create = new Client;
         $create->nama_client = $request->input('nama_client');
         $create->alamat_client = $request->input('alamat_client');
@@ -28,11 +36,12 @@ class ClientController extends Controller
 
         $id_client = $create->id_client;
         $clients = Client::find($id_client);
-        $order_detail = Session::get('order_detail');
-
+        
+        $collection = OrderIklanController::orderdetail();
+        
         Session::reflash();
         return view('pages.requestbooking.createorder')->with('clients', $clients)
-        ->with('order_detail', $order_detail);
+        ->with('collection', $collection);
     }
 
     //LihatClient
@@ -58,12 +67,11 @@ class ClientController extends Controller
     public function showclient($id)
     {
         $clients = Client::find($id);
-        $order_detail = Session::get('order_detail');
 
-        echo $order_detail;
-
-        // Session::reflash();
-        // return view('pages.requestbooking.createorder')->with('clients', $clients)
-        // ->with('order_detail', $order_detail);
+        $collection = OrderIklanController::orderdetail();
+        
+        Session::reflash();
+        return view('pages.requestbooking.createorder')->with('clients', $clients)
+        ->with('collection', $collection);
     }
 }

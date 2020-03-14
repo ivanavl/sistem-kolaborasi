@@ -21,17 +21,18 @@ class TemplateJadwalController extends Controller
 
     public function tempstoretemplate(Request $request)
     {
+        $this->validate($request,[
+            'jam_awal' => 'required',
+            'durasi_template' => 'required|integer',
+        ]);
+
         Session::reflash();
 
         $collection = collect(['jam_awal' => $request->jam_awal, 
         'durasi_template' => $request->durasi_template]);
         Session::push('template', $collection);
 
-        // $tempate = Session::put('template', $request);
-
-        
-        $template = Session::get('template');
-        return view('pages.templatejadwal.createtemplate')->with('template', $template);
+        return view('pages.templatejadwal.createtemplate');
     }
 
     public function removesegmen($id)
@@ -44,56 +45,37 @@ class TemplateJadwalController extends Controller
         {
             if($t->get('jam_awal') == $id)
             {
-                unset($template[$count])    ;
+                unset($template[$count]);
             }
             $count++;
         }
-        // for ($i=0; $i < count($template); $i++) 
-        // {
-        //     if($template[$i]->get('jam_awal') == $id)
-        //     {
-        //         unset($template[$i]);
-        //     }
-        // }
 
-        foreach($template as $t)
-        {
-            echo $t->get('jam_awal');
-            echo $t->get('durasi_template');
-        }
-        // print_r($template);
         Session::forget('template');
-        Session::push('template', $template);
+        Session::put('template', $template);
 
-        $template = Session::get('template');
-
-        // foreach($template as $t)
-        // {
-        //     echo $t->get('jam_awal');
-        //     echo $t->get('durasi_template');
-        // }
-        return view('pages.templatejadwal.createtemplate')->with('template', $template);
+        return view('pages.templatejadwal.createtemplate');
     }
         
      //Buat Template Baru
     public function storetemplate(Request $request)
     {
+        Session::reflash();
+
         $create1 = new TemplateJadwal;
         $create1->nama_template = $request->input('nama_template');
         $create1->id_jenis_iklan = 1;
         $create1->save();
 
-        $temp_isi_template = TempIsiTemplate::all();
-        foreach($temp_isi_template as $temp)
+        foreach(Session::get('template') as $temp)
         {
             $create2 = new IsiTemplate;
             $create2->nama_template =  $request->input('nama_template');
-            $create2->jam_awal = $temp->jam_awal;
-            $create2->durasi_template = $temp->durasi;
+            $create2->jam_awal = $temp->get('jam_awal');
+            $create2->durasi_template = $temp->get('durasi_template');
             $create2->save();
         }
 
-        DB::table('temp_isi_templates')->delete();
+        Session::forget('template');
 
         return redirect('/createjadwal')->with('success', 'Template iklan berhasil dibuat');
 

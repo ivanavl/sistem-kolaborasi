@@ -11,25 +11,25 @@
                 {{Form::text('nama_produk')}}
                 <br>
                 {{Form::Label('nama_client', 'Nama Client')}}
-                @if(isset($clients))y
+                @if(isset($clients))
                 {{Form::label($clients->nama_client)}}
-                {{Form::hidden($clients->id_client)}}
+                {{Form::hidden('id_client', $clients->id_client)}}
                 @endif
                 <br>
-                @if(isset($order_detail))
-                {{Form::Label('kategori', 'Kategori')}}
-                {{Form::label($order_detail->id_kategori)}}
-                <br>
-                {{Form::Label('jenis_iklan', 'Jenis Iklan')}}
-                {{Form::label($order_detail->id_jenis_iklan)}}
-                <br>
-                {{Form::Label('jumlah_tayang', 'Jumlah Tayang')}}
-                {{Form::label($order_detail->jumlah_tayang)}}
+                @if(isset($collection))
+                    {{Form::Label('kategori', 'Kategori')}}
+                    {{Form::label($collection->get('kategori'))}}
+                    <br>
+                    {{Form::Label('jenis_iklan', 'Jenis Iklan')}}
+                    {{Form::label($collection->get('jenis_iklan'))}}
+                    <br>
+                    {{Form::Label('jumlah_tayang', 'Jumlah Tayang')}}
+                    {{Form::label($collection->get('jumlah_tayang'))}}
+                    <br>
+                    {{Form::Label('priode_tayang', 'Priode Tayang')}}
+                    {{Form::label($collection->get('priode_awal').' - '.$collection->get('priode_akhir'))}}
+                    <br>
                 @endif
-                <br>
-                {{Form::Label('priode_tayang', 'Priode Tayang')}}
-                {{Form::label($order_detail->tanggal_awal.' - '.$order_detail->tanggal_akhir)}}
-                <br>
                 {{Form::submit('REQUEST')}}
             {{ Form::close() }}
         </div>

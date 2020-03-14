@@ -163,6 +163,9 @@ class JadwalTrafficIklanController extends Controller
                     return redirect('/createjadwal')->with('error', 'Jadwal sudah ada');
                 }
             }else{
+                $this->validate($request,[
+                    'jam_jadwal' => 'required',
+                ]);
                 $count = 1;
                 $check = 0;
                 $jam_jadwal = $request->input('jam_jadwal');
@@ -264,6 +267,37 @@ class JadwalTrafficIklanController extends Controller
     //Resutl Cari Jadwal Kosong
     public function carijadwalresult(Request $request)
     {
+        $this->validate($request,[
+            'jumlah_tayang' => 'required|integer',
+            'priode_awal' => 'required',
+            'waktu_tayang' => 'required'
+        ]);
+        
+        if($request->id_kategori == 0)
+        {
+            $this->validate($request,[
+                'nama_kategori' => 'required',
+            ]);
+
+            $kategori = $request->input('nama_kategori');
+
+            $query = Kategori::where('nama_kategori','LIKE','%'.$kategori.'%')->get();
+
+            if($query.isEmpty())
+            {
+                $create = new Kategori;
+                $create->nama_kategori = $kategori;
+                $create->save();
+            }
+        }
+
+        $tanggal_awal = strtotime($request->priode_awal);
+        $tanggal_akhir = strtotime($request->priode_akhir);
+        if($tanggal_akhir == '')
+        {
+            $tanggal_akhir = $tanggal_awal;
+        }       
+        
         $count = 0;
 
         $notAvailableNext = JadwalTrafficIklan::join('order_iklans', 'jadwal_traffic_iklans.id_order_iklan',
@@ -276,8 +310,8 @@ class JadwalTrafficIklanController extends Controller
 
         foreach ($request->waktu_tayang as $waktu_tayang) {
             $query = JadwalTrafficIklan::whereNull('id_order_iklan')
-            ->where('tanggal_jadwal', '>=', date('Y-m-d', strtotime($request->priode_awal)))
-            ->where('tanggal_jadwal', '<=', date('Y-m-d', strtotime($request->priode_akhir)))
+            ->where('tanggal_jadwal', '>=', date('Y-m-d', $tanggal_awal))
+            ->where('tanggal_jadwal', '<=', date('Y-m-d', $tanggal_akhir))
             ->where('id_jenis_iklan', $request->input('jenis_iklan'))
             ->whereNotIn('id_jadwal', $notAvailable);
 
@@ -324,8 +358,8 @@ class JadwalTrafficIklanController extends Controller
             if (!in_array($i, $request->waktu_tayang)){
 
                 $query = JadwalTrafficIklan::whereNull('id_order_iklan')
-                ->where('tanggal_jadwal', '>=', date('Y-m-d', strtotime($request->priode_awal)))
-                ->where('tanggal_jadwal', '<=', date('Y-m-d', strtotime($request->priode_akhir)))
+                ->where('tanggal_jadwal', '>=', date('Y-m-d', $tanggal_awal))
+                ->where('tanggal_jadwal', '<=', date('Y-m-d', $tanggal_akhir))
                 ->where('id_jenis_iklan', $request->input('jenis_iklan'))
                 ->whereNotIn('id_jadwal', $notAvailable);
 
@@ -368,8 +402,9 @@ class JadwalTrafficIklanController extends Controller
         ->get()
         ->groupBy('tanggal_jadwal');
 
+        Session::put('id_kategori', $request->id_kategori);
+        Session::put('id_jenis_iklan', $request->input('jenis_iklan'));
         
-        $request->session()->flash('order_detail');
         return view('pages.CariJadwalKosong.searchresult')->with('result', $result)
         ->with('resultCount', $resultCount)->with('resultAlt', $resultAlt)
         ->with('resultAltCount', $resultAltCount);
@@ -378,9 +413,22 @@ class JadwalTrafficIklanController extends Controller
     public function keepjadwal(Request $request)
     {
         $jadwal = $request->jadwal;
-        
-        Session::flash('jadwal', $jadwal);
-        Session::reflash();
+        Session::put('jadwal', $jadwal);
+
+        $jumlah_tayang = count($jadwal);
+        Session::put('jumlah_tayang', $jumlah_tayang);
+
+        $query = JadwalTrafficIklan::select('tanggal_jadwal')
+        ->where('id_jadwal','=',$jadwal[0])->pluck('tanggal_jadwal');
+        $priode_awal = $query[0];
+        Session::put('priode_awal', $priode_awal);
+
+        $n = count($jadwal) - 1;
+        $query = JadwalTrafficIklan::select('tanggal_jadwal')
+        ->where('id_jadwal','=',$jadwal[$n])->pluck('tanggal_jadwal');
+        $priode_akhir = $query[0];
+        Session::put('priode_akhir', $priode_akhir);        
+
         return view('pages.requestbooking.createclient');
     }
 
