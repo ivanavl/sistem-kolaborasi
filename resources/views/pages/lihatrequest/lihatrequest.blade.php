@@ -6,9 +6,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Lihat Request</div>
-                    <div class="card-body align-center-vh">
-                        <div class="content-width">
-                            @if(isset($lihat_requests))
+                    @if(isset($lihat_requests))
+                        <div class="card-body align-center-vh">
+                            <div class="content-width">
                                 <table class="table table-striped table-custom table-bordered">
                                     <thead>
                                     <tr>
@@ -34,7 +34,7 @@
                                             <td>{{$request->nama_client}}</td>
                                             <td>{{$request->nama_produk}}</td>
                                             <td>{{$request->versi_iklan}}</td>
-                                            <td>{{$request->priode_awal}} - {{$request->priode_akhir}}</td>
+                                            <td>{{$request->priode_awal . " s.d. " . $request->priode_akhir}}</td>
                                             <td>{{$request->nama_kategori}}</td>
                                             <td>{{$request->name}}</td>
                                             <td>{{$request->tanggal_konfirmasi}}</td>
@@ -45,9 +45,9 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-                            @endif
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>

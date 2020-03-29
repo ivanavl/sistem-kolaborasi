@@ -1,63 +1,102 @@
 @extends('layouts.app')
 
 @section('content')
-    <div>
-        <h3>Konfirmasi Booking</h3>
-    </div> 
-    <div>
-        @if(isset($result1, $result2))
-            @foreach($result1 as $result_1)
-            <table>
-                
-                <tr>
-                    <td>No Order</td>
-                    <td>{{$result_1->id_order_iklan}}</td>
-                </tr>
-                <tr>
-                    <td>Nama Client</td>
-                    <td>{{$result_1->nama_client}}</td>
-                </tr>
-                <tr>
-                    <td>Nama Produk</td>
-                    <td>{{$result_1->nama_produk}}</td>
-                </tr>
-                <tr>
-                    <td>Jenis Iklan</td>
-                    <td>{{$result_1->nama_jenis_iklan}}</td>
-                </tr>
-                <tr>
-                    <td>Kategori</td>
-                    <td>{{$result_1->nama_kategori}}</td>
-                </tr>
-                <tr>
-                    <td>Jumlah Tayang</td>
-                    <td>{{$result_1->jumlah_tayang}}</td>
-                </tr>
-                <tr>
-                    <td>Jadwal Tayang</td>
-                    <td>
-                        <table>
-                            @foreach ($result2 as $result_2)
-                                <tr>
-                                    <td>{{$result_2->tanggal_jadwal}}</td>
-                                    <td>{{$result_2->jam_jadwal}}</td>
-                                </tr>
+    <div class="container full-height">
+        <div class="row justify-content-center full-height">
+            <div class="col-md-12">
+                <div class="card full">
+                    <div class="card-header">Pendaftaran Iklan</div>
+                    <div class="card-body align-center-vh">
+                        @if(isset($result1, $result2))
+                            @foreach($result1 as $result_1)
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <label class="col-form-label">No Order</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <label class="col-form-label">{{$result_1->id_order_iklan}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <label class="col-form-label">Nama Client</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <label class="col-form-label">{{$result_1->nama_client}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <label class="col-form-label">Nama Produk</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <label class="col-form-label">{{$result_1->nama_produk}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <label class="col-form-label">Jenis Iklan</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <label class="col-form-label">{{$result_1->nama_jenis_iklan}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <label class="col-form-label">Kategori</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <label class="col-form-label">{{$result_1->nama_kategori}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <label class="col-form-label">Jumlah Tayang</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <label class="col-form-label">{{$result_1->jumlah_tayang}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <label class="col-form-label">Jadwal Tayang</label>
+                                        </div>
+                                        <div class="col-9">
+                                            @foreach ($result2 as $result_2)
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <label class="col-form-label">{{$result_2->tanggal_jadwal}}</label>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <label class="col-form-label">{{$result_2->jam_jadwal}}</label>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
                             @endforeach
-                        </table>
-                    </td>
-                </tr>
-            </table>
-            {{ Form::open(['action' => 'OrderIklanController@konfirmasibooking','menthod' => 'POST']) }}
-                {{Form::hidden('konfirmasi', 1)}}
-                {{Form::hidden('id_order_iklan', $result_1->id_order_iklan)}}
-                {{Form::submit('KONFIRMASI PEMASANGAN')}}
-            {{ Form::close() }}
-            {{ Form::open(['action' => 'OrderIklanController@konfirmasibooking','menthod' => 'POST']) }}
-                {{Form::hidden('konfirmasi', 0)}}
-                {{Form::hidden('id_order_iklan', $result_1->id_order_iklan)}}
-                {{Form::submit('KONFIRMASI PEMBATALAN')}}
-            {{ Form::close() }}
-            @endforeach
-        @endif
+                        @endif
+                    </div>
+                    <div class="card-footer">
+                        <div class="col-3">
+                            {{ Form::open(['action' => 'OrderIklanController@konfirmasibooking','menthod' => 'POST']) }}
+                            {{Form::hidden('konfirmasi', 1)}}
+                            {{Form::hidden('id_order_iklan', $result_1->id_order_iklan)}}
+                            <input class="btn btn-primary" type="submit" value="Konfirmasi Pemasangan">
+                            {{ Form::close() }}
+                        </div>
+                        <div class="col-3">
+                            {{ Form::open(['action' => 'OrderIklanController@konfirmasibooking','menthod' => 'POST']) }}
+                            {{Form::hidden('konfirmasi', 0)}}
+                            {{Form::hidden('id_order_iklan', $result_1->id_order_iklan)}}
+                            <input class="btn btn-primary" type="submit" value="Konfirmasi Pembatalan">
+                            {{ Form::close() }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

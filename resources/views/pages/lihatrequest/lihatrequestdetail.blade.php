@@ -6,9 +6,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Lihat Request</div>
-                    <div class="card-body align-center-vh">
-                        <div class="content-width">
-                            @if(isset($lihat_request))
+                    @if(isset($lihat_request))
+                        <div class="card-body align-center-vh">
+                            <div class="content-width">
                                 <table class="table table-striped table-custom table-bordered">
                                     <thead>
                                     <tr>
@@ -31,9 +31,9 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-                            @endif
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>

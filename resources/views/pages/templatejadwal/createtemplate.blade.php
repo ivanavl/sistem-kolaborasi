@@ -33,9 +33,9 @@
                         </div>
                     </div>
                     {{ Form::close() }}
-                    <div class="card-body align-center-vh">
-                        <div class="content-width">
-                            @if(Session::has('template'))
+                    @if(Session::get('template'))
+                        <div class="card-body align-center-vh">
+                            <div class="content-width">
                                 <table class="table table-striped table-custom table-bordered">
                                     <thead>
                                     <tr class="d-flex">
@@ -57,9 +57,9 @@
                                         <tr class="d-flex">
                                             <th class="col-2"> {{ $loop->iteration }}</th>
                                             <td class="col"> {{ $t->get('jam_awal') }} </td>
-                                            <td class="col"> {{ $t->get('durasi_template') }} &nbspiklan </td>
+                                            <td class="col"> {{ $t->get('durasi_template') }} &nbspiklan</td>
                                             <td class="col-1">
-                                                <a  href="/removesegmen/{{$t->get('jam_awal')}}">
+                                                <a href="/removesegmen/{{$t->get('jam_awal')}}">
                                                     <i class="fas fa-times"></i>
                                                 </a>
                                             </td>
@@ -67,26 +67,26 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-                            @endif
+                            </div>
                         </div>
-                    </div>
-                    {{ Form::open(['action' => 'TemplateJadwalController@storetemplate','menthod' => 'POST']) }}
-                    <div class="card-footer">
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-3">
-                                    <label for="nama_template" class="col-form-label">Nama Template</label>
-                                </div>
-                                <div class="col-7">
-                                    <input name="nama_template" class="form-control">
-                                </div>
-                                <div class="col-2">
-                                    <input class="btn btn-primary" type="submit" value="Create">
+                        {{ Form::open(['action' => 'TemplateJadwalController@storetemplate','menthod' => 'POST']) }}
+                        <div class="card-footer">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <label for="nama_template" class="col-form-label">Nama Template</label>
+                                    </div>
+                                    <div class="col-7">
+                                        <input name="nama_template" class="form-control">
+                                    </div>
+                                    <div class="col-2">
+                                        <input class="btn btn-primary" type="submit" value="Create">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {{ Form::close() }}
+                        {{ Form::close() }}
+                    @endif
                 </div>
             </div>
         </div>
