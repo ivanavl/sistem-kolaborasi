@@ -12,10 +12,10 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
         DB::table('roles')->insert([
-            ['nama_role' => 'Traffic Iklan'],
-            ['nama_role' => 'Marketing'],
-            ['nama_role' => 'Produksi'],
-            ['nama_role' => 'Studio']
+            ['role_name' => 'Traffic Iklan'],
+            ['role_name' => 'Marketing'],
+            ['role_name' => 'Produksi'],
+            ['role_name' => 'Studio']
         ]);
     }
 }

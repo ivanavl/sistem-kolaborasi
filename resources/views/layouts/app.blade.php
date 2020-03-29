@@ -1,20 +1,162 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ config('app.name', 'Sistem-Kolaborasi') }}</title>
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    </head>
-    <body>
-        <div id="app">
-            @include('inc.navbar')
-            <main class="py-4">
-                <div class="container">
-                    @include('inc.message')
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Sistem-Kolaborasi') }}</title>
+
+    <!-- Scripts -->
+
+    <!-- Font Awesome JS -->
+    <script src={{ asset('js/fontawesome.js') }}></script>
+    <script src={{ asset('js/solid.js') }}></script>
+
+    <!-- jQuery CDN -->
+    <script src={{ asset('js/jquery.min.js') }}></script>
+    <!-- Popper.JS -->
+    <script src={{ asset('js/popper.min.js') }}></script>
+    <!-- Bootstrap JS -->
+    <script src={{ asset('js/bootstrap.min.js') }}></script>
+    <script src={{ asset('js/app.js') }}></script>
+    <!-- Our Custom JS -->
+    <script src={{ asset('js/script.js') }}></script>
+
+    <!-- Styles -->
+
+    <!-- Bootstrap CSS CDN -->
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Our Custom CSS -->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+<div id="app">
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        @auth
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h3>Radio Maestro</h3>
+                    <strong>RM</strong>
+                </div>
+
+                <div class="sidebar-profile">
+                    <div>
+                        <img src={{ asset('avatar.png') }} class="profile-image" alt="Avatar" title="Nama | Jabatan">
+                    </div>
+                    <div class="profile-details">
+                        <div>
+                            <strong>{{ Auth::user()->name }}</strong>
+                        </div>
+                        <div>
+                            {{ Auth::user()->role_id . " - " . Auth::user()->role->role_name }}
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="list-unstyled components sidebar-menu customscroll">
+                    <li class="active">
+                        <a href="/">
+                            <i class="fas fa-home"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+
+                    @if (Auth::user()->role_id == App\Role::TRAFFIC_IKLAN)
+                    <li>
+                        <a href="/createjadwal">
+                            <i class="fas fa-calendar-plus"></i>
+                            <span>Create Jadwal</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-tasks"></i>
+                            <span>Konfirmasi/Pembatalan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Lihat Jadwal</span>
+                        </a>
+                    </li>
+                    @endif
+                    @if (Auth::user()->role_id == App\Role::MARKETING)
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-search"></i>
+                            <span>Cari Jadwal</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Lihat Request</span>
+                        </a>
+                    </li>
+                    @endif
+
+                </ul>
+            </nav>
+        @endauth
+
+        <div class="main">
+            <!-- Navbar  -->
+            <nav class="navbar navbar-expand navbar-dark sticky-top">
+                <!--Navbar logo-->
+                <div class="navbar-brand mr-0 mr-md-2" href="#">
+                    @auth
+                        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                            <div id="is-hide">
+                                <i class="fas fa-chevron-left toggle-hide"></i>
+                                <i class="fas fa-chevron-right toggle-show"></i>
+                            </div>
+                        </button>
+                    @endauth
+                </div>
+
+
+                <!--Navbar menu right, auto hide below medium-->
+                <ul class="navbar-nav ml-auto d-md-flex">
+                    @guest
+                        <li class="nav-item dropdown">
+                            <a class="nav-item nav-link mr-2" href="{{ route('login') }}">
+                                Login
+                            </a>
+                        </li>
+                    @else
+                        <li class="nav-item dropdown">
+                            <a class="nav-item nav-link mr-2" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
+                    @endguest
+                </ul>
+            </nav>
+
+
+            <!-- Page Content  -->
+            @guest
+                <div id="content" class="customscroll withbackground align-center-vh">
                     @yield('content')
                 </div>
-            </main>
-        </div> 
-    </body>
+            @else
+                <div id="content" class="customscroll align-center-vh">
+                    @yield('content')
+                </div>
+            @endguest
+        </div>
+    </div>
+</div>
+</body>
 </html>

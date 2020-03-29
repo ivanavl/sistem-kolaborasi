@@ -6,15 +6,32 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    protected $primaryKey = 'id_role';
-    
-    public function Users()
-    {
-        return $this->hasMany('App\User');
-    }
+    const TRAFFIC_IKLAN = 1;
+    const MARKETING = 2;
+    const PRODUKSI = 3;
+    const STUDIO = 4;
 
-    public function Menus()
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'role_name'
+    ];
+
+    /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'role_id';
+
+    /**
+     * Get the users for this role.
+     */
+    public function user()
     {
-        return $this->belogsToMany('App\Menu');
+        return $this->hasMany('App\User', 'role_id');
     }
 }

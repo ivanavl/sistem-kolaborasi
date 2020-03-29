@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Menu;
+use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
@@ -14,7 +15,6 @@ class PagesController extends Controller
 
     public function homeIndex()
     {
-        $menus = Menu::all();
-        return view('home')->with('menus', $menus);
+        return view('home');
     }
 }

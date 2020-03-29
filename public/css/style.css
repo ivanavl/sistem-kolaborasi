@@ -1,0 +1,479 @@
+/*
+    DEMO STYLE
+*/
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 110%;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    padding: 15px 10px;
+    background: #E60000;
+    border: none;
+    border-radius: 0;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    height: 4rem;
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+i,
+span {
+    display: inline-block;
+}
+
+.main {
+    width: 100%;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+    overflow-y: hidden;
+    display: flex;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #444444;
+    color: #fff;
+    transition: all 0.3s;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+#sidebar .sidebar-menu{
+	height: calc(100vh - 19rem);
+	overflow-y: auto;
+}
+
+#sidebar.active .sidebar-menu{
+	height: calc(100vh - 9rem);
+	overflow-y: auto;
+}
+
+#is-hide .toggle-show{
+    display: none;
+}
+
+#is-hide .toggle-hide{
+    display: block;
+}
+
+#is-hide.active .toggle-hide{
+    display: none;
+}
+
+#is-hide.active .toggle-show{
+    display: block;
+}
+
+.toggle-button{
+    background: #BBBBBB;
+}
+
+#sidebar.active {
+    min-width: 80px;
+    max-width: 80px;
+    text-align: center;
+}
+
+#sidebar.active .sidebar-header h3,
+#sidebar.active .CTAs {
+    display: none;
+}
+
+#sidebar.active .sidebar-header strong {
+    display: block;
+}
+
+#sidebar ul li a {
+    text-align: left;
+}
+
+#sidebar.active ul li a {
+    padding: 20px 10px;
+    text-align: center;
+}
+
+#sidebar.active ul li a span{
+    display: none;
+}
+
+#sidebar.active ul li a i {
+    margin-right: 0;
+    display: block;
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+
+#sidebar.active ul ul a {
+    padding: 10px !important;
+}
+
+#sidebar .sidebar-header {
+    padding: 15px;
+    height: 4rem;
+    background: #E60000;
+}
+
+#sidebar .sidebar-profile{
+    padding: 15px;
+	height: 15rem;
+    text-align: center;
+}
+
+#sidebar.active .sidebar-profile{
+    padding: 15px;
+	height: 5rem;
+    text-align: center;
+}
+
+#sidebar .profile-image{
+    width: 8rem;
+    border-radius: 50%;
+}
+
+#sidebar.active .profile-image{
+    width: 100%;
+    border-radius: 50%;
+}
+
+#sidebar .profile-details{
+    display: block;
+}
+
+#sidebar.active .profile-details{
+    display: none;
+}
+
+#sidebar .sidebar-header strong {
+    display: none;
+    font-size: 1.8em;
+}
+
+#sidebar ul.components {
+    padding: 0px 0;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar.active ul li a {
+    font-size: 1.5em;
+}
+
+#sidebar ul li a:hover {
+    color: #444444;
+    background: #fff;
+}
+
+#sidebar ul li a i {
+    margin-right: 10px;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #222222;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #222222;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: #fff;
+    color: #444444;
+}
+
+a.article,
+a.article:hover {
+    background: #222222 !important;
+    color: #fff !important;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    height: calc(100vh - 4rem);
+    transition: all 0.3s;
+    overflow-y: auto;
+}
+
+.full-height{
+    height: 100%;
+}
+
+.half-height{
+    height: 50%;
+}
+
+.content-width {
+    width: 90%;
+}
+
+.align-center-vh{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.welcome-message{
+    font-size: 2rem;
+}
+
+.mini-link{
+    font-size: 0.75rem;
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.mini-link:hover, .mini-link:focus{
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* ---------------------------------------------------
+    CUSTOM TABLE
+----------------------------------------------------- */
+.table-custom{
+    border-color: #FFFFFF;
+    text-align: center;
+}
+
+.table-custom thead{
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+.table-custom thead h3{
+    margin: 0;
+}
+
+.table-custom.table-striped tbody tr:nth-of-type(even) {
+    background-color: #222222;
+    color: #FFFFFF;
+}
+
+.table-custom.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #444444;
+    color: #FFFFFF;
+}
+
+
+/* ---------------------------------------------------
+    CUSTOM SCROLLBAR
+----------------------------------------------------- */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #60646A;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #80848A;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255,0,0,0.3);
+}
+
+.withbackground {
+    background-size: cover;
+    background-image: url('/background.jpeg');
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,1);
+}
+
+
+/* ---------------------------------------------------
+    CUSTOM BOOTSTRAP STYLE
+----------------------------------------------------- */
+
+.card-header {
+    background-color: #BCBCBC;
+    font-weight: bold;
+}
+.card-body {
+    background-color: #DED6D6;
+    /*border-radius: 0 0 calc(.25rem - 1px) calc(.25rem - 1px);*/
+}
+
+.card-footer {
+    background-color: #BCBCBC;
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card-footer .form-group{
+    margin: 0;
+}
+
+.card {
+    border-color: #707070;
+}
+
+.btn-primary {
+    background-color: #50545A !important;
+    border: 0 !important;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus{
+    background-color: #80848A !important;
+    border: 0 !important;
+}
+
+.form-group{
+    width: 90%;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+    #sidebar {
+        min-width: 80px;
+        max-width: 80px;
+        text-align: center;
+        margin-left: -80px !important;
+    }
+    #sidebar.active {
+        margin-left: 0 !important;
+    }
+    #sidebar .sidebar-header h3,
+    #sidebar .CTAs {
+        display: none;
+    }
+    #sidebar .sidebar-header strong {
+        display: block;
+    }
+    #sidebar ul li a {
+        padding: 20px 10px;
+    }
+    #sidebar ul li a span {
+        font-size: 0.85em;
+    }
+    #sidebar ul li a i {
+        margin-right: 0;
+        display: block;
+    }
+    #sidebar ul ul a {
+        padding: 10px !important;
+    }
+    #sidebar ul li a i {
+        font-size: 1.3em;
+    }
+    #sidebar {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+}
