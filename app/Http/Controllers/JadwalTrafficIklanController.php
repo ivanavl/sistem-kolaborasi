@@ -30,7 +30,6 @@ class JadwalTrafficIklanController extends Controller
     //CreateJadwal
     public function storejadwal(Request $request)
     {
-        
         $jenis_iklan = intval($request->input('jenis_iklan'));
 
         if($jenis_iklan == 1)
@@ -234,10 +233,8 @@ class JadwalTrafficIklanController extends Controller
         $date = $request->input('tanggal_jadwal');
         if($request->jenis_iklan == "spot iklan")
         {
-            echo "CEK1";
             $id_jenis_iklan = 1;
         }else{
-            echo "CEK2";
             $id_jenis_iklan = 2;
         }
         if($date != ""){

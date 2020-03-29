@@ -4,21 +4,58 @@
     <div class="container full-height">
         <div class="row justify-content-center full-height">
             <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">Jadwal Traffic Iklan</div>
+                <div class="card full">
+                    <div class="card-header">Pendaftaran Client</div>
 
-                    {{ Form::open(['action' => 'JadwalTrafficIklanController@showjadwalresult', 'method' => 'POST']) }}
+                    {{ Form::open(['action' => 'ClientController@storeclient', 'method' => 'POST']) }}
                     <div class="card-body align-center-vh">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-3">
-                                    <label for="tanggal_jadwal" class="col-form-label">Tanggal Iklan</label>
+                                    <label for="nama_client" class="col-form-label">Nama Client</label>
                                 </div>
-                                <div class="col-7">
-                                    <input class="form-control" name="tanggal_jadwal" type="date">
+                                <div class="col-9">
+                                    <input type="text" class="form-control" name="nama_client">
                                 </div>
-                                <div class="col-2">
-                                    <input class="btn btn-primary" type="submit" value="Search">
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <label for="alamat_client" class="col-form-label">Alamat Client</label>
+                                </div>
+                                <div class="col-9">
+                                    <textarea type="text" class="form-control" name="alamat_client"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <label for="npwp_client" class="col-form-label">NPWP Client</label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" class="form-control" name="npwp_client">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <label for="contact_person" class="col-form-label">Contact Person</label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" class="form-control" name="contact_person">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <label for="telepon_client" class="col-form-label">Telepon</label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" class="form-control" name="telepon_client">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <label for="email_client" class="col-form-label">Email</label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" class="form-control" name="email_client">
                                 </div>
                             </div>
                             <div class="row">
@@ -26,55 +63,10 @@
                             </div>
                         </div>
                     </div>
-                    {{ Form::close() }}
-
-                    @if(isset($request))
-                        <div class="card-body align-center-vh">
-                            <div class="content-width">
-                                <table class="table table-striped table-custom table-bordered">
-                                    <thead>
-                                    <tr class="d-flex">
-                                        <th class="col-12" colspan="3">
-                                            <h3>Hasil Pencarian untuk {{$request->jenis_iklan}} pada
-                                                tanggal {{$request->tanggal_jadwal}}</h3>
-                                        </th>
-                                    </tr>
-                                    <tr class="d-flex">
-                                        <th class="col">#</th>
-                                        <th class="col">Jam Jadwal</th>
-                                        <th class="col">Nama Produk</th>
-                                        <th class="col">Versi</th>
-                                        <th class="col">Kategori</th>
-                                        <th class="col">Priode Tayang</th>
-                                        <th class="col">No Order</th>
-                                        <th class="col">AE</th>
-                                        <th class="col">Status Order</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($results as $result)
-                                        <tr class="d-flex">
-                                            <th class="col">{{ $loop->iteration }}</th>
-                                            <td class="col">{{$result->jam_jadwal}}</td>
-                                            <td class="col">{{$result->nama_produk}}</td>
-                                            <td class="col">{{$result->versi_iklan}}</td>
-                                            <td class="col">{{$result->nama_kategori}}</td>
-                                            @if($result->priode_awal != null)
-                                                <td class="col">{{$result->priode_awal}}
-                                                    - {{$result->priode_akhir}}</td>
-                                            @else
-                                                <td class="col"></td>
-                                            @endif
-                                            <td class="col">{{$result->id_order_iklan}}</td>
-                                            <td class="col">{{$result->name}}</td>
-                                            <td class="col">{{$result->status_order}}</td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    @endif
+                    <div class="card-footer">
+                        <input class="btn btn-primary" type="submit" value="Search">
+                    </div>
+                    {{Form::close()}}
                 </div>
             </div>
         </div>

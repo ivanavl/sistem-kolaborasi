@@ -38,9 +38,11 @@
                                             <td>{{$request->nama_kategori}}</td>
                                             <td>{{$request->name}}</td>
                                             <td>{{$request->tanggal_konfirmasi}}</td>
-                                            <td><a href="/lihatrequestdetail/{{$request->id_order_iklan}}">
+                                            <td>
+                                                <a href="/lihatrequestdetail/{{$request->id_order_iklan}}">
                                                     {{$request->status_order}}
-                                                </a></td>
+                                                </a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

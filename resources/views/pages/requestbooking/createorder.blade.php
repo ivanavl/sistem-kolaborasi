@@ -24,7 +24,7 @@
                                 </div>
                                 @if(isset($clients))
                                 <div class="col-9">
-                                    <label for="nama_client" class="col-form-label">{{ $clients->nama_client }}</label> name="nama_produk">
+                                    <label for="nama_client" class="col-form-label">{{ $clients->nama_client }}</label>
                                     <input type="hidden" name="id_client" value="{{ $clients->id_client }}">
                                 </div>
                                 @endif

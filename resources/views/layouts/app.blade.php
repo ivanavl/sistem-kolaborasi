@@ -42,7 +42,7 @@
                 </div>
 
                 <ul class="list-unstyled components sidebar-menu customscroll">
-                    <li class="active">
+                    <li class="{{ (request()->is('/')) ? 'active' : '' }}">
                         <a href="/">
                             <i class="fas fa-home"></i>
                             <span>Home</span>
@@ -50,36 +50,52 @@
                     </li>
 
                     @if (Auth::user()->role_id == App\Role::TRAFFIC_IKLAN)
-                    <li>
+                    <li class="{{ (request()->is('createjadwal*')) || (request()->is('lihattemplate*')) ? 'active' : '' }}">
                         <a href="/createjadwal">
                             <i class="fas fa-calendar-plus"></i>
                             <span>Create Jadwal</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
+                    <li class="{{ (request()->is('konfirmasibooking*')) ? 'active' : '' }}">
+                        <a href="/konfirmasibooking">
                             <i class="fas fa-tasks"></i>
                             <span>Konfirmasi/Pembatalan</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
+                    <li class="{{ (request()->is('lihatjadwal*')) && ! (request()->is('lihatjadwalfinal*')) ? 'active' : '' }}">
+                        <a href="/lihatjadwal">
                             <i class="fas fa-calendar-alt"></i>
                             <span>Lihat Jadwal</span>
                         </a>
                     </li>
                     @endif
-                    @if (Auth::user()->role_id == App\Role::MARKETING)
-                    <li>
-                        <a href="#">
+                    @if (Auth::user()->role_id == App\Role::MARKETING || Auth::user()->role_id == App\Role::TRAFFIC_IKLAN)
+                    <li class="{{ (request()->is('carijadwal*')) || (request()->is('keepjadwal*')) || (request()->is('lihatclient*')) ? 'active' : '' }}">
+                        <a href="/carijadwal">
                             <i class="fas fa-search"></i>
                             <span>Cari Jadwal</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
+                    <li class="{{ (request()->is('lihatrequest*')) ? 'active' : '' }}">
+                        <a href="/lihatrequest">
                             <i class="fas fa-file-alt"></i>
                             <span>Lihat Request</span>
+                        </a>
+                    </li>
+                    @endif
+                    @if (Auth::user()->role_id == App\Role::PRODUKSI || Auth::user()->role_id == App\Role::TRAFFIC_IKLAN)
+                    <li class="{{ (request()->is('updateversi*')) ? 'active' : '' }}">
+                        <a href="/updateversi">
+                            <i class="fas fa-search"></i>
+                            <span>Update Versi Iklan</span>
+                        </a>
+                    </li>
+                    @endif
+                    @if (Auth::user()->role_id == App\Role::STUDIO || Auth::user()->role_id == App\Role::TRAFFIC_IKLAN)
+                    <li class="{{ (request()->is('lihatjadwalfinal*')) ? 'active' : '' }}">
+                        <a href="/lihatjadwalfinal">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Lihat Jadwal Final</span>
                         </a>
                     </li>
                     @endif

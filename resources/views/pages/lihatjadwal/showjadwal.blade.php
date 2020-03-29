@@ -17,7 +17,7 @@
                                 <div class="col-4">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="jenis_iklan" id="jenis_iklan"
-                                               value="spot iklan">
+                                               value="spot iklan" checked>
                                         <label class="form-check-label" for="jenis_iklan">Spot Iklan</label>
                                     </div>
                                     <div class="form-check form-check-inline">
@@ -46,41 +46,41 @@
                             <div class="content-width">
                                 <table class="table table-striped table-custom table-bordered">
                                     <thead>
-                                    <tr class="d-flex">
-                                        <th class="col-12" colspan="3">
+                                    <tr>
+                                        <th colspan="9">
                                             <h3>Hasil Pencarian untuk {{$request->jenis_iklan}} pada
                                                 tanggal {{$request->tanggal_jadwal}}</h3>
                                         </th>
                                     </tr>
-                                    <tr class="d-flex">
-                                        <th class="col">#</th>
-                                        <th class="col">Jam Jadwal</th>
-                                        <th class="col">Nama Produk</th>
-                                        <th class="col">Versi</th>
-                                        <th class="col">Kategori</th>
-                                        <th class="col">Priode Tayang</th>
-                                        <th class="col">No Order</th>
-                                        <th class="col">AE</th>
-                                        <th class="col">Status Order</th>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Jam Jadwal</th>
+                                        <th>Nama Produk</th>
+                                        <th>Versi</th>
+                                        <th>Kategori</th>
+                                        <th>Priode Tayang</th>
+                                        <th>No Order</th>
+                                        <th>AE</th>
+                                        <th>Status Order</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($results as $result)
-                                        <tr class="d-flex">
-                                            <th class="col">{{ $loop->iteration }}</th>
-                                            <td class="col">{{$result->jam_jadwal}}</td>
-                                            <td class="col">{{$result->nama_produk}}</td>
-                                            <td class="col">{{$result->versi_iklan}}</td>
-                                            <td class="col">{{$result->nama_kategori}}</td>
+                                        <tr>
+                                            <th>{{ $loop->iteration }}</th>
+                                            <td>{{$result->jam_jadwal}}</td>
+                                            <td>{{$result->nama_produk}}</td>
+                                            <td>{{$result->versi_iklan}}</td>
+                                            <td>{{$result->nama_kategori}}</td>
                                             @if($result->priode_awal != null)
-                                                <td class="col">{{$result->priode_awal}}
-                                                    - {{$result->priode_akhir}}</td>
+                                                <td>{{$result->priode_awal}}
+                                                    s.d. {{$result->priode_akhir}}</td>
                                             @else
-                                                <td class="col"></td>
+                                                <td></td>
                                             @endif
-                                            <td class="col">{{$result->id_order_iklan}}</td>
-                                            <td class="col">{{$result->name}}</td>
-                                            <td class="col">{{$result->status_order}}</td>
+                                            <td>{{$result->id_order_iklan}}</td>
+                                            <td>{{$result->name}}</td>
+                                            <td>{{$result->status_order}}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
