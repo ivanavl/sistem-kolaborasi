@@ -62,7 +62,7 @@
                                 <div class="card-footer">
                                     <div class="row">
                                         <div class="col-8">
-                                            Pilih <strong><span id="checkbox_counter">5</span></strong> jadwal lagi.
+                                            Pilih <strong><span id="checkbox_counter">{{ $counter }}</span></strong> jadwal lagi.
                                         </div>
                                         <div class="col-4">
                                             <input class="btn btn-primary" type="submit" value="Create">

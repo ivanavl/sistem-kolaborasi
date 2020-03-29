@@ -52,8 +52,6 @@
                                                 tanggal {{$request->tanggal_jadwal}}</h3>
                                         </th>
                                     </tr>
-                                    </thead>
-                                    <tbody>
                                     <tr class="d-flex">
                                         <th class="col">#</th>
                                         <th class="col">Jam Jadwal</th>
@@ -65,6 +63,8 @@
                                         <th class="col">AE</th>
                                         <th class="col">Status Order</th>
                                     </tr>
+                                    </thead>
+                                    <tbody>
                                     @foreach($results as $result)
                                         <tr class="d-flex">
                                             <th class="col">{{ $loop->iteration }}</th>

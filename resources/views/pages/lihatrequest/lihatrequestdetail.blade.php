@@ -1,33 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
-    <div>
-        <h3>Lihat Request<h3>
-    </div>
-    <div>
-        @if(isset($lihat_request))
-        <table>
-            <thead>
-                <tr>
-                    <th>Jenis Iklan</th>
-                    <th>Tanggal</th>
-                    <th>Jam</th>
-                    <th>Nama Produk</th>
-                    <th>Kategori</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($lihat_request as $request)
-                <tr>
-                    <td>{{$request->nama_jenis_iklan}}</td>
-                    <td>{{$request->tanggal_jadwal}}</td>
-                    <td>{{$request->jam_jadwal}}</td>
-                    <td>{{$request->nama_produk}}</td>
-                    <td>{{$request->nama_kategori}}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        @endif
+    <div class="container full-height">
+        <div class="row justify-content-center full-height">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">Lihat Request</div>
+                    <div class="card-body align-center-vh">
+                        <div class="content-width">
+                            @if(isset($lihat_request))
+                                <table class="table table-striped table-custom table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>Jenis Iklan</th>
+                                        <th>Tanggal</th>
+                                        <th>Jam</th>
+                                        <th>Nama Produk</th>
+                                        <th>Kategori</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($lihat_request as $request)
+                                        <tr>
+                                            <td>{{$request->nama_jenis_iklan}}</td>
+                                            <td>{{$request->tanggal_jadwal}}</td>
+                                            <td>{{$request->jam_jadwal}}</td>
+                                            <td>{{$request->nama_produk}}</td>
+                                            <td>{{$request->nama_kategori}}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
