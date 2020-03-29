@@ -9,22 +9,6 @@
 
     <title>{{ config('app.name', 'Sistem-Kolaborasi') }}</title>
 
-    <!-- Scripts -->
-
-    <!-- Font Awesome JS -->
-    <script src={{ asset('js/fontawesome.js') }}></script>
-    <script src={{ asset('js/solid.js') }}></script>
-
-    <!-- jQuery CDN -->
-    <script src={{ asset('js/jquery.min.js') }}></script>
-    <!-- Popper.JS -->
-    <script src={{ asset('js/popper.min.js') }}></script>
-    <!-- Bootstrap JS -->
-    <script src={{ asset('js/bootstrap.min.js') }}></script>
-    <script src={{ asset('js/app.js') }}></script>
-    <!-- Our Custom JS -->
-    <script src={{ asset('js/script.js') }}></script>
-
     <!-- Styles -->
 
     <!-- Bootstrap CSS CDN -->
@@ -158,5 +142,20 @@
         </div>
     </div>
 </div>
+
+<!-- Scripts -->
+
+<!-- Font Awesome JS -->
+<script src={{ asset('js/fontawesome.js') }}></script>
+<script src={{ asset('js/solid.js') }}></script>
+
+<!-- jQuery CDN -->
+<script src={{ asset('js/jquery.min.js') }}></script>
+<!-- Popper.JS -->
+<script src={{ asset('js/popper.min.js') }}></script>
+<!-- Bootstrap JS -->
+<script src={{ asset('js/bootstrap.min.js') }}></script>
+<!-- Our Custom JS -->
+<script src={{ asset('js/script.js') }}></script>
 </body>
 </html>

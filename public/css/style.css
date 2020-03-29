@@ -433,6 +433,20 @@ a.article:hover {
     width: 90%;
 }
 
+.form-check-inline.col-4,
+.form-check-inline.col-3{
+    margin-right: 0;
+    padding-left: 15px;
+}
+
+.accordion:last-child{
+    margin-bottom: 20px;
+}
+
+form{
+    margin-block-end: 0;
+}
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */

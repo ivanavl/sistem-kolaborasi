@@ -57,7 +57,7 @@
                                         <tr class="d-flex">
                                             <th class="col-2"> {{ $loop->iteration }}</th>
                                             <td class="col"> {{ $t->get('jam_awal') }} </td>
-                                            <td class="col"> {{ $t->get('durasi_template') }} &nbspmenit </td>
+                                            <td class="col"> {{ $t->get('durasi_template') }} &nbspiklan </td>
                                             <td class="col-1">
                                                 <a  href="/removesegmen/{{$t->get('jam_awal')}}">
                                                     <i class="fas fa-times"></i>

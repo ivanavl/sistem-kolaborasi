@@ -84,9 +84,7 @@ class TemplateJadwalController extends Controller
     //View Lihat Template
     public function indextemplate()
     {
-        $temp = TemplateJadwal::whereNotIn('id_template', [3])
-        ->pluck('nama_template','id_template');
-        $template_jadwals = $temp->all();
+        $template_jadwals = TemplateJadwal::whereNotIn('id_template', [3])->get();
 
         return view('pages.templatejadwal.lihattemplate')->with('template_jadwals', $template_jadwals);
     }

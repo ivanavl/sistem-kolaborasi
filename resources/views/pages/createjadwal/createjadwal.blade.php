@@ -81,18 +81,29 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-4">
-                                        <label for="template_jadwal" class="col-form-label">Template Jadwal</label>
+                                        <label for="template_jadwal_talkshow" class="col-form-label">Template Jadwal</label>
                                     </div>
                                     <div class="col-8">
-                                        <select id="template_jadwal talkshow" name="template_jadwal" class="form-control"
+                                        <select id="template_jadwal_talkshow" name="template_jadwal" class="form-control"
                                                 onchange="checkIfBAT()">
                                             @foreach ($template_jadwals2 as $tj2)
+                                                @if($loop->iteration == 1)
                                                 <option value="{{ $loop->iteration }}" selected="selected">
+                                                @else
+                                                <option value="{{ $loop->iteration }}">
+                                                @endif
                                                     {{ $tj2 }}
                                                 </option>
                                             @endforeach
                                         </select>
-                                        <input name="jam_jadwal" id="bat_time" type="hidden" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row" id="bat_time" style="display: none">
+                                    <div class="col-4">
+                                        <label for="template_jadwal" class="col-form-label">Template Jadwal</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input class="form-control" type="time" name="jam_jadwal">
                                     </div>
                                 </div>
                             </div>

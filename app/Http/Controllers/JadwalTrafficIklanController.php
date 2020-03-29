@@ -232,10 +232,12 @@ class JadwalTrafficIklanController extends Controller
     public function showjadwalresult(Request $request)
     {
         $date = $request->input('tanggal_jadwal');
-        if($request->jenis_iklan == 'spot iklan')
+        if($request->jenis_iklan == "spot iklan")
         {
+            echo "CEK1";
             $id_jenis_iklan = 1;
         }else{
+            echo "CEK2";
             $id_jenis_iklan = 2;
         }
         if($date != ""){
@@ -259,8 +261,7 @@ class JadwalTrafficIklanController extends Controller
     //Cari Jadwal Kosong
     public function indexcarijadwal()
     {
-        $temp = Kategori::pluck('nama_kategori','id_kategori');
-        $kategoris = $temp->all();
+        $kategoris = Kategori::orderBy('nama_kategori')->get();
         return view('pages.carijadwalkosong.indexcarijadwal')->with('kategoris', $kategoris);
     }
 
@@ -404,10 +405,9 @@ class JadwalTrafficIklanController extends Controller
 
         Session::put('id_kategori', $request->id_kategori);
         Session::put('id_jenis_iklan', $request->input('jenis_iklan'));
-        
         return view('pages.CariJadwalKosong.searchresult')->with('result', $result)
         ->with('resultCount', $resultCount)->with('resultAlt', $resultAlt)
-        ->with('resultAltCount', $resultAltCount);
+        ->with('resultAltCount', $resultAltCount)->with('counter', $request->jumlah_tayang);
     }
 
     public function keepjadwal(Request $request)

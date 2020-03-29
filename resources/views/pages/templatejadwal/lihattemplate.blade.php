@@ -17,14 +17,20 @@
                                 <div class="col-7">
                                     <select id="template_jadwal" name="template_jadwal" class="form-control">
                                         @foreach ($template_jadwals as $tj)
-                                            @if($selected_template == $tj->id_template)
-                                            <option value="{{ $tj->id_template }}" selected>
-                                            @else
-                                            <option value="{{ $tj->id_template }}">
-                                            @endif
-                                                {{ $tj->nama_template }}
-                                            </option>
-                                        @endforeach
+                                            @if(isset($selected_template))
+                                                @if($selected_template == $tj->id_template)
+                                                    <option value="{{ $tj->id_template }}" selected>
+                                                @else
+                                                    <option value="{{ $tj->id_template }}">
+                                                        @endif
+                                                        {{ $tj->nama_template }}
+                                                    </option>
+                                                    @else
+                                                        <option value="{{ $tj->id_template }}">
+                                                            {{ $tj->nama_template }}
+                                                        </option>
+                                                    @endif
+                                                    @endforeach
                                     </select>
                                 </div>
                                 <div class="col-2">
@@ -37,35 +43,35 @@
                         </div>
                     </div>
                     {{ Form::close() }}
-                    <div class="card-body align-center-vh">
-                        <div class="content-width">
-                            @if(isset($isi_templates))
+                    @if(isset($isi_templates))
+                        <div class="card-body align-center-vh">
+                            <div class="content-width">
                                 <table class="table table-striped table-custom table-bordered">
                                     <thead>
-                                        <tr class="d-flex">
-                                            <th class="col-12" colspan="3">
-                                                <h3>Template Jadwal</h3>
-                                            </th>
-                                        </tr>
-                                        <tr class="d-flex">
-                                            <th class="col-2">#</th>
-                                            <th class="col">Jam Awal</th>
-                                            <th class="col">Durasi Segmen</th>
-                                        </tr>
+                                    <tr class="d-flex">
+                                        <th class="col-12" colspan="3">
+                                            <h3>Template Jadwal</h3>
+                                        </th>
+                                    </tr>
+                                    <tr class="d-flex">
+                                        <th class="col-2">#</th>
+                                        <th class="col">Jam Awal</th>
+                                        <th class="col">Durasi Segmen</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($isi_templates as $result)
-                                            <tr class="d-flex">
-                                                <th class="col-2">{{ $loop->iteration }}</th>
-                                                <td class="col">{{$result->jam_awal}}</td>
-                                                <td class="col">{{$result->durasi_template}}&nbspmenit</td>
-                                            </tr>
-                                        @endforeach
+                                    @foreach($isi_templates as $result)
+                                        <tr class="d-flex">
+                                            <th class="col-2">{{ $loop->iteration }}</th>
+                                            <td class="col">{{$result->jam_awal}}</td>
+                                            <td class="col">{{$result->durasi_template}}&nbspiklan</td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
-                            @endif
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>
