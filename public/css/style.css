@@ -332,6 +332,10 @@ a.article:hover {
 /* ---------------------------------------------------
     CUSTOM TABLE
 ----------------------------------------------------- */
+.table-wrapper {
+    overflow: auto;
+}
+
 .table-custom{
     border-color: #FFFFFF;
     text-align: center;
@@ -340,6 +344,8 @@ a.article:hover {
 .table-custom thead{
     background-color: #000000;
     color: #FFFFFF;
+    top: 0;
+    position: sticky;
 }
 
 .table-custom thead h3{
