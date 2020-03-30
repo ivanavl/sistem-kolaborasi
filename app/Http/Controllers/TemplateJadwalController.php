@@ -84,9 +84,7 @@ class TemplateJadwalController extends Controller
     //View Lihat Template
     public function indextemplate()
     {
-        $temp = TemplateJadwal::whereNotIn('id_template', [3])
-        ->pluck('nama_template','id_template');
-        $template_jadwals = $temp->all();
+        $template_jadwals = TemplateJadwal::whereNotIn('id_template', [3])->get();
 
         return view('pages.templatejadwal.lihattemplate')->with('template_jadwals', $template_jadwals);
     }
@@ -94,9 +92,7 @@ class TemplateJadwalController extends Controller
     //Lihat Template
     public function showtemplate(Request $id)
     {
-        $temp = TemplateJadwal::whereNotIn('id_template', [3])
-        ->pluck('nama_template','id_template');
-        $template_jadwals = $temp->all();
+        $template_jadwals = TemplateJadwal::whereNotIn('id_template', [3])->get();
         $nama_template = TemplateJadwal::select('nama_template')
         ->where('id_template','=',$id->input('template_jadwal'))
         ->first();
@@ -107,6 +103,6 @@ class TemplateJadwalController extends Controller
         ->get();
 
         return view('pages.templatejadwal.lihattemplate')->with('isi_templates', $isi_templates)
-        ->with('template_jadwals', $template_jadwals);
+        ->with('template_jadwals', $template_jadwals)->with('selected_template', $id->input('template_jadwal'));
     }
 }

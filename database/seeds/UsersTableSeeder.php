@@ -14,31 +14,31 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'username' => 'traffic.iklan.dami',
-                'password' => 'admin',
+                'password' => Hash::make('password'),
                 'name'     => 'traffic iklan dami',
                 'email'    => 'tf@dami.com',
-                'id_role'=> '1'
+                'role_id'=> '1'
             ],
             [
                 'username' => 'marketing.dami',
-                'password' => 'admin',
+                'password' => Hash::make('password'),
                 'name'     => 'marketing dami',
                 'email'    => 'm@dami.com',
-                'id_role'=> '2'
+                'role_id'=> '2'
             ],
             [
                 'username' => 'produksi.dami',
-                'password' => 'admin',
+                'password' => Hash::make('password'),
                 'name'     => 'produksi dami',
                 'email'    => 'p@dami.com',
-                'id_role'=> '3'
+                'role_id'=> '3'
             ],
             [
                 'username' => 'studio.dami',
-                'password' => 'admin',
+                'password' => Hash::make('password'),
                 'name'     => 'studio dami',
                 'email'    => 's@dami.com',
-                'id_role'=> '4'
+                'role_id'=> '4'
             ]
         ]);
     }

@@ -5,25 +5,8 @@
         <div class="row justify-content-center full-height">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">List Template</div>
-                    {{ Form::open(['action' => 'OrderIklanController@searchrequest','method' => 'POST']) }}
-                    <div class="card-body align-center-vh">
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-3">
-                                    <label for="nama_client" class="col-form-label">Nama Client</label>
-                                </div>
-                                <div class="col-7">
-                                    <input class="form-control" name="search" type="text" placeholder="input nama client/alamat/contact person">
-                                </div>
-                                <div class="col-2">
-                                    <input class="btn btn-primary" type="submit" value="Search">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {{ Form::close() }}
-                    @if(isset($lihat_requests[0]))
+                    <div class="card-header">Lihat Request</div>
+                    @if(isset($lihat_requests))
                         <div class="card-body align-center-vh">
                             <div class="content-width">
                                 <table class="table table-striped table-custom table-bordered">
@@ -34,7 +17,10 @@
                                         <th>Jenis Iklan</th>
                                         <th>Nama Client</th>
                                         <th>Nama Produk</th>
+                                        <th>Versi Iklan</th>
                                         <th>Priode Tayang</th>
+                                        <th>Kategori</th>
+                                        <th>AE</th>
                                         <th>Tanggal Konfirmasi</th>
                                         <th>Status Order</th>
                                     </tr>
@@ -47,15 +33,16 @@
                                             <td>{{$request->nama_jenis_iklan}}</td>
                                             <td>{{$request->nama_client}}</td>
                                             <td>{{$request->nama_produk}}</td>
+                                            <td>{{$request->versi_iklan}}</td>
                                             <td>{{$request->priode_awal . " s.d. " . $request->priode_akhir}}</td>
+                                            <td>{{$request->nama_kategori}}</td>
+                                            <td>{{$request->name}}</td>
                                             <td>{{$request->tanggal_konfirmasi}}</td>
-                                            @if($request->status_order == 'Requested')
-                                                <td><a href="/konfirmasibooking/{{$request->id_order_iklan}}">
-                                                        {{$request->status_order}}
-                                                    </a></td>
-                                            @else
-                                                <td>{{$request->status_order}}</td>
-                                            @endif
+                                            <td>
+                                                <a href="/lihatrequestdetail/{{$request->id_order_iklan}}">
+                                                    {{$request->status_order}}
+                                                </a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

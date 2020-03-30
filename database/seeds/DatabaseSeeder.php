@@ -15,9 +15,7 @@ class DatabaseSeeder extends Seeder
             KategorisTableSeeder::class,
             JenisIklansTableSeeder::class,
             TemplateJadwalsTableSeeder::class,
-            MenusTableSeeder::class,
             RolesTableSeeder::class,
-            RolesMenusTableSeeder::class,
             UsersTableSeeder::class,
         ]);
     }

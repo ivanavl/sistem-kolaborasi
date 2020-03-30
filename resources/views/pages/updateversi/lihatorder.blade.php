@@ -5,8 +5,8 @@
         <div class="row justify-content-center full-height">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">List Template</div>
-                    {{ Form::open(['action' => 'OrderIklanController@searchrequest','method' => 'POST']) }}
+                    <div class="card-header">Pencarian Iklan</div>
+                    {{ Form::open(['action' => 'OrderIklanController@searchorder','menthod' => 'POST']) }}
                     <div class="card-body align-center-vh">
                         <div class="form-group">
                             <div class="row">
@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     {{ Form::close() }}
-                    @if(isset($lihat_requests[0]))
+                    @if(isset($lihat_orders[0]))
                         <div class="card-body align-center-vh">
                             <div class="content-width">
                                 <table class="table table-striped table-custom table-bordered">
@@ -36,25 +36,27 @@
                                         <th>Nama Produk</th>
                                         <th>Priode Tayang</th>
                                         <th>Tanggal Konfirmasi</th>
-                                        <th>Status Order</th>
+                                        <th>Versi Iklan</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($lihat_requests as $request)
+                                    @foreach($lihat_orders as $order)
                                         <tr>
-                                            <td>{{$request->id_order_iklan}}</td>
-                                            <td>{{$request->tanggal_request}}</td>
-                                            <td>{{$request->nama_jenis_iklan}}</td>
-                                            <td>{{$request->nama_client}}</td>
-                                            <td>{{$request->nama_produk}}</td>
-                                            <td>{{$request->priode_awal . " s.d. " . $request->priode_akhir}}</td>
-                                            <td>{{$request->tanggal_konfirmasi}}</td>
-                                            @if($request->status_order == 'Requested')
-                                                <td><a href="/konfirmasibooking/{{$request->id_order_iklan}}">
-                                                        {{$request->status_order}}
+                                            <td>{{$order->id_order_iklan}}</td>
+                                            <td>{{$order->tanggal_request}}</td>
+                                            <td>{{$order->nama_jenis_iklan}}</td>
+                                            <td>{{$order->nama_client}}</td>
+                                            <td>{{$order->nama_produk}}</td>
+                                            <td>{{$order->priode_awal . " s.d. " . $order->priode_akhir}}</td>
+                                            <td>{{$order->tanggal_konfirmasi}}</td>
+                                            @if(is_null($order->versi_iklan))
+                                                <td><a href="/updateversi/{{$order->id_order_iklan}}">
+                                                        Belum ada versi iklan
                                                     </a></td>
                                             @else
-                                                <td>{{$request->status_order}}</td>
+                                                <td><a href="/updateversi/{{$order->id_order_iklan}}">
+                                                        {{$order->versi_iklan}}
+                                                    </a></td>
                                             @endif
                                         </tr>
                                     @endforeach

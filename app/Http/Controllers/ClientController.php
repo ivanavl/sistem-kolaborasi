@@ -59,7 +59,7 @@ class ClientController extends Controller
         ->orWhere('alamat_client', 'LIKE','%'.$request->input('search').'%')
         ->orWhere('contact_person', 'LIKE','%'.$request->input('search').'%')
         ->get();
-        
+
         Session::reflash();
         return view('pages.requestbooking.indexclient')->with('clients', $clients);         
     }
