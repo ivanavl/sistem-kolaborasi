@@ -38,8 +38,8 @@
                                     <div class="col-8">
                                         <select id="template_jadwal" name="template_jadwal" class="form-control">
                                             @foreach ($template_jadwals1 as $tj1)
-                                                <option value="{{ $loop->iteration }}" selected="selected">
-                                                    {{ $tj1 }}
+                                                <option value="{{ $tj1->id_template }}" selected="selected">
+                                                    {{ $tj1->nama_template }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -90,9 +90,9 @@
                                                 @if($loop->iteration == 1)
                                                 <option value="{{ $loop->iteration }}" selected="selected">
                                                 @else
-                                                <option value="{{ $loop->iteration }}">
+                                                <option value="{{ $tj2->id_template }}">
                                                 @endif
-                                                    {{ $tj2 }}
+                                                    {{ $tj2->nama_template }}
                                                 </option>
                                             @endforeach
                                         </select>
