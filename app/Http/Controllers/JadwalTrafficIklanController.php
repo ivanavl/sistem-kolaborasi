@@ -71,39 +71,39 @@ class JadwalTrafficIklanController extends Controller
                 ->where('template_jadwals.id_template', $request->input('template_jadwal'))
                 ->get();
 
-            do
-            {
-                foreach ($isi_jadwals as $isi_jadwal)
-                { 
-                    $jam_jadwal = $isi_jadwal->jam_awal;
-                    $count = 0;
-                    do
-                    {
-                        $temp_next = 0;
-                        $create = new JadwalTrafficIklan;
-                        $create->tanggal_jadwal = date('Y-m-d', $tanggal_awal);
-                        $create->jam_jadwal = $jam_jadwal;
-                        $create->id_jenis_iklan = $jenis_iklan;
-                        if($count != 0)
+                do
+                {
+                    foreach ($isi_jadwals as $isi_jadwal)
+                    { 
+                        $jam_jadwal = $isi_jadwal->jam_awal;
+                        $count = 0;
+                        do
                         {
-                            $create->prev = $temp_prev;
-                        }
-                        $create->save();
-                        $temp_prev = $create->id_jadwal;
+                            $temp_next = 0;
+                            $create = new JadwalTrafficIklan;
+                            $create->tanggal_jadwal = date('Y-m-d', $tanggal_awal);
+                            $create->jam_jadwal = $jam_jadwal;
+                            $create->id_jenis_iklan = $jenis_iklan;
+                            if($count != 0)
+                            {
+                                $create->prev = $temp_prev;
+                            }
+                            $create->save();
+                            $temp_prev = $create->id_jadwal;
 
-                        if($count<$isi_jadwal->durasi_template-1)
-                        {
-                            $temp_next = JadwalTrafficIklan::find($temp_prev);
-                            $temp_next->next = $temp_prev+1;
-                            $temp_next->save();
-                        }
-                        
-                        $jam_jadwal = date('H:i:s', strtotime('+1 minutes', strtotime($jam_jadwal)));
-                        $count++;
-                    }while($count<$isi_jadwal->durasi_template);   
-                }
-                $tanggal_awal = strtotime('+1 days', $tanggal_awal);
-            }while($tanggal_awal<=$tanggal_akhir);
+                            if($count<$isi_jadwal->durasi_template-1)
+                            {
+                                $temp_next = JadwalTrafficIklan::find($temp_prev);
+                                $temp_next->next = $temp_prev+1;
+                                $temp_next->save();
+                            }
+                            
+                            $jam_jadwal = date('H:i:s', strtotime('+1 minutes', strtotime($jam_jadwal)));
+                            $count++;
+                        }while($count<$isi_jadwal->durasi_template);   
+                    }
+                    $tanggal_awal = strtotime('+1 days', $tanggal_awal);
+                }while($tanggal_awal<=$tanggal_akhir);
                 return redirect('/createjadwal')->with('success', 'Jadwal created');
             }else{
                 return redirect('/createjadwal')->with('error', 'Jadwal sudah ada');
@@ -225,7 +225,8 @@ class JadwalTrafficIklanController extends Controller
     }
     
     //Lihat Jadwal
-    public function showjadwal(){
+    public function showjadwal()
+    {
         return view('pages.lihatjadwal.showjadwal');
     }
 
@@ -253,7 +254,7 @@ class JadwalTrafficIklanController extends Controller
                 return view('pages.lihatjadwal.showjadwal')->with('results', $query)->with('request', $request);
             }
         }
-        return view('pages.lihatjadwal.showjadwal')->with('error','Jadwal tidak tersedia');//belum bisa dipake
+        return view('pages.lihatjadwal.showjadwal')->with('error','Jadwal tidak tersedia');
     }
 
     //Cari Jadwal Kosong
@@ -273,7 +274,8 @@ class JadwalTrafficIklanController extends Controller
             'waktu_tayang' => 'required'
         ]);
         
-        if($request->id_kategori == 0)
+        $id_kategori = $request->id_kategori;
+        if($id_kategori == 1)
         {
             $this->validate($request,[
                 'nama_kategori' => 'required',
@@ -283,11 +285,12 @@ class JadwalTrafficIklanController extends Controller
 
             $query = Kategori::where('nama_kategori','LIKE','%'.$kategori.'%')->get();
 
-            if($query.isEmpty())
+            if($query->isEmpty())
             {
                 $create = new Kategori;
                 $create->nama_kategori = $kategori;
                 $create->save();
+                $id_kategori = $create->id_kategori;
             }
         }
 
@@ -402,7 +405,7 @@ class JadwalTrafficIklanController extends Controller
         ->get()
         ->groupBy('tanggal_jadwal');
 
-        Session::put('id_kategori', $request->id_kategori);
+        Session::put('id_kategori', $id_kategori);
         Session::put('id_jenis_iklan', $request->input('jenis_iklan'));
         
         return view('pages.CariJadwalKosong.searchresult')->with('result', $result)
