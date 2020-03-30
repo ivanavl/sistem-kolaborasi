@@ -23,6 +23,7 @@ class JadwalTrafficIklanController extends Controller
         ->select('nama_template','id_template');
         $template_jadwals2 = $temp2->get();
 
+        Session::forget('template');
         return view('pages.createjadwal.createjadwal')->with('template_jadwals1', $template_jadwals1)
         ->with('template_jadwals2', $template_jadwals2);
     }
@@ -231,6 +232,10 @@ class JadwalTrafficIklanController extends Controller
 
     public function showjadwalresult(Request $request)
     {
+        $this->validate($request,[
+            'tanggal_jadwal' => 'required',
+        ]);
+        
         $date = $request->input('tanggal_jadwal');
         if($request->jenis_iklan == "spot iklan")
         {
@@ -440,6 +445,10 @@ class JadwalTrafficIklanController extends Controller
 
     public function showJadwalFinal(Request $request)
     {
+        $this->validate($request,[
+            'tanggal_jadwal' => 'required',
+        ]);
+
         $jadwal_final = DB::table('jadwal_traffic_iklans')
         ->join('jenis_iklans', 'jadwal_traffic_iklans.id_jenis_iklan'
         ,'=','jenis_iklans.id_jenis_iklan')

@@ -55,7 +55,7 @@
                                     <label for="email_client" class="col-form-label">Email</label>
                                 </div>
                                 <div class="col-9">
-                                    <input type="text" class="form-control" name="email_client">
+                                    <input type="email" class="form-control" name="email_client">
                                 </div>
                             </div>
                             <div class="row">

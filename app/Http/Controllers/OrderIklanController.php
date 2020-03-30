@@ -14,12 +14,12 @@ use Session;
 class OrderIklanController extends Controller
 {
  
-    public static function orderdetail()
-    {
+    // public static function orderdetail()
+    // {
         
 
-        return $collection;
-    }
+    //     return $collection;
+    // }
 
     public function createorder()
     {
@@ -43,6 +43,10 @@ class OrderIklanController extends Controller
     //Request Booking
     public function storeorder(Request $request)
     {
+        $this->validate($request,[
+            'nama_produk' => 'required',
+        ]);
+
         $create = new OrderIklan;
         $create->nama_produk = $request->input('nama_produk');
         $create->jumlah_tayang = Session::get('jumlah_tayang');
@@ -217,6 +221,9 @@ class OrderIklanController extends Controller
     //Update Versi
     public function updateversi(Request $request)
     {
+        $this->validate($request,[
+            'versi_iklan' => 'required',
+        ]);
 
         $query = OrderIklan::where('id_order_iklan','=',$request->input('id_order_iklan'))
         ->update(['versi_iklan' => $request->input('versi_iklan')]);

@@ -16,6 +16,7 @@ class TemplateJadwalController extends Controller
     public function createtemplate()
     {
         // Session::forget('template');
+        Session::reflash();
         return view('pages.templatejadwal.createtemplate');
     }
 
@@ -26,7 +27,7 @@ class TemplateJadwalController extends Controller
             'durasi_template' => 'required|integer',
         ]);
 
-        Session::reflash();
+        // Session::reflash();
 
         $collection = collect(['jam_awal' => $request->jam_awal, 
         'durasi_template' => $request->durasi_template]);
@@ -38,21 +39,25 @@ class TemplateJadwalController extends Controller
 
     public function removesegmen($id)
     {
-        Session::reflash();
         $template = Session::get('template');
         
-        $count = 0;
-        foreach($template as $t)
+        if(count(Session::get('template')) == 1)
         {
-            if($t->get('jam_awal') == $id)
+            Session::forget('template');
+        }else{
+            $count = 0;
+            foreach($template as $t)
             {
-                unset($template[$count]);
+                if($t->get('jam_awal') == $id)
+                {
+                    unset($template[$count]);
+                }
+                $count++;
             }
-            $count++;
+    
+            Session::forget('template');
+            Session::put('template', $template);
         }
-
-        Session::forget('template');
-        Session::put('template', $template);
 
         return redirect('/createtemplate');
         // return view('pages.templatejadwal.createtemplate');
@@ -61,6 +66,10 @@ class TemplateJadwalController extends Controller
      //Buat Template Baru
     public function storetemplate(Request $request)
     {
+        $this->validate($request,[
+            'nama_template' => 'required'
+        ]);
+        
         Session::reflash();
 
         $create1 = new TemplateJadwal;
@@ -88,6 +97,7 @@ class TemplateJadwalController extends Controller
     {
         $template_jadwals = TemplateJadwal::whereNotIn('id_template', [3])->get();
 
+        Session::forget('template');
         return view('pages.templatejadwal.lihattemplate')->with('template_jadwals', $template_jadwals);
     }
 

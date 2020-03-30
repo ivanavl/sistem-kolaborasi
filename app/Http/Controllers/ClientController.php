@@ -23,7 +23,7 @@ class ClientController extends Controller
             'alamat_client' => 'required',
             'contact_person' => 'required',
             'telepon_client' => 'required',
-            'email_client' => 'required|email',
+            'email_client' => 'required',
         ]);
         $create = new Client;
         $create->nama_client = $request->input('nama_client');
