@@ -17,11 +17,11 @@ class JadwalTrafficIklanController extends Controller
     public function createjadwal()
     {
         $temp1 = TemplateJadwal::where('id_jenis_iklan', '1')
-        ->pluck('nama_template','id_template');
-        $template_jadwals1 = $temp1->all();
+        ->select('nama_template','id_template');
+        $template_jadwals1 = $temp1->get();
         $temp2 = TemplateJadwal::where('id_jenis_iklan', '2')
-        ->pluck('nama_template','id_template');
-        $template_jadwals2 = $temp2->all();
+        ->select('nama_template','id_template');
+        $template_jadwals2 = $temp2->get();
 
         return view('pages.createjadwal.createjadwal')->with('template_jadwals1', $template_jadwals1)
         ->with('template_jadwals2', $template_jadwals2);
