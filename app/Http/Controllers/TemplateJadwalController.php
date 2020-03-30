@@ -15,7 +15,7 @@ class TemplateJadwalController extends Controller
     //View Buat Tempalte Baru
     public function createtemplate()
     {
-        Session::forget('template');
+        // Session::forget('template');
         return view('pages.templatejadwal.createtemplate');
     }
 
@@ -32,7 +32,8 @@ class TemplateJadwalController extends Controller
         'durasi_template' => $request->durasi_template]);
         Session::push('template', $collection);
 
-        return view('pages.templatejadwal.createtemplate');
+        return redirect('/createtemplate');
+        // return view('pages.templatejadwal.createtemplate');
     }
 
     public function removesegmen($id)
@@ -53,7 +54,8 @@ class TemplateJadwalController extends Controller
         Session::forget('template');
         Session::put('template', $template);
 
-        return view('pages.templatejadwal.createtemplate');
+        return redirect('/createtemplate');
+        // return view('pages.templatejadwal.createtemplate');
     }
         
      //Buat Template Baru

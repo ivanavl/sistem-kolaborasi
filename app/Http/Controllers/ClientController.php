@@ -35,13 +35,15 @@ class ClientController extends Controller
         $create->save();
 
         $id_client = $create->id_client;
-        $clients = Client::find($id_client);
+        $client = Client::find($id_client);
+        Session::put('client', $client);
         
-        $collection = OrderIklanController::orderdetail();
+        // $collection = OrderIklanController::orderdetail();
         
         Session::reflash();
-        return view('pages.requestbooking.createorder')->with('clients', $clients)
-        ->with('collection', $collection);
+        return redirect('/createorder');
+        // return view('pages.requestbooking.createorder')->with('clients', $clients)
+        // ->with('collection', $collection);
     }
 
     //LihatClient
@@ -66,12 +68,14 @@ class ClientController extends Controller
 
     public function showclient($id)
     {
-        $clients = Client::find($id);
+        $client = Client::find($id);
+        Session::put('client', $client);
 
-        $collection = OrderIklanController::orderdetail();
+        // $collection = OrderIklanController::orderdetail();
         
         Session::reflash();
-        return view('pages.requestbooking.createorder')->with('clients', $clients)
-        ->with('collection', $collection);
+        return redirect('/createorder');
+        // return view('pages.requestbooking.createorder')->with('clients', $clients)
+        // ->with('collection', $collection);
     }
 }

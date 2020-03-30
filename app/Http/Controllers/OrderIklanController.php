@@ -16,6 +16,13 @@ class OrderIklanController extends Controller
  
     public static function orderdetail()
     {
+        
+
+        return $collection;
+    }
+
+    public function createorder()
+    {
         $jenis_iklan = JenisIklan::select('nama_jenis_iklan')
         ->where('id_jenis_iklan','=',Session::get('id_jenis_iklan'))->pluck('nama_jenis_iklan');
         $kategori = Kategori::select('nama_kategori')
@@ -27,7 +34,11 @@ class OrderIklanController extends Controller
         $collection = collect(['jenis_iklan' => $jenis_iklan[0], 'kategori' => $kategori[0],
         'jumlah_tayang' => $jumlah_tayang, 'priode_awal' => $priode_awal, 'priode_akhir' => $priode_akhir]);
 
-        return $collection;
+        $client = Session::get('client');
+        
+        Session::reflash();
+        return view('pages.requestbooking.createorder')->with('client', $client)
+        ->with('collection', $collection);
     }
     //Request Booking
     public function storeorder(Request $request)

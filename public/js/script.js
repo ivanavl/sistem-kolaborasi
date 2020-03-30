@@ -8,7 +8,7 @@ $(document).ready(function () {
 function checkIfBAT(){
 	e = document.getElementById('template_jadwal_talkshow');
 	console.log(e.options[e.selectedIndex].value);
-	if (e.options[e.selectedIndex].value == 2){
+	if (e.options[e.selectedIndex].value == 3){
         document.getElementById('bat_time').style.display = "flex";
 	} else {
         document.getElementById('bat_time').style.display = "none";

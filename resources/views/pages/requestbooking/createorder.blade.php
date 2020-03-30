@@ -22,10 +22,10 @@
                                 <div class="col-3">
                                     <label for="nama_client" class="col-form-label">Nama Client</label>
                                 </div>
-                                @if(isset($clients))
+                                @if(isset($client))
                                 <div class="col-9">
-                                    <label for="nama_client" class="col-form-label">{{ $clients->nama_client }}</label>
-                                    <input type="hidden" name="id_client" value="{{ $clients->id_client }}">
+                                    <label for="nama_client" class="col-form-label">{{ $client->nama_client }}</label>
+                                    <input type="hidden" name="id_client" value="{{ $client->id_client }}">
                                 </div>
                                 @endif
                             </div>

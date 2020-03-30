@@ -429,7 +429,7 @@ class JadwalTrafficIklanController extends Controller
         $priode_akhir = $query[0];
         Session::put('priode_akhir', $priode_akhir);        
 
-        return view('pages.requestbooking.createclient');
+        return redirect('/createclient');
     }
 
     //Lihat Jadwal Final

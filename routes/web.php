@@ -39,7 +39,7 @@ Route::group(['middleware' => 'auth', 'web'], function() {
 
     //LihatJadwal
     Route::get('/lihatjadwal', 'JadwalTrafficIklanController@showjadwal');
-    Route::post('/lihatjadwal', 'JadwalTrafficIklanController@showjadwalresult');
+    Route::post('/lihatjadwal/result', 'JadwalTrafficIklanController@showjadwalresult');
 
     //KonfirmasiBooking
     Route::get('/konfirmasibooking', 'OrderIklanController@indexrequest');
