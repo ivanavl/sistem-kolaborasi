@@ -7,7 +7,7 @@
                 <div class="card full">
                     <div class="card-header">Pendaftaran Iklan</div>
 
-                    {{ Form::open(['action' => 'OrderIklanController@storeorder', 'menthod' => 'POST']) }}
+                    {{ Form::open(['action' => 'OrderIklanController@updateversi', 'menthod' => 'POST']) }}
                     <div class="card-body align-center-vh">
                         @if(isset($lihat_order))
                             @foreach($lihat_order as $result)
@@ -66,7 +66,7 @@
                                         </div>
                                         <div class="col-9">
                                             <input type="text" class="form-control" name="versi_iklan">
-                                            <input type="hidden" class="form-control" name=id_order_iklan"
+                                            <input type="hidden" class="form-control" name="id_order_iklan"
                                                    value="{{$result->id_order_iklan}}">
                                         </div>
                                     </div>
