@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container full-height">
-        <div class="row justify-content-center full-height">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">Lihat Request</div>
-                    @if(isset($lihat_request))
-                        <div class="card-body align-center-vh">
-                            <div class="content-width">
+    <div class="row justify-content-center full-height">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Lihat Request</div>
+                @if(isset($lihat_request))
+                    <div class="card-body align-center-vh">
+                        <div class="content-width">
+                            <div class="table-container">
                                 <table class="table table-striped table-custom table-bordered">
                                     <thead>
                                     <tr>
@@ -33,8 +33,8 @@
                                 </table>
                             </div>
                         </div>
-                    @endif
-                </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

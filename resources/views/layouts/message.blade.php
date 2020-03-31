@@ -9,5 +9,5 @@
 </div>
 @endif
 <div class="alert alert-success" role="alert">
-  {{ $success }}
+  Tes
 </div>

@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container full-height">
-        <div class="row justify-content-center full-height">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">Jadwal Final {{$request->tanggal_jadwal}}</div>
-                    @if(isset($request))
-                        <div class="card-body align-center-vh">
-                            <div class="content-width">
+    <div class="row justify-content-center full-height">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Jadwal Final {{$request->tanggal_jadwal}}</div>
+                @if(isset($request))
+                    <div class="card-body align-center-vh">
+                        <div class="content-width">
+                            <div class="table-container">
                                 @if($request->jenis_iklan == 1)
                                     @if(isset($jadwal_final))
                                         <table class="table table-striped table-custom table-bordered">
@@ -37,7 +37,8 @@
                                                         @if(is_null($jadwal->priode_awal))
                                                             <td></td>
                                                         @else
-                                                            <td>{{$jadwal->priode_awal}} - {{$jadwal->priode_akhir}}</td>
+                                                            <td>{{$jadwal->priode_awal}}
+                                                                - {{$jadwal->priode_akhir}}</td>
                                                         @endif
                                                         <td>{{$jadwal->nama_kategori}}</td>
                                                         <td>{{$jadwal->id_order_iklan}}</td>
@@ -81,7 +82,8 @@
                                                         @if(is_null($jadwal->priode_awal))
                                                             <td></td>
                                                         @else
-                                                            <td>{{$jadwal->priode_awal}} - {{$jadwal->priode_akhir}}</td>
+                                                            <td>{{$jadwal->priode_awal}}
+                                                                - {{$jadwal->priode_akhir}}</td>
                                                         @endif
                                                         <td>{{$jadwal->id_order_iklan}}</td>
                                                         <td>{{$jadwal->name}}</td>
@@ -100,8 +102,8 @@
                                 @endif
                             </div>
                         </div>
-                    @endif
-                </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

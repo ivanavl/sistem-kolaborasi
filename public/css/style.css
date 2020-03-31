@@ -332,20 +332,31 @@ a.article:hover {
 /* ---------------------------------------------------
     CUSTOM TABLE
 ----------------------------------------------------- */
-.table-wrapper {
-    overflow: auto;
+.table-title thead{
+    position: inherit;
 }
 
 .table-custom{
-    border-color: #FFFFFF;
+    border: 0;
+    box-shadow: inset 1px 1px #FFFFFF, 1px 1px #000;
     text-align: center;
+    white-space: nowrap;
 }
 
 .table-custom thead{
     background-color: #000000;
     color: #FFFFFF;
+}
+
+.table-custom thead th{
+    background-color: #000000;
+    color: #FFFFFF;
     top: 0;
     position: sticky;
+}
+
+.table-title thead th{
+    position: inherit;
 }
 
 .table-custom thead h3{
@@ -362,6 +373,13 @@ a.article:hover {
     color: #FFFFFF;
 }
 
+.table-container{
+    overflow-x: auto;
+    max-height: 80vh;
+}
+.table-title th{
+    position: inherit !important;;
+}
 
 /* ---------------------------------------------------
     CUSTOM SCROLLBAR
