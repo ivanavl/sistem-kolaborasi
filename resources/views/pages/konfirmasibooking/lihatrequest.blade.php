@@ -50,8 +50,9 @@
                                             <td>{{$request->priode_awal . " s.d. " . $request->priode_akhir}}</td>
                                             <td>{{$request->tanggal_konfirmasi}}</td>
                                             @if($request->status_order == 'Requested')
-                                                <td><input type="button" href="/konfirmasibooking/{{$request->id_order_iklan}}" class="btn btn-primary" value="{{$request->status_order}}">
-                                                       </td>
+                                                <td>
+                                                    <a type="button" href="/konfirmasibooking/{{$request->id_order_iklan}}" class="btn btn-primary">{{$request->status_order}}</a>
+                                                </td>
                                             @else
                                                 <td>{{$request->status_order}}</td>
                                             @endif

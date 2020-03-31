@@ -69,27 +69,43 @@ class TemplateJadwalController extends Controller
         $this->validate($request,[
             'nama_template' => 'required'
         ]);
-        
-        Session::reflash();
 
-        $create1 = new TemplateJadwal;
-        $create1->nama_template = $request->input('nama_template');
-        $create1->id_jenis_iklan = 1;
-        $create1->save();
+        $nama_template_db = TemplateJadwal::all();
 
-        foreach(Session::get('template') as $temp)
+        foreach($nama_template_db as $n)
         {
-            $create2 = new IsiTemplate;
-            $create2->nama_template =  $request->input('nama_template');
-            $create2->jam_awal = $temp->get('jam_awal');
-            $create2->durasi_template = $temp->get('durasi_template');
-            $create2->save();
+            if($n->nama_template == $request->input('nama_template'))
+            {
+                $check = 1;
+            }else{
+                $check = 0;
+            }
         }
 
-        Session::forget('template');
+        if($check == 0)
+        {
+            Session::reflash();
 
-        return redirect('/createjadwal')->with('success', 'Template iklan berhasil dibuat');
+            $create1 = new TemplateJadwal;
+            $create1->nama_template = $request->input('nama_template');
+            $create1->id_jenis_iklan = 1;
+            $create1->save();
+    
+            foreach(Session::get('template') as $temp)
+            {
+                $create2 = new IsiTemplate;
+                $create2->nama_template =  $request->input('nama_template');
+                $create2->jam_awal = $temp->get('jam_awal');
+                $create2->durasi_template = $temp->get('durasi_template');
+                $create2->save();
+            }
+    
+            Session::forget('template');
+    
+            return redirect('/createjadwal')->with('success', 'Template iklan berhasil dibuat');
+        }
 
+        return redirect('/createtemplate')->with('error', 'Nama Template Sudah ada');
     }
     
     //View Lihat Template

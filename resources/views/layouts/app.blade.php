@@ -59,7 +59,7 @@
                     <li class="{{ (request()->is('konfirmasibooking*')) ? 'active' : '' }}">
                         <a href="/konfirmasibooking">
                             <i class="fas fa-tasks"></i>
-                            <span>Konfirmasi/Pembatalan</span>
+                            <span>Konfirmasi Booking</span>
                         </a>
                     </li>
                     <li class="{{ (request()->is('lihatjadwal*')) && ! (request()->is('lihatjadwalfinal*')) ? 'active' : '' }}">

@@ -91,8 +91,6 @@
                                                         <td></td>
                                                         <td></td>
                                                         <td></td>
-                                                        <td></td>
-                                                        <td></td>
                                                     @endif
                                                 </tr>
                                             @endforeach

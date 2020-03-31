@@ -276,26 +276,6 @@ class JadwalTrafficIklanController extends Controller
             'priode_awal' => 'required',
             'waktu_tayang' => 'required'
         ]);
-        
-        $id_kategori = $request->id_kategori;
-        if($id_kategori == 1)
-        {
-            $this->validate($request,[
-                'nama_kategori' => 'required',
-            ]);
-
-            $kategori = $request->input('nama_kategori');
-
-            $query = Kategori::where('nama_kategori','LIKE','%'.$kategori.'%')->get();
-
-            if($query->isEmpty())
-            {
-                $create = new Kategori;
-                $create->nama_kategori = $kategori;
-                $create->save();
-                $id_kategori = $create->id_kategori;
-            }
-        }
 
         $tanggal_awal = strtotime($request->priode_awal);
         $tanggal_akhir = strtotime($request->priode_akhir);
@@ -408,11 +388,36 @@ class JadwalTrafficIklanController extends Controller
         ->get()
         ->groupBy('tanggal_jadwal');
 
-        Session::put('id_kategori', $id_kategori);
-        Session::put('id_jenis_iklan', $request->input('jenis_iklan'));
-        return view('pages.CariJadwalKosong.searchresult')->with('result', $result)
-        ->with('resultCount', $resultCount)->with('resultAlt', $resultAlt)
-        ->with('resultAltCount', $resultAltCount)->with('counter', $request->jumlah_tayang);
+        if(!$result->isEmpty() && !$resultAlt->isEmpty())
+        {
+            $id_kategori = $request->id_kategori;
+            if($id_kategori == 1)
+            {
+                $this->validate($request,[
+                    'nama_kategori' => 'required',
+                ]);
+    
+                $kategori = $request->input('nama_kategori');
+    
+                $query = Kategori::where('nama_kategori','LIKE','%'.$kategori.'%')->get();
+    
+                if($query->isEmpty())
+                {
+                    $create = new Kategori;
+                    $create->nama_kategori = $kategori;
+                    $create->save();
+                    $id_kategori = $create->id_kategori;
+                }
+            }
+    
+            Session::put('id_kategori', $id_kategori);
+            Session::put('id_jenis_iklan', $request->input('jenis_iklan'));
+            return view('pages.CariJadwalKosong.searchresult')->with('result', $result)
+            ->with('resultCount', $resultCount)->with('resultAlt', $resultAlt)
+            ->with('resultAltCount', $resultAltCount)->with('counter', $request->jumlah_tayang);
+        }
+
+        return redirect('/carijadwal')->with('error', 'Jadwal tidak ditemukan');
     }
 
     public function keepjadwal(Request $request)

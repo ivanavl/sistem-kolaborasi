@@ -39,9 +39,7 @@
                                             <td>{{$request->name}}</td>
                                             <td>{{$request->tanggal_konfirmasi}}</td>
                                             <td>
-                                                <a href="/lihatrequestdetail/{{$request->id_order_iklan}}">
-                                                    {{$request->status_order}}
-                                                </a>
+                                                <a type="button" href="/lihatrequestdetail/{{$request->id_order_iklan}}" class="btn btn-primary">{{$request->status_order}}</a>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -37,6 +37,7 @@
                                         <th>Priode Tayang</th>
                                         <th>Tanggal Konfirmasi</th>
                                         <th>Versi Iklan</th>
+                                        <th>Update</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -49,14 +50,17 @@
                                             <td>{{$order->nama_produk}}</td>
                                             <td>{{$order->priode_awal . " s.d. " . $order->priode_akhir}}</td>
                                             <td>{{$order->tanggal_konfirmasi}}</td>
-                                            @if(is_null($order->versi_iklan))
-                                                <td><input type="button" href="/updateversi/{{$order->id_order_iklan}}" class="btn btn-primary" value="Belum ada versi iklan">
-                                                </td>
+                                            <td>{{$order->versi_iklan}}</td>
+                                            <td>
+                                                <a type="button" href="/updateversi/{{$order->id_order_iklan}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                            </td>
+                                            {{-- @if(is_null($order->versi_iklan))
+                                                
                                             @else
                                                 <td><a href="/updateversi/{{$order->id_order_iklan}}">
                                                         {{$order->versi_iklan}}
                                                     </a></td>
-                                            @endif
+                                            @endif --}}
                                         </tr>
                                     @endforeach
                                     </tbody>

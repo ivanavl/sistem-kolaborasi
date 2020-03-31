@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <input class="btn btn-primary" type="submit" value="Search">
+                        <input class="btn btn-primary" type="submit" value="Next">
                     </div>
                     {{Form::close()}}
                 </div>

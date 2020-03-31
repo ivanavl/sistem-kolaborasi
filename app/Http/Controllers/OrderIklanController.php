@@ -7,20 +7,13 @@ use App\OrderIklan;
 use App\JadwalTrafficIklan;
 use App\JenisIklan;
 use App\Kategori;
+use Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Session;
 
 class OrderIklanController extends Controller
 {
- 
-    // public static function orderdetail()
-    // {
-        
-
-    //     return $collection;
-    // }
-
     public function createorder()
     {
         $jenis_iklan = JenisIklan::select('nama_jenis_iklan')
@@ -40,6 +33,7 @@ class OrderIklanController extends Controller
         return view('pages.requestbooking.createorder')->with('client', $client)
         ->with('collection', $collection);
     }
+    
     //Request Booking
     public function storeorder(Request $request)
     {
@@ -75,7 +69,6 @@ class OrderIklanController extends Controller
     }
 
     //Lihat Request
-    //tambah id nanti
     public function showrequest()
     {
         $lihat_requests = DB::table('order_iklans')
@@ -85,7 +78,7 @@ class OrderIklanController extends Controller
         ->join('users', 'order_iklans.username','=','users.username')
         ->join('kategoris', 'order_iklans.id_kategori',
         '=','kategoris.id_kategori')
-        // ->where('order.iklans.username', $id)
+        ->where('order_iklans.username', Auth::user()->username)
         ->orderByRaw('FIELD(order_iklans.status_order, "Requested", "Confirmed", "Canceled")')
         ->get();
 
@@ -180,6 +173,7 @@ class OrderIklanController extends Controller
         ->join('clients', 'order_iklans.id_client','=','clients.id_client')
         ->where('status_order', 'Confirmed')
         ->where('order_iklans.id_jenis_iklan','!=',2)
+        ->orderBy('versi_iklan', 'ASC')
         ->get();
 
         return view('pages.updateversi.lihatorder')->with('lihat_orders', $lihat_orders);
@@ -199,6 +193,7 @@ class OrderIklanController extends Controller
         ->orwhere('nama_client', 'LIKE','%'.$search.'%')
         ->orwhere('id_order_iklan', 'LIKE','%'.$search.'%');
         })
+        ->orderBy('versi_iklan', 'ASC')
         ->get();
 
         return view('pages.updateversi.lihatorder')->with('lihat_orders', $lihat_orders);
