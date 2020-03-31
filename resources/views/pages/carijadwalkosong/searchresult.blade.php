@@ -65,7 +65,7 @@
                                             Pilih <strong><span id="checkbox_counter">{{ $counter }}</span></strong> jadwal lagi.
                                         </div>
                                         <div class="col-4">
-                                            <input class="btn btn-primary" id="keep-jadwal" type="submit" value="Next">
+                                            <input class="btn btn-primary" id="keep-jadwal" type="submit" value="Next" disabled>
                                         </div>
                                     </div>
                                 </div>
