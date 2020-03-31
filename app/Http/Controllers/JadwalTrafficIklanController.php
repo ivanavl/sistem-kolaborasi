@@ -465,7 +465,13 @@ class JadwalTrafficIklanController extends Controller
         ->where('jadwal_traffic_iklans.id_jenis_iklan','=',$request->input('jenis_iklan'))
         ->get();
 
-        return view('pages.lihatjadwalfinal.lihatjadwalfinal')->with('jadwal_final', $jadwal_final)
-        ->with('request', $request);
+        if(!$jadwal_final->isEmpty())
+        {
+            return view('pages.lihatjadwalfinal.lihatjadwalfinal')->with('jadwal_final', $jadwal_final)
+            ->with('request', $request);
+        }else{
+            return redirect('/lihatjadwalfinal')->with('error', 'Jadwal tidak tersedia');
+        }
+
     }
 }
