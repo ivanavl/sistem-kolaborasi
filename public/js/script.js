@@ -45,3 +45,7 @@ function countSelected(){
 	}
     
 }
+
+$(function () {
+    $("[rel='tooltip']").tooltip();
+});
