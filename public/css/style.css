@@ -86,8 +86,16 @@ span {
     display: inline-block;
 }
 
-.main {
+#main-container-guest{
+    width: 100vw;
+}
+
+#main-container {
     width: 84vw;
+}
+
+#main-container.active {
+    width: 95vw;
 }
 
 /* ---------------------------------------------------
