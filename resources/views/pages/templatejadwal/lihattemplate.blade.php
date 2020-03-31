@@ -64,7 +64,11 @@
                                         <tr class="d-flex">
                                             <th class="col-2">{{ $loop->iteration }}</th>
                                             <td class="col">{{$result->jam_awal}}</td>
+                                            @if($result->id_jenis_iklan == 1)
                                             <td class="col">{{$result->durasi_template}}&nbspiklan</td>
+                                            @else
+                                            <td class="col">{{$result->durasi_template}}&nbspmenit</td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                     </tbody>
