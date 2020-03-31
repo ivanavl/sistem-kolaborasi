@@ -104,18 +104,18 @@
             </nav>
         @endauth
 
-        <div class="main">
+        <div class="main" #main-container>
             <!-- Navbar  -->
             <nav class="navbar navbar-expand navbar-dark sticky-top">
                 <!--Navbar logo-->
                 <div class="navbar-brand mr-0 mr-md-2" href="#">
                     @auth
-                        <button type="button" id="sidebarCollapse" class="btn btn-primary">
-                            <div id="is-hide">
-                                <i class="fas fa-chevron-left toggle-hide"></i>
-                                <i class="fas fa-chevron-right toggle-show"></i>
-                            </div>
-                        </button>
+                        {{--<button type="button" id="sidebarCollapse" class="btn btn-primary" onclick="">--}}
+                            {{--<div id="is-hide">--}}
+                                {{--<i class="fas fa-chevron-left toggle-hide"></i>--}}
+                                {{--<i class="fas fa-chevron-right toggle-show"></i>--}}
+                            {{--</div>--}}
+                        {{--</button>--}}
                     @endauth
                 </div>
 
