@@ -30,13 +30,14 @@
                                     <label for="kategori" class="col-form-label">Kategori Jadwal</label>
                                 </div>
                                 <div class="col-9">
-                                    <select id="id_kategori" name="id_kategori" class="form-control">
+                                    <select id="id_kategori" name="id_kategori" class="form-control" onClick="checkKategori()">
                                         @foreach ($kategoris as $kategori)
                                             <option value="{{ $kategori->id_kategori }}">
                                                 {{ $kategori->nama_kategori }}
                                             </option>
                                         @endforeach
                                     </select>
+                                    <input id="kategori_lainlain" type="hidden" class="form-control" name="nama_kategori">
                                 </div>
                             </div>
                             <div class="row">
