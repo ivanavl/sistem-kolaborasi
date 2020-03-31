@@ -258,7 +258,7 @@ class JadwalTrafficIklanController extends Controller
                 return view('pages.lihatjadwal.showjadwal')->with('results', $query)->with('request', $request);
             }
         }
-        return view('pages.lihatjadwal.showjadwal')->with('error','Jadwal tidak tersedia');
+        return redirect('/lihatjadwal')->with('error','Jadwal tidak tersedia');
     }
 
     //Cari Jadwal Kosong

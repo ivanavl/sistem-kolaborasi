@@ -38,12 +38,9 @@ class ClientController extends Controller
         $client = Client::find($id_client);
         Session::put('client', $client);
         
-        // $collection = OrderIklanController::orderdetail();
         
         Session::reflash();
         return redirect('/createorder');
-        // return view('pages.requestbooking.createorder')->with('clients', $clients)
-        // ->with('collection', $collection);
     }
 
     //LihatClient
@@ -70,12 +67,8 @@ class ClientController extends Controller
     {
         $client = Client::find($id);
         Session::put('client', $client);
-
-        // $collection = OrderIklanController::orderdetail();
         
         Session::reflash();
         return redirect('/createorder');
-        // return view('pages.requestbooking.createorder')->with('clients', $clients)
-        // ->with('collection', $collection);
     }
 }

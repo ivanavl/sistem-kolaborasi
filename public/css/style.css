@@ -344,13 +344,13 @@ a.article:hover {
 }
 
 .table-custom thead{
-    background-color: #000000;
-    color: #FFFFFF;
+    background-color: #474747;
+    color: #ffffff;
 }
 
 .table-custom thead th{
-    background-color: #000000;
-    color: #FFFFFF;
+    background-color: #474747;
+    color:  #ffffff;
     top: 0;
     position: sticky;
 }
@@ -364,13 +364,13 @@ a.article:hover {
 }
 
 .table-custom.table-striped tbody tr:nth-of-type(even) {
-    background-color: #222222;
-    color: #FFFFFF;
+    background-color: #ffffff;
+    color: #000;
 }
 
 .table-custom.table-striped tbody tr:nth-of-type(odd) {
-    background-color: #444444;
-    color: #FFFFFF;
+    background-color: #a7a5a5;
+    color: #000;
 }
 
 .table-container{
@@ -400,7 +400,7 @@ a.article:hover {
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(255,0,0,0.3);
+    background: #e9e9e9;
 }
 
 .withbackground {
@@ -449,7 +449,7 @@ a.article:hover {
 .btn-primary:hover,
 .btn-primary:active,
 .btn-primary:focus{
-    background-color: #80848A !important;
+    background-color: rgb(165, 165, 165) !important;
     border: 0 !important;
 }
 

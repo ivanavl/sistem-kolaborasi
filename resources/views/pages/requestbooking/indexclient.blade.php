@@ -31,7 +31,7 @@
                                 <table class="table table-striped table-custom table-bordered">
                                     <thead>
                                     <tr class="table-title">
-                                        <th class="col-12" colspan="3">
+                                        <th class="col-12" colspan="5">
                                             <h3>Hasil Pencarian</h3>
                                         </th>
                                     </tr>
