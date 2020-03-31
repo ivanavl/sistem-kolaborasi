@@ -22,11 +22,14 @@ function countSelected(){
     var selectionleft = max_selected - $('input[name="jadwal[]"]:checked').length;
     $('#checkbox_counter').text(selectionleft);
     console.log(selectionleft);
-    if (selectionleft <= 0){
+    if (selectionleft == 0){
     	console.log("CEK1");
         $('input[name="jadwal[]"]:not(:checked)').attr('disabled',true);
+        $('#keep-jadwal').attr('disabled',false);
 	} else {
         console.log("CEK2");
         $('input[name="jadwal[]"]:not(:checked)').attr('disabled',false);
+        $('#keep-jadwal').attr('disabled',true);
 	}
+    
 }
