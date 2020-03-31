@@ -29,14 +29,14 @@
 
                 <div class="sidebar-profile">
                     <div>
-                        <img src={{ asset('avatar.png') }} class="profile-image" alt="Avatar" title="Nama | Jabatan">
+                        <img src={{ asset('avatar.png') }} class="profile-image" alt="Avatar" title="<b>{{ Auth::user()->name }}</b> <br> {{ Auth::user()->role->role_name }}" id="tooltip">
                     </div>
                     <div class="profile-details">
                         <div>
                             <strong>{{ Auth::user()->name }}</strong>
                         </div>
                         <div>
-                            {{ Auth::user()->role_id . " - " . Auth::user()->role->role_name }}
+                            {{ Auth::user()->role->role_name }}
                         </div>
                     </div>
                 </div>
