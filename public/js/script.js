@@ -16,6 +16,18 @@ function checkIfBAT(){
 	console.log('CEK');
 }
 
+
+function checkKategori(){
+	e = document.getElementById('id_kategori');
+	console.log(e.options[e.selectedIndex].value);
+	if (e.options[e.selectedIndex].value == 1){
+        document.getElementById('kategori_lainlain').type = "text";
+	} else {
+        document.getElementById('kategori_lainlain').type = "hidden";
+	}
+	console.log('CEK1');
+}
+
 var max_selected = $('#checkbox_counter').text();
 
 function countSelected(){
