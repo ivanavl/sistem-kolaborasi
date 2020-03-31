@@ -77,7 +77,7 @@
                                                     <td>{{$jadwal->jam_jadwal}}</td>
                                                     @if($jadwal->status_order == 'Confirmed')
                                                         <td>{{$jadwal->nama_produk}}</td>
-                                                        <td>{{$jadwal->kategori}}</td>
+                                                        <td>{{$jadwal->nama_kategori}}</td>
                                                         @if(is_null($jadwal->priode_awal))
                                                             <td></td>
                                                         @else
