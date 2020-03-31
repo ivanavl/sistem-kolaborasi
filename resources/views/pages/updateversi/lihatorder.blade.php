@@ -50,9 +50,8 @@
                                             <td>{{$order->priode_awal . " s.d. " . $order->priode_akhir}}</td>
                                             <td>{{$order->tanggal_konfirmasi}}</td>
                                             @if(is_null($order->versi_iklan))
-                                                <td><a href="/updateversi/{{$order->id_order_iklan}}">
-                                                        Belum ada versi iklan
-                                                    </a></td>
+                                                <td><input type="button" href="/updateversi/{{$order->id_order_iklan}}" class="btn btn-primary" value="Belum ada versi iklan">
+                                                </td>
                                             @else
                                                 <td><a href="/updateversi/{{$order->id_order_iklan}}">
                                                         {{$order->versi_iklan}}
