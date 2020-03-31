@@ -148,13 +148,12 @@
             <!-- Page Content  -->
             @guest
                 <div id="content" class="customscroll withbackground align-center-vh">
-                    @yield('content')
-                </div>
             @else
                 <div id="content" class="customscroll align-center-vh">
+            @endguest
+                    @include('layouts.message')
                     @yield('content')
                 </div>
-            @endguest
         </div>
     </div>
 </div>
