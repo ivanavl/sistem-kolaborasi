@@ -374,7 +374,7 @@ a.article:hover {
 }
 
 .table-container{
-    overflow-x: auto;
+    overflow-x: scroll;
     max-height: 80vh;
 }
 .table-title th{
@@ -387,6 +387,7 @@ a.article:hover {
 
 ::-webkit-scrollbar {
     width: 10px;
+    height: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -401,6 +402,7 @@ a.article:hover {
 
 ::-webkit-scrollbar-track {
     background: rgba(255,0,0,0.3);
+    border-radius: 20px;
 }
 
 .withbackground {
