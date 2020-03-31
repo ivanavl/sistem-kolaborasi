@@ -11,7 +11,3 @@
 <div class="alert alert-success" role="alert">
   {{ $success }}
 </div>
-
-<div class="alert alert-danger" role="alert">
-  {{ $error }}
-</div>
