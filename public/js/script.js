@@ -47,5 +47,5 @@ function countSelected(){
 }
 
 $(function () {
-    $("[rel='tooltip']").tooltip();
+    $("#tooltip").tooltip();
 });
