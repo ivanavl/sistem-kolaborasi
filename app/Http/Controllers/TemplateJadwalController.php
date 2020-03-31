@@ -15,7 +15,6 @@ class TemplateJadwalController extends Controller
     //View Buat Tempalte Baru
     public function createtemplate()
     {
-        // Session::forget('template');
         Session::reflash();
         return view('pages.templatejadwal.createtemplate');
     }
@@ -27,14 +26,11 @@ class TemplateJadwalController extends Controller
             'durasi_template' => 'required|integer',
         ]);
 
-        // Session::reflash();
-
         $collection = collect(['jam_awal' => $request->jam_awal, 
         'durasi_template' => $request->durasi_template]);
         Session::push('template', $collection);
 
         return redirect('/createtemplate');
-        // return view('pages.templatejadwal.createtemplate');
     }
 
     public function removesegmen($id)
@@ -60,7 +56,6 @@ class TemplateJadwalController extends Controller
         }
 
         return redirect('/createtemplate');
-        // return view('pages.templatejadwal.createtemplate');
     }
         
      //Buat Template Baru
@@ -72,17 +67,16 @@ class TemplateJadwalController extends Controller
 
         $nama_template_db = TemplateJadwal::all();
 
+        $check = 0;
         foreach($nama_template_db as $n)
         {
             if($n->nama_template == $request->input('nama_template'))
             {
                 $check = 1;
-            }else{
-                $check = 0;
             }
         }
 
-        if($check == 0)
+        if($check < 1)
         {
             Session::reflash();
 

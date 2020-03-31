@@ -65,7 +65,8 @@
                                         lagi.
                                     </div>
                                     <div class="col-4">
-                                        <input class="btn btn-primary" id="keep-jadwal" type="submit" value="Next">
+                                        <input class="btn btn-primary" id="keep-jadwal" type="submit" value="Next"
+                                               disabled="disabled">
                                     </div>
                                 </div>
                             </div>
