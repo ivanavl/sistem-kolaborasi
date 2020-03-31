@@ -1,21 +1,19 @@
-@if(isset($success))
-<div class="row">
-  <div class="col-12">
-    <div class="alert alert-success" role="alert">
-      {{ $success }}
+@if(count($errors) > 0)
+  @foreach($errors->all() as $error)
+    <div class="alert alert-danger">
+      {{$error}}
     </div>
-  </div>
-</div>
+  @endforeach
 @endif
-@if(isset($error))
-<div class="row">
-  <div class="col-12">
-    <div class="alert alert-danger" role="alert">
-      {{ $error }}
-    </div>
+
+@if(session('success'))
+  <div class="alert alert-success">
+    {{session('success')}}
   </div>
-</div>
 @endif
-<div class="alert alert-success" role="alert">
-  Tes
-</div>
+
+@if(session('error'))
+  <div class="alert alert-danger">
+    {{session('error')}}
+  </div>
+@endif

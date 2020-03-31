@@ -48,12 +48,12 @@
                             <div class="table-container">
                                 <table class="table table-striped table-custom table-bordered">
                                     <thead>
-                                    <tr class="d-flex">
+                                    <tr>
                                         <th class="col-12" colspan="3">
                                             <h3>Template Jadwal</h3>
                                         </th>
                                     </tr>
-                                    <tr class="d-flex">
+                                    <tr>
                                         <th class="col-2">#</th>
                                         <th class="col">Jam Awal</th>
                                         <th class="col">Durasi Segmen</th>
@@ -61,7 +61,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach($isi_templates as $result)
-                                        <tr class="d-flex">
+                                        <tr>
                                             <th class="col-2">{{ $loop->iteration }}</th>
                                             <td class="col">{{$result->jam_awal}}</td>
                                             @if($result->id_jenis_iklan == 1)
