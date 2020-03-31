@@ -39,11 +39,11 @@
                                 <table class="table table-striped table-custom table-bordered">
                                     <thead>
                                     <tr class="table-title">
-                                        <th colspan="3">
+                                        <th colspan="4">
                                             <h3>Jadwal Dibuat</h3>
                                         </th>
                                     </tr>
-                                    <tr class="d-flex">
+                                    <tr>
                                         <th>#</th>
                                         <th>Jam Awal</th>
                                         <th>Durasi Segmen</th>
@@ -54,7 +54,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach(Session::get('template') as $t)
-                                        <tr class="d-flex">
+                                        <tr>
                                             <th> {{ $loop->iteration }}</th>
                                             <td> {{ $t->get('jam_awal') }} </td>
                                             <td> {{ $t->get('durasi_template') }} &nbspiklan</td>
