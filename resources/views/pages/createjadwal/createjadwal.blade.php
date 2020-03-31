@@ -38,7 +38,11 @@
                                     <div class="col-8">
                                         <select id="template_jadwal" name="template_jadwal" class="form-control">
                                             @foreach ($template_jadwals1 as $tj1)
+                                                @if($loop->iteration == 1)
                                                 <option value="{{ $tj1->id_template }}" selected="selected">
+                                                @else
+                                                <option value="{{ $tj1->id_template }}">
+                                                @endif
                                                     {{ $tj1->nama_template }}
                                                 </option>
                                             @endforeach
@@ -88,7 +92,7 @@
                                                 onchange="checkIfBAT()">
                                             @foreach ($template_jadwals2 as $tj2)
                                                 @if($loop->iteration == 1)
-                                                <option value="{{ $loop->iteration }}" selected="selected">
+                                                <option value="{{ $tj2->id_template }}" selected="selected">
                                                 @else
                                                 <option value="{{ $tj2->id_template }}">
                                                 @endif
