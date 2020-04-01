@@ -54,20 +54,20 @@
                                         </th>
                                     </tr>
                                     <tr>
-                                        <th class="col">#</th>
-                                        <th class="col">Jam Awal</th>
-                                        <th class="col">Durasi Segmen</th>
+                                        <th>#</th>
+                                        <th>Jam Awal</th>
+                                        <th>Durasi Segmen</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($isi_templates as $result)
                                         <tr>
-                                            <th class="col">{{ $loop->iteration }}</th>
-                                            <td class="col">{{$result->jam_awal}}</td>
+                                            <th>{{ $loop->iteration }}</th>
+                                            <td>{{$result->jam_awal}}</td>
                                             @if($result->id_jenis_iklan == 1)
-                                                <td class="col">{{$result->durasi_template}}&nbspiklan</td>
+                                                <td>{{$result->durasi_template}}&nbspiklan</td>
                                             @else
-                                                <td class="col">{{$result->durasi_template}}&nbspmenit</td>
+                                                <td>{{$result->durasi_template}}&nbspmenit</td>
                                             @endif
                                         </tr>
                                     @endforeach
