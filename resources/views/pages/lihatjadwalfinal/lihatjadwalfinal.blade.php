@@ -4,7 +4,8 @@
     <div class="row justify-content-center full-height">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Jadwal Final {{$request->tanggal_jadwal}}</div>
+                <div class="card-header">
+                    <div class="col-5">Jadwal Final {{$request->tanggal_jadwal}}</div></div>
                 @if(isset($request))
                     <div class="card-body align-center-vh">
                         <div class="content-width">

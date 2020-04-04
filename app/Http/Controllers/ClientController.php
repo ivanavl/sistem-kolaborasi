@@ -28,7 +28,10 @@ class ClientController extends Controller
         $create = new Client;
         $create->nama_client = $request->input('nama_client');
         $create->alamat_client = $request->input('alamat_client');
-        $create->npwp_client = $request->input('npwp_client');
+        if($request->input('npwp_client') != null)
+        {
+            $create->npwp_client = $request->input('npwp_client');
+        }
         $create->contact_person = $request->input('contact_person');
         $create->telepon_client = $request->input('telepon_client');
         $create->email_client = $request->input('email_client');

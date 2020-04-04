@@ -41,13 +41,14 @@ class JadwalTrafficIklanController extends Controller
 
             $tanggal_awal = strtotime($request->input('tanggal_awal'));
             $tanggal_akhir = strtotime($request->input('tanggal_akhir'));
-            if($tanggal_akhir == '0000-00-00')
+            if($tanggal_akhir == null)
             {
-                $tanggal_akhir = strtotime($tanggal_awal);
+                $tanggal_akhir = $tanggal_awal;
             }
+
             $check = 0;
             while($tanggal_awal<=$tanggal_akhir){
-                $tanggal_awal = date('Y-m-d', $tanggal_awal);
+                $tanggal_awal = date('Y-m-d', $tanggal_awal);echo $tanggal_awal;
                 $cek_jadwal = JadwalTrafficIklan::where('tanggal_jadwal','=',$tanggal_awal)
                 ->where('id_jenis_iklan','=',$jenis_iklan)->get();
                 if(!$cek_jadwal->isEmpty())
@@ -105,8 +106,6 @@ class JadwalTrafficIklanController extends Controller
                     $tanggal_awal = strtotime('+1 days', $tanggal_awal);
                 }while($tanggal_awal<=$tanggal_akhir);
                 return redirect('/createjadwal')->with('success', 'Jadwal created');
-            }else{
-                return redirect('/createjadwal')->with('error', 'Jadwal sudah ada');
             }
         }else if($jenis_iklan == 2){
             $this->validate($request,[
@@ -159,8 +158,6 @@ class JadwalTrafficIklanController extends Controller
                     }while($tanggal_awal<=$tanggal_akhir);
         
                     return redirect('/createjadwal')->with('success', 'Jadwal created');
-                }else{
-                    return redirect('/createjadwal')->with('error', 'Jadwal sudah ada');
                 }
             }else{
                 $this->validate($request,[
@@ -218,7 +215,7 @@ class JadwalTrafficIklanController extends Controller
                 }else{
                     return redirect('/createjadwal')->with('error', 
                     'Jadwal jam '.$request->input('jam_jadwal').' tanggal '.
-                    $request->input('tanggal_jadwal').' sudah ada');
+                    $request->input('tanggal_awal').' sudah ada');
                 }
             }
         }
@@ -294,38 +291,41 @@ class JadwalTrafficIklanController extends Controller
         $notAvailable = array_unique($notAvailable);
         $notAvailable = array_filter($notAvailable);
 
-        foreach ($request->waktu_tayang as $waktu_tayang) {
+        foreach($request->waktu_tayang as $waktu_tayang)
+        {
             $query = JadwalTrafficIklan::whereNull('id_order_iklan')
             ->where('tanggal_jadwal', '>=', date('Y-m-d', $tanggal_awal))
             ->where('tanggal_jadwal', '<=', date('Y-m-d', $tanggal_akhir))
             ->where('id_jenis_iklan', $request->input('jenis_iklan'))
             ->whereNotIn('id_jadwal', $notAvailable);
 
-            if ($waktu_tayang == 1) {
+            if($waktu_tayang == 1) 
+            {
                 $query
                 ->where('jam_jadwal', '>=', date('H:i:s', strtotime('04:00:00')))
                 ->where('jam_jadwal', '<=', date('H:i:s', strtotime('06:00:00')));
-            } else if ($waktu_tayang == 2) {
+            }else if($waktu_tayang == 2){
                 $query
                 ->where('jam_jadwal', '>=', date('H:1:s', strtotime('06:00:00')))
                 ->where('jam_jadwal', '<=', date('H:i:s', strtotime('10:00:00')));
-            } else if ($waktu_tayang == 3) {
+            }else if($waktu_tayang == 3){
                 $query
                 ->where('jam_jadwal', '>=', date('H:i:s', strtotime('10:00:00')))
                 ->where('jam_jadwal', '<=', date('H:i:s', strtotime('14:00:00')));
-            } else if ($waktu_tayang == 4) {
+            }else if($waktu_tayang == 4){
                 $query
                 ->where('jam_jadwal', '>=', date('H:i:s', strtotime('14:00:00')))
                 ->where('jam_jadwal', '<=', date('H:i:s', strtotime('18:00:00')));
-            } else if ($waktu_tayang == 5) {
+            }else if($waktu_tayang == 5){
                 $query
                 ->where('jam_jadwal', '>=', date('H:i:s', strtotime('18:00:00')))
                 ->where('jam_jadwal', '<=', date('H:i:s', strtotime('23:59:00')));
             }
 
-            if ($count == 0) {
+            if($count == 0)
+            {
                 $result = $query;
-            } else {
+            }else{
                 $result->union($query);
             }
             $count++;
@@ -340,40 +340,43 @@ class JadwalTrafficIklanController extends Controller
         ->groupBy('tanggal_jadwal');
 
         $count = 0;
-        for ($i = 1; $i < 5; $i++) {
-            if (!in_array($i, $request->waktu_tayang)){
-
+        for($i = 1; $i < 5; $i++)
+        {
+            if(!in_array($i, $request->waktu_tayang))
+            {
                 $query = JadwalTrafficIklan::whereNull('id_order_iklan')
                 ->where('tanggal_jadwal', '>=', date('Y-m-d', $tanggal_awal))
                 ->where('tanggal_jadwal', '<=', date('Y-m-d', $tanggal_akhir))
                 ->where('id_jenis_iklan', $request->input('jenis_iklan'))
                 ->whereNotIn('id_jadwal', $notAvailable);
 
-                if ($i == 1) {
+                if($i == 1)
+                {
                     $query
                     ->where('jam_jadwal', '>=', date('H:i:s', strtotime('04:00:00')))
                     ->where('jam_jadwal', '<=', date('H:i:s', strtotime('06:00:00')));
-                } else if ($i == 2) {
+                }else if($i == 2){
                     $query
                     ->where('jam_jadwal', '>=', date('H:1:s', strtotime('06:00:00')))
                     ->where('jam_jadwal', '<=', date('H:i:s', strtotime('10:00:00')));
-                } else if ($i == 3) {
+                }else if($i == 3){
                     $query
                     ->where('jam_jadwal', '>=', date('H:i:s', strtotime('10:00:00')))
                     ->where('jam_jadwal', '<=', date('H:i:s', strtotime('14:00:00')));
-                } else if ($i == 4) {
+                }else if($i == 4){
                     $query
                     ->where('jam_jadwal', '>=', date('H:i:s', strtotime('14:00:00')))
                     ->where('jam_jadwal', '<=', date('H:i:s', strtotime('18:00:00')));
-                } else if ($i== 5) {
+                }else if($i== 5){
                     $query
                     ->where('jam_jadwal', '>=', date('H:i:s', strtotime('18:00:00')))
                     ->where('jam_jadwal', '<=', date('H:i:s', strtotime('23:59:00')));
                 }
 
-                if ($count == 0) {
+                if($count == 0)
+                {
                     $resultAlt = $query;
-                } else {
+                }else{
                     $resultAlt->union($query);
                 }
                 $count++;

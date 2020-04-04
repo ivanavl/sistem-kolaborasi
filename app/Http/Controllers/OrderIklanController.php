@@ -52,7 +52,7 @@ class OrderIklanController extends Controller
         $create->status_order = 'Requested';
         $create->id_kategori = Session::get('id_kategori');
         $create->id_client = $request->id_client;
-        $create->username = 'marketing.dami';
+        $create->username = Auth::user()->username;
         $create->id_jenis_iklan = Session::get('id_jenis_iklan');
         $create->save();
 

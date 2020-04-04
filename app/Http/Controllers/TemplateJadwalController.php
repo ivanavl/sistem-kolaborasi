@@ -99,7 +99,7 @@ class TemplateJadwalController extends Controller
             return redirect('/createjadwal')->with('success', 'Template iklan berhasil dibuat');
         }
 
-        return $this->createtemplate()->with('error', 'Nama Template Sudah ada');
+        return redirect('/createtemplate')->with('error', 'Nama template sudah ada');
     }
     
     //View Lihat Template

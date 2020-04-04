@@ -17,7 +17,7 @@ class CreateClientsTable extends Migration
             $table->increments('id_client');
             $table->string('nama_client', 200);
             $table->string('alamat_client', 250);
-            $table->string('NPWP_client', 20)->unique();
+            $table->string('NPWP_client', 20)->nullable();
             $table->string('contact_person', 100);
             $table->string('telepon_client', 20);
             $table->string('email_client', 100);
