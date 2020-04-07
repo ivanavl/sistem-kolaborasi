@@ -91,7 +91,7 @@ span {
 }
 
 #main-container {
-    width: 84vw;
+    width: 83vw;
 }
 
 #main-container.active {
@@ -109,7 +109,7 @@ span {
 }
 
 #sidebar {
-    width: 16vw;
+    width: 17vw;
     background: #444444;
     color: #fff;
     transition: all 0.3s;

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Menu;
+use App\OrderIklan;
 use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
@@ -16,5 +17,20 @@ class PagesController extends Controller
     public function homeIndex()
     {
         return view('home');
+    }
+
+    public static function notifKonfirmasi()
+    {
+        $query = OrderIklan::where('status_order','=','Requested')->count();
+
+        return $query;
+    }
+
+    public static function notifUpdate()
+    {
+        $query = OrderIklan::where('status_order','=','Confirmed')
+        ->whereNull('versi_iklan')->count();
+
+        return $query;
     }
 }

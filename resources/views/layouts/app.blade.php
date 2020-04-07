@@ -29,7 +29,8 @@
 
                 <div class="sidebar-profile">
                     <div>
-                        <img src={{ asset('avatar.png') }} class="profile-image" alt="Avatar" title="<b>{{ Auth::user()->name }}</b> <br> {{ Auth::user()->role->role_name }}" id="tooltip">
+                        {{-- <img src={{ asset('avatar.png') }} class="profile-image" alt="Avatar" title="<b>{{ Auth::user()->name }}</b> <br> {{ Auth::user()->role->role_name }}" id="tooltip"> --}}
+                        <img src={{ asset('avatar.png') }} class="profile-image" alt="Avatar">
                     </div>
                     <div class="profile-details">
                         <div>
@@ -59,7 +60,7 @@
                     <li class="{{ (request()->is('konfirmasibooking*')) ? 'active' : '' }}">
                         <a href="/konfirmasibooking">
                             <i class="fas fa-tasks"></i>
-                            <span>Konfirmasi Booking</span>
+                            <span>Konfirmasi Booking @include('layouts.notifKonfirmasi')</span>
                         </a>
                     </li>
                     <li class="{{ (request()->is('lihatjadwal*')) && ! (request()->is('lihatjadwalfinal*')) ? 'active' : '' }}">
@@ -87,7 +88,7 @@
                     <li class="{{ (request()->is('updateversi*')) ? 'active' : '' }}">
                         <a href="/updateversi">
                             <i class="fas fa-search"></i>
-                            <span>Update Versi Iklan</span>
+                            <span>Update Versi Iklan  @include('layouts.notifUpdate')</span>
                         </a>
                     </li>
                     @endif
