@@ -21,7 +21,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <label for="pilihan_tanggal" class="col-form-label">
-                                                Tersedia {{$resultCount[$k][0]->total}} slot yang cocok
+                                                Tersedia {{$resultCount[$k][0]->total}} slot yang sesuai dengan prefernsi waktu
                                             </label>
                                         </div>
                                     </div>
@@ -39,7 +39,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <label for="alternatif_tanggal" class="col-form-label">
-                                                Tersedia {{$resultAltCount[$k][0]->total}} slot alternatif
+                                                Tersedia {{$resultAltCount[$k][0]->total}} slot alternatif yang berbeda dengan preferensi waktu
                                             </label>
                                         </div>
                                     </div>

@@ -4,7 +4,13 @@
     <div class="row justify-content-center full-height">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Jadwal Final {{$request->tanggal_jadwal}}</div>
+                <div class="card-header">Jadwal Final 
+                    @if($request->jenis_iklan == 1)
+                        Spot Iklan 
+                    @else
+                        Talkshow 
+                    @endif
+                    Tanggal {{$request->tanggal_jadwal}}</div>
                 @if(isset($request))
                     <div class="card-body align-center-vh">
                         <div class="content-width">
@@ -14,7 +20,6 @@
                                         <table class="table table-striped table-custom table-bordered">
                                             <thead>
                                             <tr>
-                                                <th>Jenis Iklan</th>
                                                 <th>Jam</th>
                                                 <th>Nama Produk</th>
                                                 <th>Versi</th>
@@ -28,7 +33,6 @@
                                             <tbody>
                                             @foreach($jadwal_final as $jadwal)
                                                 <tr>
-                                                    <td>{{$jadwal->nama_jenis_iklan}}</td>
                                                     <td>{{$jadwal->jam_jadwal}}</td>
                                                     @if($jadwal->status_order == 'Confirmed')
                                                         <td>{{$jadwal->nama_produk}}</td>
@@ -62,7 +66,6 @@
                                         <table class="table table-striped table-custom table-bordered">
                                             <thead>
                                             <tr>
-                                                <th>Jenis Iklan</th>
                                                 <th>Jam</th>
                                                 <th>Nama Produk</th>
                                                 <th>Kategori</th>
@@ -74,7 +77,6 @@
                                             <tbody>
                                             @foreach($jadwal_final as $jadwal)
                                                 <tr>
-                                                    <td>{{$jadwal->nama_jenis_iklan}}</td>
                                                     <td>{{$jadwal->jam_jadwal}}</td>
                                                     @if($jadwal->status_order == 'Confirmed')
                                                         <td>{{$jadwal->nama_produk}}</td>

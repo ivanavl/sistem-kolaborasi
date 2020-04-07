@@ -375,7 +375,7 @@ a.article:hover {
 }
 
 .table-custom.table-striped tbody tr:nth-of-type(odd) {
-    background-color: #a7a5a5;
+    background-color: #ffffff;
     color: #000;
 }
 

@@ -71,7 +71,7 @@ class OrderIklanController extends Controller
     //Lihat Request
     public function showrequest()
     {
-        $lihat_requests = DB::table('order_iklans')
+        $lihat_requests1 = DB::table('order_iklans')
         ->join('clients', 'order_iklans.id_client','=','clients.id_client')
         ->join('jenis_iklans','order_iklans.id_jenis_iklan','=',
         'jenis_iklans.id_jenis_iklan')
@@ -79,10 +79,23 @@ class OrderIklanController extends Controller
         ->join('kategoris', 'order_iklans.id_kategori',
         '=','kategoris.id_kategori')
         ->where('order_iklans.username', Auth::user()->username)
-        ->orderByRaw('FIELD(order_iklans.status_order, "Requested", "Confirmed", "Canceled")')
+        ->where('order_iklans.status_order','=','Requested')
         ->get();
 
-        return view('pages.lihatrequest.lihatrequest')->with('lihat_requests', $lihat_requests);
+        $lihat_requests2 = DB::table('order_iklans')
+        ->join('clients', 'order_iklans.id_client','=','clients.id_client')
+        ->join('jenis_iklans','order_iklans.id_jenis_iklan','=',
+        'jenis_iklans.id_jenis_iklan')
+        ->join('users', 'order_iklans.username','=','users.username')
+        ->join('kategoris', 'order_iklans.id_kategori',
+        '=','kategoris.id_kategori')
+        ->where('order_iklans.username', Auth::user()->username)
+        ->where('order_iklans.status_order','NOT LIKE','Requested')
+        ->orderByRaw('FIELD(order_iklans.status_order, "Confirmed", "Canceled")')
+        ->get();
+
+        return view('pages.lihatrequest.lihatrequest')->with('lihat_requests1', $lihat_requests1)
+        ->with('lihat_requests2', $lihat_requests2);
     }
 
     public function showrequestdetail($id)
