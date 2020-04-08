@@ -26,52 +26,52 @@ Route::group(['middleware' => 'auth', 'web'], function() {
     Route::get('/', 'PagesController@homeIndex');
 
     //CreateJadwal
-    Route::get('/createjadwal', 'JadwalTrafficIklanController@createjadwal');
-    Route::post('/createjadwal', 'JadwalTrafficIklanController@storejadwal');
+    Route::get('/createjadwal', 'JadwalTrafficIklanController@createjadwal')->middleware('trafficiklan');
+    Route::post('/createjadwal', 'JadwalTrafficIklanController@storejadwal')->middleware('trafficiklan');
 
     //CreateTemplate
-    Route::get('/createtemplate', 'TemplateJadwalController@createtemplate');
-    Route::post('/createtemplate/store', 'TemplateJadwalController@tempstoretemplate');
-    Route::get('/removesegmen/{id}', 'TemplateJadwalController@removesegmen');
-    Route::post('/createtemplate', 'TemplateJadwalController@storetemplate');
-    Route::get('/lihattemplate', 'TemplateJadwalController@indextemplate');
-    Route::post('/lihattemplate', 'TemplateJadwalcontroller@showtemplate');
+    Route::get('/createtemplate', 'TemplateJadwalController@createtemplate')->middleware('trafficiklan');
+    Route::post('/createtemplate/store', 'TemplateJadwalController@tempstoretemplate')->middleware('trafficiklan');
+    Route::get('/removesegmen/{id}', 'TemplateJadwalController@removesegmen')->middleware('trafficiklan');
+    Route::post('/createtemplate', 'TemplateJadwalController@storetemplate')->middleware('trafficiklan');
+    Route::get('/lihattemplate', 'TemplateJadwalController@indextemplate')->middleware('trafficiklan');
+    Route::post('/lihattemplate', 'TemplateJadwalcontroller@showtemplate')->middleware('trafficiklan');
 
     //LihatJadwal
-    Route::get('/lihatjadwal', 'JadwalTrafficIklanController@showjadwal');
-    Route::post('/lihatjadwal/result', 'JadwalTrafficIklanController@showjadwalresult');
+    Route::get('/lihatjadwal', 'JadwalTrafficIklanController@showjadwal')->middleware('trafficiklan');
+    Route::post('/lihatjadwal/result', 'JadwalTrafficIklanController@showjadwalresult')->middleware('trafficiklan');
 
     //KonfirmasiBooking
-    Route::get('/konfirmasibooking', 'OrderIklanController@indexrequest');
-    Route::post('/konfirmasibooking', 'OrderIklanController@searchrequest');
-    Route::get('/konfirmasibooking/{id}', 'OrderIklanController@showkonfirmasibooking');
-    Route::post('/konfirmasibooking/konfirmasi', 'OrderIklanController@konfirmasibooking');
+    Route::get('/konfirmasibooking', 'OrderIklanController@indexrequest')->middleware('trafficiklan');
+    Route::post('/konfirmasibooking', 'OrderIklanController@searchrequest')->middleware('trafficiklan');
+    Route::get('/konfirmasibooking/{id}', 'OrderIklanController@showkonfirmasibooking')->middleware('trafficiklan');
+    Route::post('/konfirmasibooking/konfirmasi', 'OrderIklanController@konfirmasibooking')->middleware('trafficiklan');
 
     //CariJadwalKosong
-    Route::get('/carijadwal', 'JadwalTrafficIklanController@indexcarijadwal');
-    Route::post('/carijadwal/result', 'JadwalTrafficIklanController@carijadwalresult');
-    Route::post('/keepjadwal', 'JadwalTrafficIklanController@keepjadwal');
+    Route::get('/carijadwal', 'JadwalTrafficIklanController@indexcarijadwal')->middleware('marketing');
+    Route::post('/carijadwal/result', 'JadwalTrafficIklanController@carijadwalresult')->middleware('marketing');
+    Route::post('/keepjadwal', 'JadwalTrafficIklanController@keepjadwal')->middleware('marketing');
 
     //RequestBooking
-    Route::get('/createclient', 'ClientController@createclient');
-    Route::post('/createclient', 'ClientController@storeclient');
-    Route::get('/lihatclient', 'ClientController@indexclient');
-    Route::post('/lihatclient', 'ClientController@searchclient');
-    Route::get('/pilihclient/{id}', 'ClientController@showclient');
-    Route::get('/createorder', 'OrderIklanController@createorder');
-    Route::post('/createorder', 'OrderIklanController@storeorder');
+    Route::get('/createclient', 'ClientController@createclient')->middleware('marketing');
+    Route::post('/createclient', 'ClientController@storeclient')->middleware('marketing');
+    Route::get('/lihatclient', 'ClientController@indexclient')->middleware('marketing');
+    Route::post('/lihatclient', 'ClientController@searchclient')->middleware('marketing');
+    Route::get('/pilihclient/{id}', 'ClientController@showclient')->middleware('marketing');
+    Route::get('/createorder', 'OrderIklanController@createorder')->middleware('marketing');
+    Route::post('/createorder', 'OrderIklanController@storeorder')->middleware('marketing');
 
     //LihatRequest
-    Route::get('/lihatrequest', 'OrderIklanController@showrequest');
-    Route::get('/lihatrequestdetail/{id}', 'OrderIklanController@showrequestdetail');
+    Route::get('/lihatrequest', 'OrderIklanController@showrequest')->middleware('marketing');
+    Route::get('/lihatrequestdetail/{id}', 'OrderIklanController@showrequestdetail')->middleware('marketing');
 
     //UpdateVersi
-    Route::get('/updateversi', 'OrderIklanController@indexorder');
-    Route::post('/updateversi', 'OrderIklanController@searchorder');
-    Route::get('/updateversi/{id}', 'OrderIklanController@editversi');
-    Route::post('/updateversi/update', 'OrderIklanController@updateversi');
+    Route::get('/updateversi', 'OrderIklanController@indexorder')->middleware('produksi');
+    Route::post('/updateversi', 'OrderIklanController@searchorder')->middleware('produksi');
+    Route::get('/updateversi/{id}', 'OrderIklanController@editversi')->middleware('produksi');
+    Route::post('/updateversi/update', 'OrderIklanController@updateversi')->middleware('produksi');
 
     //LihatJadwalFinal
-    Route::get('/lihatjadwalfinal', 'JadwalTrafficIklanController@indexjadwalfinal');
-    Route::post('lihatjadwalfinal/result', 'JadwalTrafficIklanController@showjadwalfinal');
+    Route::get('/lihatjadwalfinal', 'JadwalTrafficIklanController@indexjadwalfinal')->middleware('studio');
+    Route::post('lihatjadwalfinal/result', 'JadwalTrafficIklanController@showjadwalfinal')->middleware('studio');
 });
