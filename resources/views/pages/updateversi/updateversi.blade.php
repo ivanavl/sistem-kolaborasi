@@ -4,7 +4,7 @@
     <div class="row justify-content-center full-height">
         <div class="col-md-12">
             <div class="card full">
-                <div class="card-header">Pendaftaran Iklan</div>
+                <div class="card-header">Update Versi Iklan</div>
 
                 {{ Form::open(['action' => 'OrderIklanController@updateversi', 'menthod' => 'POST']) }}
                 <div class="card-body align-center-vh">

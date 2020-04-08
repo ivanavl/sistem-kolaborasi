@@ -4,7 +4,7 @@
     <div class="row justify-content-center full-height">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Jadwal Traffic Iklan</div>
+                <div class="card-header">Lihat Jadwal Traffic Iklan</div>
 
                 {{ Form::open(['action' => 'JadwalTrafficIklanController@showjadwalresult', 'method' => 'POST']) }}
                 <div class="card-body align-center-vh">

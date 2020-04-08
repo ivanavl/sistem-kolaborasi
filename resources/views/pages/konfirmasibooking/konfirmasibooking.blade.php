@@ -4,7 +4,7 @@
     <div class="row justify-content-center full-height">
         <div class="col-md-12">
             <div class="card full">
-                <div class="card-header">Pendaftaran Iklan</div>
+                <div class="card-header">Konfirmasi Booking</div>
                 <div class="card-body align-center-vh">
                     @if(isset($result1, $result2))
                         @foreach($result1 as $result_1)

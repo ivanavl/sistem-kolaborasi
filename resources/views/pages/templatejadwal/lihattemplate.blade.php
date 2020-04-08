@@ -4,7 +4,7 @@
     <div class="row justify-content-center full-height">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">List Template</div>
+                <div class="card-header">Lihat Template</div>
 
                 {{ Form::open(['action' => 'TemplateJadwalcontroller@showtemplate','method' => 'POST']) }}
                 <div class="card-body align-center-vh">
