@@ -343,8 +343,7 @@ a.article:hover {
 }
 
 .table-custom{
-    border: 0;
-    box-shadow: inset 1px 1px #FFFFFF, 1px 1px #000;
+    border: 1px black !important;
     text-align: center;
     white-space: nowrap;
 }
@@ -357,7 +356,7 @@ a.article:hover {
 .table-custom thead th{
     background-color: #474747;
     color:  #ffffff;
-    top: 0;
+    top: -1px;
     position: sticky;
 }
 
@@ -385,6 +384,10 @@ a.article:hover {
 }
 .table-title th{
     position: inherit !important;;
+}
+
+.table-bordered td, .table-bordered th{
+    border: 1px solid black;
 }
 
 /* ---------------------------------------------------
