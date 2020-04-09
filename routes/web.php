@@ -74,4 +74,5 @@ Route::group(['middleware' => 'auth', 'web'], function() {
     //LihatJadwalFinal
     Route::get('/lihatjadwalfinal', 'JadwalTrafficIklanController@indexjadwalfinal')->middleware('studio');
     Route::post('lihatjadwalfinal/result', 'JadwalTrafficIklanController@showjadwalfinal')->middleware('studio');
+    Route::post('lihatjadwalfinal/result/export', 'JadwalTrafficIklanController@exportjadwal')->middleware('studio');
 });

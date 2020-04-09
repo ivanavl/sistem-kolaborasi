@@ -477,4 +477,21 @@ class JadwalTrafficIklanController extends Controller
         }
 
     }
+
+    public function exportjadwal(Request $request)
+    {
+        $jadwal_final = DB::table('jadwal_traffic_iklans')
+        ->join('jenis_iklans', 'jadwal_traffic_iklans.id_jenis_iklan'
+        ,'=','jenis_iklans.id_jenis_iklan')
+        ->leftJoin('order_iklans', 'jadwal_traffic_iklans.id_order_iklan'
+        ,'=','order_iklans.id_order_iklan')
+        ->leftJoin('kategoris', 'kategoris.id_kategori','=','order_iklans.id_kategori')
+        ->leftJoin('users', 'users.username','=','order_iklans.username')
+        ->where('jadwal_traffic_iklans.tanggal_jadwal','=',$request->input('tanggal_jadwal'))
+        ->where('jadwal_traffic_iklans.id_jenis_iklan','=',$request->input('jenis_iklan'))
+        ->get();
+
+        return view('pages.lihatjadwalfinal.exportjadwal')->with('jadwal_final', $jadwal_final)
+        ->with('request', $request);
+    }
 }

@@ -4,13 +4,16 @@
     <div class="row justify-content-center full-height">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Jadwal Final 
+                <div class="card-header">
+                    <div class="col-5">Jadwal Final 
                     @if($request->jenis_iklan == 1)
                         Spot Iklan 
                     @else
                         Talkshow 
                     @endif
-                    Tanggal {{$request->tanggal_jadwal}}</div>
+                    Tanggal {{$request->tanggal_jadwal}}
+                    </div>
+                </div>
                 @if(isset($request))
                     <div class="card-body align-center-vh">
                         <div class="content-width">
@@ -106,6 +109,13 @@
                         </div>
                     </div>
                 @endif
+                <div class="card-footer">
+                    {{ Form::open(['action' => 'JadwalTrafficIklanController@exportjadwal','menthod' => 'POST']) }}
+                    {{Form::hidden('tanggal_jadwal', $request->tanggal_jadwal)}}
+                    {{Form::hidden('jenis_iklan', $request->jenis_iklan)}}
+                    <input class="btn btn-primary" type="submit" value="Print">
+                    {{ Form::close() }}
+                </div>
             </div>
         </div>
     </div>

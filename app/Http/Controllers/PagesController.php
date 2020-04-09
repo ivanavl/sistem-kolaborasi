@@ -29,7 +29,9 @@ class PagesController extends Controller
     public static function notifUpdate()
     {
         $query = OrderIklan::where('status_order','=','Confirmed')
-        ->whereNull('versi_iklan')->count();
+        ->whereNull('versi_iklan')
+        ->where('id_jenis_iklan',1)
+        ->count();
 
         return $query;
     }
