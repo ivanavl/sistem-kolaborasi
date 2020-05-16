@@ -46,21 +46,21 @@
                     <li class="{{ (request()->is('/')) ? 'active' : '' }}">
                         <a href="/">
                             <i class="fas fa-home"></i>
-                            <span>Home</span>
+                            <span>Beranda</span>
                         </a>
                     </li>
 
                     @if (Auth::user()->role_id == App\Role::TRAFFIC_IKLAN)
-                    <li class="{{ (request()->is('createjadwal*')) || (request()->is('lihattemplate*')) ? 'active' : '' }}">
-                        <a href="/createjadwal">
+                    <li class="{{ (request()->is('buatjadwal*')) || (request()->is('lihattemplat*')) || (request()->is('buattemplat*')) ? 'active' : '' }}">
+                        <a href="/buatjadwal">
                             <i class="fas fa-calendar-plus"></i>
-                            <span>Create Jadwal</span>
+                            <span>Buat Jadwal</span>
                         </a>
                     </li>
-                    <li class="{{ (request()->is('konfirmasibooking*')) ? 'active' : '' }}">
-                        <a href="/konfirmasibooking">
+                    <li class="{{ (request()->is('konfirmasipemesanan*')) ? 'active' : '' }}">
+                        <a href="/konfirmasipemesanan">
                             <i class="fas fa-tasks"></i>
-                            <span>Konfirmasi Booking @include('layouts.notifKonfirmasi')</span>
+                            <span>Konfirmasi Pemesanan @include('layouts.notifKonfirmasi')</span>
                         </a>
                     </li>
                     <li class="{{ (request()->is('lihatjadwal*')) && ! (request()->is('lihatjadwalfinal*')) ? 'active' : '' }}">
@@ -71,32 +71,32 @@
                     </li>
                     @endif
                     @if (Auth::user()->role_id == App\Role::MARKETING || Auth::user()->role_id == App\Role::TRAFFIC_IKLAN)
-                    <li class="{{ (request()->is('carijadwal*')) || (request()->is('keepjadwal*')) || (request()->is('lihatclient*')) ? 'active' : '' }}">
+                    <li class="{{ (request()->is('carijadwal*')) || (request()->is('lihatklien*')) || (request()->is('buatorder*')) ? 'active' : '' }}">
                         <a href="/carijadwal">
                             <i class="fas fa-search"></i>
                             <span>Cari Jadwal</span>
                         </a>
                     </li>
-                    <li class="{{ (request()->is('lihatrequest*')) ? 'active' : '' }}">
-                        <a href="/lihatrequest">
+                    <li class="{{ (request()->is('lihatpermintaan*')) ? 'active' : '' }}">
+                        <a href="/lihatpermintaan">
                             <i class="fas fa-file-alt"></i>
-                            <span>Lihat Request</span>
+                            <span>Lihat Permintaan Pemesanan</span>
                         </a>
                     </li>
                     @endif
                     @if (Auth::user()->role_id == App\Role::PRODUKSI || Auth::user()->role_id == App\Role::TRAFFIC_IKLAN)
-                    <li class="{{ (request()->is('updateversi*')) ? 'active' : '' }}">
-                        <a href="/updateversi">
+                    <li class="{{ (request()->is('perbaruiversi*')) ? 'active' : '' }}">
+                        <a href="/perbaruiversi">
                             <i class="fas fa-search"></i>
-                            <span>Update Versi Iklan  @include('layouts.notifUpdate')</span>
+                            <span>Perbarui Versi Iklan  @include('layouts.notifUpdate')</span>
                         </a>
                     </li>
                     @endif
                     @if (Auth::user()->role_id == App\Role::STUDIO || Auth::user()->role_id == App\Role::TRAFFIC_IKLAN)
                     <li class="{{ (request()->is('lihatjadwalfinal*')) ? 'active' : '' }}">
-                        <a href="/lihatjadwalfinal">
+                        <a href="/lihatjadwalakhir">
                             <i class="fas fa-file-alt"></i>
-                            <span>Lihat Jadwal Final</span>
+                            <span>Lihat Jadwal Akhir</span>
                         </a>
                     </li>
                     @endif

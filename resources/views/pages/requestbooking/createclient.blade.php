@@ -4,14 +4,14 @@
     <div class="row justify-content-center full-height">
         <div class="col-md-12">
             <div class="card full">
-                <div class="card-header">Pendaftaran Client</div>
+                <div class="card-header">Pendaftaran Klien</div>
 
                 {{ Form::open(['action' => 'ClientController@storeclient', 'method' => 'POST']) }}
                 <div class="card-body align-center-vh">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="nama_client" class="col-form-label">Nama Client</label>
+                                <label for="nama_client" class="col-form-label">Nama Klien</label>
                             </div>
                             <div class="col-9">
                                 <input type="text" class="form-control" name="nama_client">
@@ -19,7 +19,7 @@
                         </div>
                         <div class="row">
                             <div class="col-3">
-                                <label for="alamat_client" class="col-form-label">Alamat Client</label>
+                                <label for="alamat_client" class="col-form-label">Alamat</label>
                             </div>
                             <div class="col-9">
                                 <textarea type="text" class="form-control" name="alamat_client"></textarea>
@@ -27,7 +27,7 @@
                         </div>
                         <div class="row">
                             <div class="col-3">
-                                <label for="npwp_client" class="col-form-label">NPWP Client</label>
+                                <label for="npwp_client" class="col-form-label">NPWP</label>
                             </div>
                             <div class="col-9">
                                 <input type="text" class="form-control" name="npwp_client">
@@ -58,12 +58,12 @@
                             </div>
                         </div>
                         <div class="row">
-                            <a class="col-12 mini-link" href="/lihatclient">Client sudah terdaftar</a>
+                            <a class="col-12 mini-link" href="/lihatklien">Klien sudah terdaftar</a>
                         </div>
                     </div>
                 </div>
                 <div class="card-footer">
-                    <input class="btn btn-primary" type="submit" value="Next">
+                    <input class="btn btn-primary" type="submit" value="Berikut">
                 </div>
                 {{Form::close()}}
             </div>

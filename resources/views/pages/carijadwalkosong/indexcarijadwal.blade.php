@@ -24,6 +24,11 @@
                                            value="2">
                                     <label class="form-check-label" for="jenis_iklan">Talkshow</label>
                                 </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="jenis_iklan" id="jenis_iklan"
+                                           value="3">
+                                    <label class="form-check-label" for="jenis_iklan">Ads Lips</label>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -107,7 +112,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <input class="btn btn-primary" type="submit" value="Search">
+                    <input class="btn btn-primary" type="submit" value="Cari">
                 </div>
             </div>
         </div>

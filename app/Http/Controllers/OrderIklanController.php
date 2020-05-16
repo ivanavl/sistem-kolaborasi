@@ -14,6 +14,28 @@ use Session;
 
 class OrderIklanController extends Controller
 {
+    public function keepjadwal(Request $request)
+    {
+        $jadwal = $request->jadwal;
+        Session::put('jadwal', $jadwal);
+
+        $jumlah_tayang = count($jadwal);
+        Session::put('jumlah_tayang', $jumlah_tayang);
+
+        $query = JadwalTrafficIklan::select('tanggal_jadwal')
+        ->where('id_jadwal','=',$jadwal[0])->pluck('tanggal_jadwal');
+        $priode_awal = $query[0];
+        Session::put('priode_awal', $priode_awal);
+
+        $n = count($jadwal) - 1;
+        $query = JadwalTrafficIklan::select('tanggal_jadwal')
+        ->where('id_jadwal','=',$jadwal[$n])->pluck('tanggal_jadwal');
+        $priode_akhir = $query[0];
+        Session::put('priode_akhir', $priode_akhir);        
+
+        return redirect('/buatklien');
+    }
+
     public function createorder()
     {
         $jenis_iklan = JenisIklan::select('nama_jenis_iklan')
@@ -65,7 +87,7 @@ class OrderIklanController extends Controller
             ->update(['id_order_iklan' => $id]);
         }
 
-        return redirect('/carijadwal')->with('success', 'Request booking berhasil');
+        return redirect('/carijadwal')->with('success', 'Permohonan pesanan berhasil');
     }
 
     //Lihat Request
@@ -164,17 +186,17 @@ class OrderIklanController extends Controller
             $update_order = OrderIklan::where('id_order_iklan','=',$request->input('id_order_iklan'))
             ->update(['status_order' => 'Confirmed', 'tanggal_konfirmasi' => $date]);
 
-            return redirect('/konfirmasibooking')->with('success', 'Konfirmasi pemasangan berhasil');
+            return redirect('/konfirmasipemesanan')->with('success', 'Konfirmasi pesanan berhasil');
         }else{
             $update_order = OrderIklan::where('id_order_iklan','=',$request->input('id_order_iklan'))
             ->update(['status_order' => 'Canceled', 'tanggal_konfirmasi' => $date]);
             $update_jadwal = JadwalTrafficIklan::where('id_order_iklan','=',$request->input('id_order_iklan'))
             ->update(['id_order_iklan' => null]);
 
-            return redirect('/konfirmasibooking')->with('success', 'Konfirmasi pembatalan berhasil');
+            return redirect('/konfirmasipemesanan')->with('success', 'Pembatalan pesanan berhasil');
         }
 
-        return redirect('/konfirmasibooking')->with('error', 'Konfirmasi booking gagal');
+        return redirect('/konfirmasipemesanan')->with('error', 'Konfirmasi pemesanan gagal');
     }
 
     //Lihat Order
@@ -236,6 +258,6 @@ class OrderIklanController extends Controller
         $query = OrderIklan::where('id_order_iklan','=',$request->input('id_order_iklan'))
         ->update(['versi_iklan' => $request->input('versi_iklan')]);
 
-        return redirect('/updateversi')->with('success', 'Versi iklan sudah diperbaharui');
+        return redirect('/perbaruiversi')->with('success', 'Versi iklan sudah diperbarui');
     }
 }

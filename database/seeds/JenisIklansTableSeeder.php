@@ -13,7 +13,8 @@ class JenisIklansTableSeeder extends Seeder
     {
         DB::table('jenis_iklans')->insert([
             ['nama_jenis_iklan' => 'spot iklan'],
-            ['nama_jenis_iklan' => 'talkshow']
+            ['nama_jenis_iklan' => 'talkshow'],
+            ['nama_jenis_iklan' => 'ads lips'],
         ]);
     }
 }

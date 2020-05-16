@@ -13,16 +13,21 @@
                             <div class="col-3">
                                 <label for="jenis_iklan" class="col-form-label">Jenis Iklan</label>
                             </div>
-                            <div class="col-4">
+                            <div class="col-5">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="jenis_iklan" id="jenis_iklan"
-                                           value="spot iklan" checked>
+                                           value="Spot Iklan" checked>
                                     <label class="form-check-label" for="jenis_iklan">Spot Iklan</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="jenis_iklan" id="jenis_iklan"
-                                           value="talkshow">
+                                           value="Talkshow">
                                     <label class="form-check-label" for="jenis_iklan">Talkshow</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="jenis_iklan" id="jenis_iklan"
+                                           value="Ads Lips">
+                                    <label class="form-check-label" for="jenis_iklan">Ads Lips</label>
                                 </div>
                             </div>
                         </div>
@@ -34,7 +39,7 @@
                                 <input class="form-control" name="tanggal_jadwal" type="date">
                             </div>
                             <div class="col-2">
-                                <input class="btn btn-primary" type="submit" value="Search">
+                                <input class="btn btn-primary" type="submit" value="Cari">
                             </div>
                         </div>
                     </div>
@@ -48,7 +53,7 @@
                                     <thead>
                                     <tr class="table-title">
                                         <th colspan="9">
-                                            <h3>Hasil Pencarian untuk {{$request->jenis_iklan}} pada
+                                            <h3>Jadwal {{$request->jenis_iklan}}
                                                 tanggal {{$request->tanggal_jadwal}}</h3>
                                         </th>
                                     </tr>
@@ -58,7 +63,7 @@
                                         <th>Nama Produk</th>
                                         <th>Versi</th>
                                         <th>Kategori</th>
-                                        <th>Priode Tayang</th>
+                                        <th>Periode Tayang</th>
                                         <th>No Order</th>
                                         <th>AE</th>
                                         <th>Status Order</th>

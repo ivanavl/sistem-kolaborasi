@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header" id="accordion-heading-1" data-toggle="collapse"
                      data-target="#accordion-menu-1" aria-expanded="true" aria-controls="accordion-menu-1">
-                    Lihat Request Belum Terkonfirmasi
+                    Lihat Permintaan Pemesanan Belum Dikonfirmasi
                 </div>
                 <div id="accordion-menu-1" class="collapse show" aria-labelledby="accordion-heading-1"
                      data-parent="#accordion-menu">
@@ -18,12 +18,12 @@
                                         <thead>
                                         <tr>
                                             <th>No Order</th>
-                                            <th>Tanggal Request</th>
+                                            <th>Tanggal Pemesanan</th>
                                             <th>Jenis Iklan</th>
-                                            <th>Nama Client</th>
+                                            <th>Nama Klien</th>
                                             <th>Nama Produk</th>
                                             <th>Versi Iklan</th>
-                                            <th>Priode Tayang</th>
+                                            <th>Periode Tayang</th>
                                             <th>Kategori</th>
                                             <th>AE</th>
                                             <th>Tanggal Konfirmasi</th>
@@ -44,7 +44,7 @@
                                                 <td>{{$request->name}}</td>
                                                 <td>{{$request->tanggal_konfirmasi}}</td>
                                                 <td>
-                                                    <a type="button" href="/lihatrequestdetail/{{$request->id_order_iklan}}"
+                                                    <a type="button" href="/lihatpermintaan/{{$request->id_order_iklan}}"
                                                        class="btn btn-primary">{{$request->status_order}}</a>
                                                 </td>
                                             </tr>
@@ -60,7 +60,7 @@
             <div class="card">
                 <div class="card-header" id="accordion-heading-2" data-toggle="collapse"
                      data-target="#accordion-menu-2" aria-expanded="false" aria-controls="accordion-menu-2">
-                    Lihat Request Terkonfirmasi
+                    Lihat Permintaan Pemesanan Sudah Dikonfirmasi
                 </div>
                 <div id="accordion-menu-2" class="collapse" aria-labelledby="accordion-heading-2"
                      data-parent="#accordion-menu">
@@ -72,12 +72,12 @@
                                         <thead>
                                         <tr>
                                             <th>No Order</th>
-                                            <th>Tanggal Request</th>
+                                            <th>Tanggal Pemesanan</th>
                                             <th>Jenis Iklan</th>
-                                            <th>Nama Client</th>
+                                            <th>Nama Klien</th>
                                             <th>Nama Produk</th>
                                             <th>Versi Iklan</th>
-                                            <th>Priode Tayang</th>
+                                            <th>Periode Tayang</th>
                                             <th>Kategori</th>
                                             <th>AE</th>
                                             <th>Tanggal Konfirmasi</th>
@@ -98,7 +98,7 @@
                                                 <td>{{$request->name}}</td>
                                                 <td>{{$request->tanggal_konfirmasi}}</td>
                                                 <td>
-                                                    <a type="button" href="/lihatrequestdetail/{{$request->id_order_iklan}}"
+                                                    <a type="button" href="/lihatpermintaan/{{$request->id_order_iklan}}"
                                                        class="btn btn-primary">{{$request->status_order}}</a>
                                                 </td>
                                             </tr>

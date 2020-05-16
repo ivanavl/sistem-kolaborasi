@@ -4,7 +4,7 @@
     <div class="row justify-content-center full-height">
         <div class="col-md-12 accordion" id="accordion-menu">
             @if(isset($result))
-                {{ Form::open(['action' => 'JadwalTrafficIklanController@keepjadwal', 'method' => 'POST']) }}
+                {{ Form::open(['action' => 'OrderIklanController@keepjadwal', 'method' => 'POST']) }}
                 @foreach($result as $k => $v)
                     <div class="card">
                         <div class="card-header" id="accordion-heading-{{ $loop->iteration }}"

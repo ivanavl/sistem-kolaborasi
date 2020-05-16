@@ -4,13 +4,13 @@
     <div class="row justify-content-center full-height">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">List Order</div>
+                <div class="card-header">Daftar Order</div>
                 {{ Form::open(['action' => 'OrderIklanController@searchorder','menthod' => 'POST']) }}
                 <div class="card-body align-center-vh">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="nama_client" class="col-form-label">Nama Client</label>
+                                <label for="nama_client" class="col-form-label">Cari Order</label>
                             </div>
                             <div class="col-7">
                                 <input class="form-control" name="search" type="text"
@@ -31,14 +31,14 @@
                                     <thead>
                                     <tr>
                                         <th>No Order</th>
-                                        <th>Tanggal Request</th>
+                                        <th>Tanggal Pemesanan</th>
                                         <th>Jenis Iklan</th>
-                                        <th>Nama Client</th>
+                                        <th>Nama Klien</th>
                                         <th>Nama Produk</th>
-                                        <th>Priode Tayang</th>
+                                        <th>Periode Tayang</th>
                                         <th>Tanggal Konfirmasi</th>
                                         <th>Versi Iklan</th>
-                                        <th>Update</th>
+                                        <th>Perbarui</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -53,7 +53,7 @@
                                             <td>{{$order->tanggal_konfirmasi}}</td>
                                             <td>{{$order->versi_iklan}}</td>
                                             <td>
-                                                <a type="button" href="/updateversi/{{$order->id_order_iklan}}"
+                                                <a type="button" href="/perbaruiversi/{{$order->id_order_iklan}}"
                                                    class="btn btn-primary"><i class="fas fa-edit"></i></a>
                                             </td>
                                             {{-- @if(is_null($order->versi_iklan))

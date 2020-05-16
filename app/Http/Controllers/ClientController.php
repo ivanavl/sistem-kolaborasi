@@ -43,7 +43,7 @@ class ClientController extends Controller
         
         
         Session::reflash();
-        return redirect('/createorder');
+        return redirect('/buatorder');
     }
 
     //LihatClient
@@ -72,6 +72,6 @@ class ClientController extends Controller
         Session::put('client', $client);
         
         Session::reflash();
-        return redirect('/createorder');
+        return redirect('/buatorder');
     }
 }

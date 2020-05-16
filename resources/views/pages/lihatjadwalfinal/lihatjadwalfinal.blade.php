@@ -5,11 +5,13 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="col-5">Jadwal Final 
+                    <div class="col-5">Jadwal Akhir 
                     @if($request->jenis_iklan == 1)
                         Spot Iklan 
-                    @else
+                    @elseif($request->jenis_iklan == 2)
                         Talkshow 
+                    @elseif($request->jenis_iklan == 3)
+                        Ads Lips
                     @endif
                     Tanggal {{$request->tanggal_jadwal}}
                     </div>
@@ -27,7 +29,7 @@
                                                 <th>Nama Produk</th>
                                                 <th>Versi</th>
                                                 <th>Kategori</th>
-                                                <th>Priode Tayang</th>
+                                                <th>Periode Tayang</th>
                                                 <th>Kategori</th>
                                                 <th>No Order</th>
                                                 <th>AE</th>
@@ -72,7 +74,7 @@
                                                 <th>Jam</th>
                                                 <th>Nama Produk</th>
                                                 <th>Kategori</th>
-                                                <th>Priode Tayang</th>
+                                                <th>Periode Tayang</th>
                                                 <th>No Order</th>
                                                 <th>AE</th>
                                             </tr>
@@ -113,7 +115,7 @@
                     {{ Form::open(['action' => 'JadwalTrafficIklanController@exportjadwal','menthod' => 'POST']) }}
                     {{Form::hidden('tanggal_jadwal', $request->tanggal_jadwal)}}
                     {{Form::hidden('jenis_iklan', $request->jenis_iklan)}}
-                    <input class="btn btn-primary" type="submit" value="Print">
+                    <input class="btn btn-primary" type="submit" value="Cetak">
                     {{ Form::close() }}
                 </div>
             </div>

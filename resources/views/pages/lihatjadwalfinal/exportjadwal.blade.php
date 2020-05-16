@@ -34,7 +34,7 @@
                                 <th>Nama Produk</th>
                                 <th>Versi</th>
                                 <th>Kategori</th>
-                                <th>Priode Tayang</th>
+                                <th>Periode Tayang</th>
                                 <th>Kategori</th>
                                 <th>No Order</th>
                                 <th>AE</th>
@@ -77,14 +77,20 @@
                         <thead>
                             <tr class="table-title">
                                 <th colspan="8">
-                                    <h3>Jadwal Traffic Iklan Talkshow Tanggal {{$request->tanggal_jadwal}}</h3>
+                                    <h3>Jadwal Traffic Iklan 
+                                    @if($request->jenis_iklan == 2)
+                                        Talkshow 
+                                    @else
+                                        Ads Lips 
+                                    @endif    
+                                    Tanggal {{$request->tanggal_jadwal}}</h3>
                                 </th>
                             </tr>
                             <tr>
                                 <th>Jam</th>
                                 <th>Nama Produk</th>
                                 <th>Kategori</th>
-                                <th>Priode Tayang</th>
+                                <th>Periode Tayang</th>
                                 <th>No Order</th>
                                 <th>AE</th>
                             </tr>

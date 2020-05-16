@@ -4,7 +4,7 @@
     <div class="row justify-content-center full-height">
         <div class="col-md-12">
             <div class="card full">
-                <div class="card-header">Pendaftaran Iklan</div>
+                <div class="card-header">Pendaftaran Order Iklan</div>
 
                 {{ Form::open(['action' => 'OrderIklanController@storeorder', 'menthod' => 'POST']) }}
                 <div class="card-body align-center-vh">
@@ -19,7 +19,7 @@
                         </div>
                         <div class="row">
                             <div class="col-3">
-                                <label for="nama_client" class="col-form-label">Nama Client</label>
+                                <label for="nama_client" class="col-form-label">Nama Klien</label>
                             </div>
                             @if(isset($client))
                                 <div class="col-9">
@@ -58,7 +58,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-3">
-                                    <label for="priode_tayang" class="col-form-label">Priode Tayang</label>
+                                    <label for="priode_tayang" class="col-form-label">Periode Tayang</label>
                                 </div>
                                 <div class="col-9">
                                     <label for="priode_tayang"
@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <input class="btn btn-primary" type="submit" value="Request">
+                    <input class="btn btn-primary" type="submit" value="Pesan">
                 </div>
                 {{ Form::close() }}
             </div>

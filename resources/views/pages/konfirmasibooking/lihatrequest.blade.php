@@ -4,20 +4,20 @@
     <div class="row justify-content-center full-height">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">List Request</div>
+                <div class="card-header">List Permintaan Pemesanan</div>
                 {{ Form::open(['action' => 'OrderIklanController@searchrequest','method' => 'POST']) }}
                 <div class="card-body align-center-vh">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="nama_client" class="col-form-label">Nama Client</label>
+                                <label for="nama_client" class="col-form-label">Cari Pesanan</label>
                             </div>
                             <div class="col-7">
                                 <input class="form-control" name="search" type="text"
                                        placeholder="input nama client/alamat/contact person">
                             </div>
                             <div class="col-2">
-                                <input class="btn btn-primary" type="submit" value="Search">
+                                <input class="btn btn-primary" type="submit" value="Cari">
                             </div>
                         </div>
                     </div>
@@ -31,11 +31,11 @@
                                     <thead>
                                     <tr>
                                         <th>No Order</th>
-                                        <th>Tanggal Request</th>
+                                        <th>Tanggal Pemesanan</th>
                                         <th>Jenis Iklan</th>
-                                        <th>Nama Client</th>
+                                        <th>Nama Klien</th>
                                         <th>Nama Produk</th>
-                                        <th>Priode Tayang</th>
+                                        <th>Periode Tayang</th>
                                         <th>Tanggal Konfirmasi</th>
                                         <th>Status Order</th>
                                     </tr>
@@ -53,7 +53,7 @@
                                             @if($request->status_order == 'Requested')
                                                 <td>
                                                     <a type="button"
-                                                       href="/konfirmasibooking/{{$request->id_order_iklan}}"
+                                                       href="/konfirmasipemesanan/{{$request->id_order_iklan}}"
                                                        class="btn btn-primary">{{$request->status_order}}</a>
                                                 </td>
                                             @else

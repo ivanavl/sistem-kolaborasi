@@ -20,7 +20,10 @@ class TemplateJadwalsTableSeeder extends Seeder
             ],
             ['nama_template' => 'BAT talkshow',
              'id_jenis_iklan' => '2'
-            ]
+            ],
+            ['nama_template' => 'Basic template ads lips',
+             'id_jenis_iklan' => '3'
+            ],
         ]);
 
         DB::table('isi_templates')->insert([
@@ -216,7 +219,148 @@ class TemplateJadwalsTableSeeder extends Seeder
                 'nama_template' => 'Basic template talkshow',
                 'jam_awal'      => '17:15:00',
                 'durasi_template'  => '25'
-            ]
+            ],
+
+            //Talkshow
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '07:08:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '07:14:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '07:20:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '08:33:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '09:48:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '11:52:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '12:18:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '12:48:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '13:00:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '13:12:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '13:23:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '13:44:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '14:19:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '14:30:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '14:48:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '16:03:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '16:08:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '16:12:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '16:33:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '16:48:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '16:59:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '17:10:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '17:21:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '17:32:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '17:53:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '17:58:00',
+                'durasi_template'  => '1'
+            ],
+            [
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '18:15:00',
+                'durasi_template'  => '1'
+            ],[
+                'nama_template' => 'Basic template ads lips',
+                'jam_awal'      => '18:20:00',
+                'durasi_template'  => '1'
+            ],
         ]);
     }
 }

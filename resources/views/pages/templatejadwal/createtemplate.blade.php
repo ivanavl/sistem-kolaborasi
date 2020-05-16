@@ -4,30 +4,30 @@
     <div class="row justify-content-center full-height">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Create Template</div>
+                <div class="card-header">Buat Templat</div>
 
                 {{ Form::open(['action' => 'TemplateJadwalController@tempstoretemplate', 'menthod' => 'POST']) }}
                 <div class="card-body align-center-vh">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-2">
-                                <label for="jam_awal" class="col-form-label">Waktu Tayang</label>
+                                <label for="jam_awal" class="col-form-label">Waktu Segmen</label>
                             </div>
                             <div class="col-3">
                                 <input type="time" name="jam_awal" class="form-control">
                             </div>
                             <div class="col-2">
-                                <label for="durasi_template" class="col-form-label">Durasi Segmen</label>
+                                <label for="durasi_template" class="col-form-label">Durasi (dalam menit)</label>
                             </div>
                             <div class="col-3">
                                 <input type="number" name="durasi_template" class="form-control">
                             </div>
                             <div class="col-2">
-                                <input class="btn btn-primary" type="submit" value="Add">
+                                <input class="btn btn-primary" type="submit" value="Tambah">
                             </div>
                         </div>
                         <div class="row">
-                            <a class="col-12 mini-link" href="/lihattemplate">Lihat Template Jadwal</a>
+                            <a class="col-12 mini-link" href="/lihattemplat">Lihat Templat Jadwal</a>
                         </div>
                     </div>
                 </div>
@@ -45,8 +45,8 @@
                                     </tr>
                                     <tr>
                                         <th>#</th>
-                                        <th>Jam Awal</th>
-                                        <th>Durasi Segmen</th>
+                                        <th>Waktu Segmen</th>
+                                        <th>Durasi (dalam menit)</th>
                                         <th>
                                             <i class="fas fa-trash"></i>
                                         </th>
@@ -57,9 +57,9 @@
                                         <tr>
                                             <th> {{ $loop->iteration }}</th>
                                             <td> {{ $t->get('jam_awal') }} </td>
-                                            <td> {{ $t->get('durasi_template') }} &nbspiklan</td>
+                                            <td> {{ $t->get('durasi_template') }}</td>
                                             <td>
-                                                <a href="/removesegmen/{{$t->get('jam_awal')}}">
+                                                <a href="/hapussegmen/{{$t->get('jam_awal')}}">
                                                     <i class="fas fa-times"></i>
                                                 </a>
                                             </td>
@@ -75,13 +75,13 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-3">
-                                    <label for="nama_template" class="col-form-label">Nama Template</label>
+                                    <label for="nama_template" class="col-form-label">Nama Templat</label>
                                 </div>
                                 <div class="col-7">
                                     <input name="nama_template" class="form-control">
                                 </div>
                                 <div class="col-2">
-                                    <input class="btn btn-primary" type="submit" value="Create">
+                                    <input class="btn btn-primary" type="submit" value="Buat">
                                 </div>
                             </div>
                         </div>

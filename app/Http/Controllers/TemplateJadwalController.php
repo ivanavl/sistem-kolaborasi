@@ -30,7 +30,7 @@ class TemplateJadwalController extends Controller
         'durasi_template' => $request->durasi_template]);
         Session::push('template', $collection);
 
-        return redirect('/createtemplate');
+        return redirect('/buattemplat');
     }
 
     public function removesegmen($id)
@@ -55,7 +55,7 @@ class TemplateJadwalController extends Controller
             Session::put('template', $template);
         }
 
-        return redirect('/createtemplate');
+        return redirect('/buattemplat');
     }
         
      //Buat Template Baru
@@ -96,10 +96,10 @@ class TemplateJadwalController extends Controller
     
             Session::forget('template');
     
-            return redirect('/createjadwal')->with('success', 'Template iklan berhasil dibuat');
+            return redirect('/buatjadwal')->with('success', 'Templat iklan berhasil dibuat');
         }
 
-        return redirect('/createtemplate')->with('error', 'Nama template sudah ada');
+        return redirect('/buattemplat')->with('error', 'Nama templat sudah ada');
     }
     
     //View Lihat Template

@@ -4,21 +4,21 @@
     <div class="row justify-content-center full-height">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Pencarian Client</div>
+                <div class="card-header">Pencarian Klien</div>
 
                 {{ Form::open(['action' => 'ClientController@searchclient','menthod' => 'POST']) }}
                 <div class="card-body align-center-vh">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="nama_client" class="col-form-label">Nama Client</label>
+                                <label for="nama_client" class="col-form-label">Cari Klien</label>
                             </div>
                             <div class="col-7">
                                 <input class="form-control" name="search" type="text"
                                        placeholder="input nama client/alamat/contact person">
                             </div>
                             <div class="col-2">
-                                <input class="btn btn-primary" type="submit" value="Search">
+                                <input class="btn btn-primary" type="submit" value="Cari">
                             </div>
                         </div>
                     </div>
@@ -32,13 +32,13 @@
                                     <thead>
                                     <tr class="table-title">
                                         <th class="col-12" colspan="5">
-                                            <h3>Hasil Pencarian</h3>
+                                            <h3>Daftar Klien</h3>
                                         </th>
                                     </tr>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Nama Client</th>
-                                        <th>Alamat Client</th>
+                                        <th>Nama Klien</th>
+                                        <th>Alamat</th>
                                         <th>Contact Person</th>
                                         <th><i class="fas fa-check"></i></th>
                                     </tr>
@@ -51,7 +51,7 @@
                                             <td>{{$client->alamat_client}}</td>
                                             <td>{{$client->contact_person}}</td>
                                             <td>
-                                                <a href="/pilihclient/{{$client->id_client}}">
+                                                <a href="/pilihklien/{{$client->id_client}}">
                                                     <i class="fas fa-check-square"></i>
                                                 </a>
                                             </td>

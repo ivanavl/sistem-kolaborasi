@@ -4,7 +4,7 @@
     <div class="row justify-content-center full-height">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Lihat Request</div>
+                <div class="card-header">Lihat Permintaan Pemesanan</div>
                 @if(isset($lihat_request))
                     <div class="card-body align-center-vh">
                         <div class="content-width">

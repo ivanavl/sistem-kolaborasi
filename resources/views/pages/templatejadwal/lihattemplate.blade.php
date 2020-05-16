@@ -4,14 +4,14 @@
     <div class="row justify-content-center full-height">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Lihat Template</div>
+                <div class="card-header">Lihat Templat</div>
 
                 {{ Form::open(['action' => 'TemplateJadwalcontroller@showtemplate','method' => 'POST']) }}
                 <div class="card-body align-center-vh">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-3">
-                                <label for="nama_template" class="col-form-label">Nama Template</label>
+                                <label for="nama_template" class="col-form-label">Nama Templat</label>
                             </div>
                             <div class="col-7">
                                 <select id="template_jadwal" name="template_jadwal" class="form-control">
@@ -33,11 +33,11 @@
                                 </select>
                             </div>
                             <div class="col-2">
-                                <input class="btn btn-primary" type="submit" value="Search">
+                                <input class="btn btn-primary" type="submit" value="Cari">
                             </div>
                         </div>
                         <div class="row">
-                            <a class="col-12 mini-link" href="/createtemplate">Buat Template Baru</a>
+                            <a class="col-12 mini-link" href="/buattemplat">Buat Templat Baru</a>
                         </div>
                     </div>
                 </div>
@@ -50,13 +50,13 @@
                                     <thead>
                                     <tr class="table-title">
                                         <th colspan="3">
-                                            <h3>Template Jadwal</h3>
+                                            <h3>Templat Jadwal</h3>
                                         </th>
                                     </tr>
                                     <tr>
                                         <th>#</th>
-                                        <th>Jam Awal</th>
-                                        <th>Durasi Segmen</th>
+                                        <th>Waktu Segmen</th>
+                                        <th>Durasi (dalam menit)</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -64,11 +64,7 @@
                                         <tr>
                                             <th>{{ $loop->iteration }}</th>
                                             <td>{{$result->jam_awal}}</td>
-                                            @if($result->id_jenis_iklan == 1)
-                                                <td>{{$result->durasi_template}}&nbspiklan</td>
-                                            @else
-                                                <td>{{$result->durasi_template}}&nbspmenit</td>
-                                            @endif
+                                            <td>{{$result->durasi_template}}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
