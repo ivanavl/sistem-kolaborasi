@@ -30,7 +30,6 @@
                                                 <th>Versi</th>
                                                 <th>Kategori</th>
                                                 <th>Periode Tayang</th>
-                                                <th>Kategori</th>
                                                 <th>No Order</th>
                                                 <th>AE</th>
                                             </tr>
@@ -49,7 +48,6 @@
                                                             <td>{{$jadwal->priode_awal}}
                                                                 - {{$jadwal->priode_akhir}}</td>
                                                         @endif
-                                                        <td>{{$jadwal->nama_kategori}}</td>
                                                         <td>{{$jadwal->id_order_iklan}}</td>
                                                         <td>{{$jadwal->name}}</td>
                                                     @else

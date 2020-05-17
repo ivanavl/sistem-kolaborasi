@@ -40,6 +40,8 @@ class JadwalTrafficIklanController extends Controller
         {
             $this->validate($request,[
                 'tanggal_awal' => 'required'
+            ],[
+                'required' => ':attribute tidak boleh kosong'
             ]);
 
             $tanggal_awal = strtotime($request->input('tanggal_awal'));
@@ -57,7 +59,7 @@ class JadwalTrafficIklanController extends Controller
                 if(!$cek_jadwal->isEmpty())
                 {
                     $check = 1;
-                    return redirect('/createjadwal')->with('error', 
+                    return redirect('/buatjadwal')->with('error', 
                     'Jadwal tanggal '.$tanggal_awal.' sudah ada');
                 }
 
@@ -108,11 +110,13 @@ class JadwalTrafficIklanController extends Controller
                     }
                     $tanggal_awal = strtotime('+1 days', $tanggal_awal);
                 }while($tanggal_awal<=$tanggal_akhir);
-                return redirect('/createjadwal')->with('success', 'Jadwal berhasil dibuat');
+                return redirect('/buatjadwal')->with('success', 'Jadwal berhasil dibuat');
             }
         }else if($jenis_iklan == 2){
             $this->validate($request,[
                 'tanggal_awal' => 'required'
+            ],[
+                'required' => ':attribute tidak boleh kosong'
             ]);
 
             if($request->input('template_jadwal') != 3)
@@ -131,7 +135,7 @@ class JadwalTrafficIklanController extends Controller
                     if(!$cek_jadwal->isEmpty())
                     {
                         $check = 1;
-                        return redirect('/createjadwal')->with('error', 
+                        return redirect('/buatjadwal')->with('error', 
                         'Jadwal tanggal '.$tanggal_awal.' sudah ada');
                     }
                     $tanggal_awal = strtotime($tanggal_awal);
@@ -155,16 +159,19 @@ class JadwalTrafficIklanController extends Controller
                             $create->tanggal_jadwal = date('Y-m-d', $tanggal_awal);
                             $create->jam_jadwal = $isi_jadwal->jam_awal;
                             $create->id_jenis_iklan= $jenis_iklan;
+
                             $create->save();
                         }
                         $tanggal_awal = strtotime('+1 days', $tanggal_awal);
                     }while($tanggal_awal<=$tanggal_akhir);
         
-                    return redirect('/createjadwal')->with('success', 'Jadwal berhasil dibuat');
+                    return redirect('/buatjadwal')->with('success', 'Jadwal berhasil dibuat');
                 }
             }else{
                 $this->validate($request,[
                     'jam_jadwal' => 'required',
+                ],[
+                    'required' => ':attribute tidak boleh kosong'
                 ]);
                 $count = 1;
                 $check = 0;
@@ -214,9 +221,9 @@ class JadwalTrafficIklanController extends Controller
                     $create->id_jenis_iklan = $jenis_iklan;
                     $create->save();
                     
-                    return redirect('/createjadwal')->with('success', 'Jadwal berhasil dibuat');
+                    return redirect('/buatjadwal')->with('success', 'Jadwal berhasil dibuat');
                 }else{
-                    return redirect('/createjadwal')->with('error', 
+                    return redirect('/buatjadwal')->with('error', 
                     'Jadwal jam '.$request->input('jam_jadwal').' tanggal '.
                     $request->input('tanggal_awal').' sudah ada');
                 }
@@ -224,6 +231,8 @@ class JadwalTrafficIklanController extends Controller
         }else if($jenis_iklan == 3){
             $this->validate($request,[
                 'tanggal_awal' => 'required'
+            ],[
+                'required' => ':attribute tidak boleh kosong'
             ]);
 
             $tanggal_awal = strtotime($request->input('tanggal_awal'));
@@ -240,7 +249,7 @@ class JadwalTrafficIklanController extends Controller
                 if(!$cek_jadwal->isEmpty())
                 {
                     $check = 1;
-                    return redirect('/createjadwal')->with('error', 
+                    return redirect('/buatjadwal')->with('error', 
                     'Jadwal tanggal '.$tanggal_awal.' sudah ada');
                 }
                 $tanggal_awal = strtotime($tanggal_awal);
@@ -269,7 +278,7 @@ class JadwalTrafficIklanController extends Controller
                     $tanggal_awal = strtotime('+1 days', $tanggal_awal);
                 }while($tanggal_awal<=$tanggal_akhir);
     
-                return redirect('/createjadwal')->with('success', 'Jadwal berhasil dibuat');
+                return redirect('/buatjadwal')->with('success', 'Jadwal berhasil dibuat');
             }
         }
     }
@@ -284,6 +293,8 @@ class JadwalTrafficIklanController extends Controller
     {
         $this->validate($request,[
             'tanggal_jadwal' => 'required',
+        ],[
+            'required' => ':attribute tidak boleh kosong'
         ]);
         
         $date = $request->input('tanggal_jadwal');
@@ -327,6 +338,9 @@ class JadwalTrafficIklanController extends Controller
             'jumlah_tayang' => 'required|integer',
             'priode_awal' => 'required',
             'waktu_tayang' => 'required'
+        ],[
+            'required' => ':attribute tidak boleh kosong',
+            'integer' => ':attribute harus berbentuk angka'
         ]);
 
         $tanggal_awal = strtotime($request->priode_awal);
@@ -453,6 +467,8 @@ class JadwalTrafficIklanController extends Controller
             {
                 $this->validate($request,[
                     'nama_kategori' => 'required',
+                ],[
+                    'required' => ':attribute tidak boleh kosong'
                 ]);
     
                 $kategori = $request->input('nama_kategori');
@@ -488,6 +504,8 @@ class JadwalTrafficIklanController extends Controller
     {
         $this->validate($request,[
             'tanggal_jadwal' => 'required',
+        ],[
+            'required' => ':attribute tidak boleh kosong'
         ]);
 
         $jadwal_final = DB::table('jadwal_traffic_iklans')

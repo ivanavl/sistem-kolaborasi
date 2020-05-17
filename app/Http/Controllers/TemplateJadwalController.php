@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\TemplateJadwal;
 use App\TempIsiTemplate;
 use App\IsiTemplate;
+use App\JenisIklan;
 use Illuminate\Support\Facades\DB;
 use Session;
 
@@ -16,7 +17,9 @@ class TemplateJadwalController extends Controller
     public function createtemplate()
     {
         Session::reflash();
-        return view('pages.templatejadwal.createtemplate');
+        $jenis_iklan = JenisIklan::all();
+        return view('pages.templatejadwal.createtemplate')
+        ->with('jenis_iklan', $jenis_iklan);
     }
 
     public function tempstoretemplate(Request $request)
@@ -24,6 +27,9 @@ class TemplateJadwalController extends Controller
         $this->validate($request,[
             'jam_awal' => 'required',
             'durasi_template' => 'required|integer',
+        ],[
+            'required' => ':attribute tidak boleh kosong',
+            'integer' => ':attribute harus berbentuk angka'
         ]);
 
         $collection = collect(['jam_awal' => $request->jam_awal, 
@@ -63,6 +69,8 @@ class TemplateJadwalController extends Controller
     {
         $this->validate($request,[
             'nama_template' => 'required'
+        ],[
+            'required' => ':attribute tidak boleh kosong'
         ]);
 
         $nama_template_db = TemplateJadwal::all();
@@ -82,7 +90,7 @@ class TemplateJadwalController extends Controller
 
             $create1 = new TemplateJadwal;
             $create1->nama_template = $request->input('nama_template');
-            $create1->id_jenis_iklan = 1;
+            $create1->id_jenis_iklan = $request->input('jenis_iklan');
             $create1->save();
     
             foreach(Session::get('template') as $temp)

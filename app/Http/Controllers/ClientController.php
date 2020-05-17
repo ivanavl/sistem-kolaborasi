@@ -24,7 +24,10 @@ class ClientController extends Controller
             'contact_person' => 'required',
             'telepon_client' => 'required',
             'email_client' => 'required',
+        ],[
+            'required' => ':attribute tidak boleh kosong'
         ]);
+        
         $create = new Client;
         $create->nama_client = $request->input('nama_client');
         $create->alamat_client = $request->input('alamat_client');

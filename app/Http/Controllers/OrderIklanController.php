@@ -61,6 +61,8 @@ class OrderIklanController extends Controller
     {
         $this->validate($request,[
             'nama_produk' => 'required',
+        ],[
+            'required' => ':attribute tidak boleh kosong'
         ]);
 
         $create = new OrderIklan;
@@ -207,7 +209,7 @@ class OrderIklanController extends Controller
         '=','jenis_iklans.id_jenis_iklan')
         ->join('clients', 'order_iklans.id_client','=','clients.id_client')
         ->where('status_order', 'Confirmed')
-        ->where('order_iklans.id_jenis_iklan','!=',2)
+        ->where('order_iklans.id_jenis_iklan',1)
         ->orderBy('versi_iklan', 'ASC')
         ->get();
 
@@ -221,8 +223,8 @@ class OrderIklanController extends Controller
         ->join('jenis_iklans', 'order_iklans.id_jenis_iklan',
         '=','jenis_iklans.id_jenis_iklan')
         ->join('clients', 'order_iklans.id_client','=','clients.id_client')
-        ->where('order_iklans.id_jenis_iklan','!=',2)
         ->where('order_iklans.status_order', 'Confirmed')
+        ->where('order_iklans.id_jenis_iklan',1)
         ->where(function($q) use ($search){
         $q->orwhere('nama_produk', 'LIKE','%'.$search.'%')
         ->orwhere('nama_client', 'LIKE','%'.$search.'%')
@@ -253,6 +255,8 @@ class OrderIklanController extends Controller
     {
         $this->validate($request,[
             'versi_iklan' => 'required',
+        ],[
+            'required' => ':attribute tidak boleh kosong'
         ]);
 
         $query = OrderIklan::where('id_order_iklan','=',$request->input('id_order_iklan'))

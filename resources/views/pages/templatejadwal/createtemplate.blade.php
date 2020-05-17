@@ -80,6 +80,20 @@
                                 <div class="col-7">
                                     <input name="nama_template" class="form-control">
                                 </div>
+                                <div class="col-3">
+                                    <label for="jenis_iklan" class="col-form-label">Jenis Iklan</label>
+                                </div>
+                                <select id="jenis_iklan" name="jenis_iklan" class="form-control">
+                                    @foreach ($jenis_iklan as $js)
+                                        @if($loop->iteration == 1)
+                                            <option value="{{ $js->id_jenis_iklan }}" selected="selected">
+                                        @else
+                                            <option value="{{ $js->id_jenis_iklan }}">
+                                        @endif
+                                        {{ $js->nama_jenis_iklan }}
+                                        </option>
+                                        @endforeach
+                                </select>
                                 <div class="col-2">
                                     <input class="btn btn-primary" type="submit" value="Buat">
                                 </div>
