@@ -42,14 +42,14 @@ Route::group(['middleware' => 'auth', 'web'], function() {
     Route::post('/lihatjadwal/result', 'JadwalTrafficIklanController@showjadwalresult')->middleware('trafficiklan');
 
     //KonfirmasiBooking
-    Route::get('/konfirmasipemesanan', 'OrderIklanController@indexrequest')->middleware('trafficiklan');
-    Route::post('/konfirmasipemesanan', 'OrderIklanController@searchrequest')->middleware('trafficiklan');
-    Route::get('/konfirmasipemesanan/{id}', 'OrderIklanController@showkonfirmasibooking')->middleware('trafficiklan');
-    Route::post('/konfirmasipemesanan/konfirmasi', 'OrderIklanController@konfirmasibooking')->middleware('trafficiklan');
+    Route::get('/konfirmasipermintaanpemesanan', 'OrderIklanController@indexrequest')->middleware('trafficiklan');
+    Route::post('/konfirmasipermintaanpemesanan', 'OrderIklanController@searchrequest')->middleware('trafficiklan');
+    Route::get('/konfirmasipermintaanpemesanan/{id}', 'OrderIklanController@showkonfirmasibooking')->middleware('trafficiklan');
+    Route::post('/konfirmasipermintaanpemesanan/konfirmasi', 'OrderIklanController@konfirmasibooking')->middleware('trafficiklan');
 
     //CariJadwalKosong
-    Route::get('/carijadwal', 'JadwalTrafficIklanController@indexcarijadwal')->middleware('marketing');
-    Route::post('/carijadwal/hasil', 'JadwalTrafficIklanController@carijadwalresult')->middleware('marketing');
+    Route::get('/carijadwalkosong', 'JadwalTrafficIklanController@indexcarijadwal')->middleware('marketing');
+    Route::post('/carijadwalkosong/hasil', 'JadwalTrafficIklanController@carijadwalresult')->middleware('marketing');
     Route::post('/keepjadwal', 'OrderIklanController@keepjadwal')->middleware('marketing');
 
     //RequestBooking
@@ -72,7 +72,7 @@ Route::group(['middleware' => 'auth', 'web'], function() {
     Route::post('/perbaruiversi/perbarui', 'OrderIklanController@updateversi')->middleware('produksi');
 
     //LihatJadwalFinal
-    Route::get('/lihatjadwalakhir', 'JadwalTrafficIklanController@indexjadwalfinal')->middleware('studio');
-    Route::post('lihatjadwalakhir/hasil', 'JadwalTrafficIklanController@showjadwalfinal')->middleware('studio');
-    Route::post('lihatjadwalakhir/hasil/export', 'JadwalTrafficIklanController@exportjadwal')->middleware('studio');
+    Route::get('/lihatjadwalfinal', 'JadwalTrafficIklanController@indexjadwalfinal')->middleware('studio');
+    Route::post('lihatjadwalfinal/hasil', 'JadwalTrafficIklanController@showjadwalfinal')->middleware('studio');
+    Route::post('lihatjadwalfinal/hasil/export', 'JadwalTrafficIklanController@exportjadwal')->middleware('studio');
 });

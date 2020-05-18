@@ -53,7 +53,7 @@
                                             @if($request->status_order == 'Requested')
                                                 <td>
                                                     <a type="button"
-                                                       href="/konfirmasipemesanan/{{$request->id_order_iklan}}"
+                                                       href="/konfirmasipermintaanpemesanan/{{$request->id_order_iklan}}"
                                                        class="btn btn-primary">{{$request->status_order}}</a>
                                                 </td>
                                             @else

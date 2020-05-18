@@ -491,7 +491,7 @@ class JadwalTrafficIklanController extends Controller
             ->with('resultAltCount', $resultAltCount)->with('counter', $request->jumlah_tayang);
         }
 
-        return redirect('/carijadwal')->with('error', 'Jadwal tidak ditemukan');
+        return redirect('/carijadwalkosong')->with('error', 'Jadwal tidak ditemukan');
     }
 
     //Lihat Jadwal Final
@@ -524,7 +524,7 @@ class JadwalTrafficIklanController extends Controller
             return view('pages.lihatjadwalfinal.lihatjadwalfinal')->with('jadwal_final', $jadwal_final)
             ->with('request', $request);
         }else{
-            return redirect('/lihatjadwalakhir')->with('error', 'Jadwal tidak tersedia');
+            return redirect('/lihatjadwalfinal')->with('error', 'Jadwal tidak tersedia');
         }
 
     }

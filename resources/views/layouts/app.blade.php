@@ -57,10 +57,10 @@
                             <span>Buat Jadwal</span>
                         </a>
                     </li>
-                    <li class="{{ (request()->is('konfirmasipemesanan*')) ? 'active' : '' }}">
-                        <a href="/konfirmasipemesanan">
+                    <li class="{{ (request()->is('konfirmasipermintaanpemesanan*')) ? 'active' : '' }}">
+                        <a href="/konfirmasipermintaanpemesanan">
                             <i class="fas fa-tasks"></i>
-                            <span>Konfirmasi Pemesanan @include('layouts.notifKonfirmasi')</span>
+                            <span>Konfirmasi Permintaan Pemesanan @include('layouts.notifKonfirmasi')</span>
                         </a>
                     </li>
                     <li class="{{ (request()->is('lihatjadwal*')) && ! (request()->is('lihatjadwalfinal*')) ? 'active' : '' }}">
@@ -71,10 +71,10 @@
                     </li>
                     @endif
                     @if (Auth::user()->role_id == App\Role::MARKETING || Auth::user()->role_id == App\Role::TRAFFIC_IKLAN)
-                    <li class="{{ (request()->is('carijadwal*')) || (request()->is('lihatklien*')) || (request()->is('buatorder*')) ? 'active' : '' }}">
-                        <a href="/carijadwal">
+                    <li class="{{ (request()->is('carijadwalkosong*')) || (request()->is('lihatklien*')) || (request()->is('buatorder*')) ? 'active' : '' }}">
+                        <a href="/carijadwalkosong">
                             <i class="fas fa-search"></i>
-                            <span>Cari Jadwal</span>
+                            <span>Cari Jadwal Kosong</span>
                         </a>
                     </li>
                     <li class="{{ (request()->is('lihatpermintaan*')) ? 'active' : '' }}">
@@ -94,9 +94,9 @@
                     @endif
                     @if (Auth::user()->role_id == App\Role::STUDIO || Auth::user()->role_id == App\Role::TRAFFIC_IKLAN)
                     <li class="{{ (request()->is('lihatjadwalfinal*')) ? 'active' : '' }}">
-                        <a href="/lihatjadwalakhir">
+                        <a href="/lihatjadwalfinal">
                             <i class="fas fa-file-alt"></i>
-                            <span>Lihat Jadwal Akhir</span>
+                            <span>Lihat Jadwal Final</span>
                         </a>
                     </li>
                     @endif
