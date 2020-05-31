@@ -5,15 +5,15 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="col-5">Jadwal Akhir 
-                    @if($request->jenis_iklan == 1)
-                        Spot Iklan 
-                    @elseif($request->jenis_iklan == 2)
-                        Talkshow 
-                    @elseif($request->jenis_iklan == 3)
-                        Ads Lips
-                    @endif
-                    Tanggal {{$request->tanggal_jadwal}}
+                    <div class="col-5">Jadwal Akhir
+                        @if($request->jenis_iklan == 1)
+                            Spot Iklan
+                        @elseif($request->jenis_iklan == 2)
+                            Talkshow
+                        @elseif($request->jenis_iklan == 3)
+                            Ads Lips
+                        @endif
+                        {{ \Carbon\Carbon::parse($request->tanggal_jadwal)->translatedFormat('l, j F Y') }}
                     </div>
                 </div>
                 @if(isset($request))
@@ -45,13 +45,12 @@
                                                         @if(is_null($jadwal->priode_awal))
                                                             <td></td>
                                                         @else
-                                                            <td>{{$jadwal->priode_awal}}
-                                                                - {{$jadwal->priode_akhir}}</td>
+                                                            <td>{{ \Carbon\Carbon::parse($jadwal->priode_awal)->translatedFormat('l, j F Y')}}
+                                                                s.d. {{ \Carbon\Carbon::parse($jadwal->priode_akhir)->translatedFormat('l, j F Y') }}</td>
                                                         @endif
                                                         <td>{{$jadwal->id_order_iklan}}</td>
                                                         <td>{{$jadwal->name}}</td>
                                                     @else
-                                                        <td></td>
                                                         <td></td>
                                                         <td></td>
                                                         <td></td>

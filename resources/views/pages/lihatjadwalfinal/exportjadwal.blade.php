@@ -26,7 +26,7 @@
                         <thead>
                             <tr class="table-title">
                                 <th colspan="8">
-                                    <h3>Jadwal Traffic Iklan Spot Iklan Tanggal {{$request->tanggal_jadwal}}</h3>
+                                    <h3>Jadwal Traffic Iklan Spot Iklan {{ \Carbon\Carbon::parse($request->tanggal_jadwal)->translatedFormat('l, j F Y') }}</h3>
                                 </th>
                             </tr>
                             <tr>
@@ -77,13 +77,13 @@
                         <thead>
                             <tr class="table-title">
                                 <th colspan="8">
-                                    <h3>Jadwal Traffic Iklan 
+                                    <h3>Jadwal Traffic Iklan
                                     @if($request->jenis_iklan == 2)
-                                        Talkshow 
+                                        Talkshow
                                     @else
-                                        Ads Lips 
-                                    @endif    
-                                    Tanggal {{$request->tanggal_jadwal}}</h3>
+                                        Ads Lips
+                                    @endif
+                                        {{ \Carbon\Carbon::parse($request->tanggal_jadwal)->translatedFormat('l, j F Y') }}</h3>
                                 </th>
                             </tr>
                             <tr>

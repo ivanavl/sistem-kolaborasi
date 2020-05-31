@@ -44,12 +44,12 @@
                                     @foreach($lihat_requests as $request)
                                         <tr>
                                             <td>{{$request->id_order_iklan}}</td>
-                                            <td>{{$request->tanggal_request}}</td>
+                                            <td>{{ \Carbon\Carbon::parse($request->tanggal_request)->translatedFormat('l, j F Y') }}</td>
                                             <td>{{$request->nama_jenis_iklan}}</td>
                                             <td>{{$request->nama_client}}</td>
                                             <td>{{$request->nama_produk}}</td>
-                                            <td>{{$request->priode_awal . " s.d. " . $request->priode_akhir}}</td>
-                                            <td>{{$request->tanggal_konfirmasi}}</td>
+                                            <td>{{\Carbon\Carbon::parse($request->priode_awal)->translatedFormat('l, j F Y') . " s.d. " . \Carbon\Carbon::parse($request->priode_akhir)->translatedFormat('l, j F Y') }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($request->tanggal_konfirmasi)->translatedFormat('l, j F Y') }}</td>
                                             @if($request->status_order == 'Requested')
                                                 <td>
                                                     <a type="button"

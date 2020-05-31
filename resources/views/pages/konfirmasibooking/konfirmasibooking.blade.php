@@ -65,7 +65,7 @@
                                         @foreach ($result2 as $result_2)
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <label class="col-form-label">{{$result_2->tanggal_jadwal}}</label>
+                                                    <label class="col-form-label">{{ \Carbon\Carbon::parse($result_2->tanggal_jadwal)->translatedFormat('l, j F Y') }}</label>
                                                 </div>
                                                 <div class="col-6">
                                                     <label class="col-form-label">{{$result_2->jam_jadwal}}</label>
@@ -79,19 +79,21 @@
                     @endif
                 </div>
                 <div class="card-footer">
-                    <div class="col-2">
-                        {{ Form::open(['action' => 'OrderIklanController@konfirmasibooking','menthod' => 'POST']) }}
-                        {{Form::hidden('konfirmasi', 1)}}
-                        {{Form::hidden('id_order_iklan', $result_1->id_order_iklan)}}
-                        <input class="btn btn-primary" type="submit" value="Konfirmasi Pesanan">
-                        {{ Form::close() }}
-                    </div>
-                    <div class="col-2">
-                        {{ Form::open(['action' => 'OrderIklanController@konfirmasibooking','menthod' => 'POST']) }}
-                        {{Form::hidden('konfirmasi', 0)}}
-                        {{Form::hidden('id_order_iklan', $result_1->id_order_iklan)}}
-                        <input class="btn btn-primary" type="submit" value="Batalkan Pesanan">
-                        {{ Form::close() }}
+                    <div class="row">
+                        <div class="col">
+                            {{ Form::open(['action' => 'OrderIklanController@konfirmasibooking','menthod' => 'POST']) }}
+                            {{Form::hidden('konfirmasi', 1)}}
+                            {{Form::hidden('id_order_iklan', $result_1->id_order_iklan)}}
+                            <input class="btn btn-primary" type="submit" value="Konfirmasi Pesanan">
+                            {{ Form::close() }}
+                        </div>
+                        <div class="col">
+                            {{ Form::open(['action' => 'OrderIklanController@konfirmasibooking','menthod' => 'POST']) }}
+                            {{Form::hidden('konfirmasi', 0)}}
+                            {{Form::hidden('id_order_iklan', $result_1->id_order_iklan)}}
+                            <input class="btn btn-primary" type="submit" value="Batalkan Pesanan">
+                            {{ Form::close() }}
+                        </div>
                     </div>
                 </div>
             </div>

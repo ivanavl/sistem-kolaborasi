@@ -18,6 +18,7 @@
 </head>
 <body>
 <div id="app">
+    @include('layouts.message')
     <div class="wrapper">
         <!-- Sidebar  -->
         @auth
@@ -158,7 +159,6 @@
                 <div id="content" class="customscroll align-center-vh">
                     <div class="container full-height">
             @endguest
-                    @include('layouts.message')
                     @yield('content')
                     </div>
                 </div>

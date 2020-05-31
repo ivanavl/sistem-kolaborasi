@@ -121,11 +121,11 @@
                 </div>
             </div>
             <div class="card">
-                <div class="card-header" id="accordion-heading-2" data-toggle="collapse"
-                     data-target="#accordion-menu-2" aria-expanded="false" aria-controls="accordion-menu-2">
+                <div class="card-header" id="accordion-heading-3" data-toggle="collapse"
+                     data-target="#accordion-menu-3" aria-expanded="false" aria-controls="accordion-menu-3">
                     Buat Jadwal - Ads Lips
                 </div>
-                <div id="accordion-menu-2" class="collapse" aria-labelledby="accordion-heading-2"
+                <div id="accordion-menu-3" class="collapse" aria-labelledby="accordion-heading-3"
                      data-parent="#accordion-menu">
                     {{ Form::open(['action' => 'JadwalTrafficIklanController@storejadwal', 'menthod' => 'POST']) }}
                     <div class="card-body align-center-vh">

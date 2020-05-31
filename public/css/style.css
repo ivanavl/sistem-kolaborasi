@@ -91,7 +91,7 @@ span {
 }
 
 #main-container {
-    width: 83vw;
+    width: 70vw;
 }
 
 #main-container.active {
@@ -109,7 +109,7 @@ span {
 }
 
 #sidebar {
-    width: 17vw;
+    width: 30vw;
     background: #444444;
     color: #fff;
     transition: all 0.3s;
@@ -335,6 +335,41 @@ a.article:hover {
     text-decoration: underline;
 }
 
+.modal-body{
+    padding: 0;
+}
+
+.modal-message{
+    background-color: #EEE;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-top: 1px solid #999;
+}
+
+.modal-message:first-child{
+    border-top-right-radius: 0.3rem;
+    border-top-left-radius: 0.3rem;
+    border-top: 0;
+}
+
+.modal-message:last-child{
+    border-bottom-right-radius: 0.3rem;
+    border-bottom-left-radius: 0.3rem;
+}
+
+.modal-dialog{
+    width: fit-content;
+    max-width: 80vw !important;
+}
+
+.modal-fa{
+    font-size: 2em;
+    color: green;
+    margin-right: 1rem;
+}
+
 /* ---------------------------------------------------
     CUSTOM TABLE
 ----------------------------------------------------- */
@@ -358,6 +393,7 @@ a.article:hover {
     color:  #ffffff;
     top: -1px;
     position: sticky;
+    z-index: 1;
 }
 
 .table-title thead th{
@@ -388,6 +424,15 @@ a.article:hover {
 
 .table-bordered td, .table-bordered th{
     border: 1px solid black;
+}
+
+.table-disabled td{
+    background-color: #999999;
+}
+
+td .form-check-input{
+    position: relative;
+    margin: auto;
 }
 
 /* ---------------------------------------------------

@@ -54,7 +54,7 @@
                                     <tr class="table-title">
                                         <th colspan="9">
                                             <h3>Jadwal {{$request->jenis_iklan}}
-                                                tanggal {{$request->tanggal_jadwal}}</h3>
+                                                {{ \Carbon\Carbon::parse($request->tanggal_jadwal)->translatedFormat('l, j F Y') }}</h3>
                                         </th>
                                     </tr>
                                     <tr>
@@ -78,8 +78,7 @@
                                             <td>{{$result->versi_iklan}}</td>
                                             <td>{{$result->nama_kategori}}</td>
                                             @if($result->priode_awal != null)
-                                                <td>{{$result->priode_awal}}
-                                                    s.d. {{$result->priode_akhir}}</td>
+                                                <td>{{\Carbon\Carbon::parse($request->priode_awal)->translatedFormat('l, j F Y') . " s.d. " . \Carbon\Carbon::parse($request->priode_akhir)->translatedFormat('l, j F Y') }}</td>
                                             @else
                                                 <td></td>
                                             @endif

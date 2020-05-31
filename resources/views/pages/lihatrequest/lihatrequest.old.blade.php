@@ -29,15 +29,15 @@
                                     @foreach($lihat_requests1 as $request)
                                         <tr>
                                             <td>{{$request->id_order_iklan}}</td>
-                                            <td>{{$request->tanggal_request}}</td>
+                                            <td>{{ \Carbon\Carbon::parse($request->tanggal_request)->translatedFormat('l, j F Y') }}</td>
                                             <td>{{$request->nama_jenis_iklan}}</td>
                                             <td>{{$request->nama_client}}</td>
                                             <td>{{$request->nama_produk}}</td>
                                             <td>{{$request->versi_iklan}}</td>
-                                            <td>{{$request->priode_awal . " s.d. " . $request->priode_akhir}}</td>
+                                            <td>{{\Carbon\Carbon::parse($request->priode_awal)->translatedFormat('l, j F Y') . " s.d. " . \Carbon\Carbon::parse($request->priode_akhir)->translatedFormat('l, j F Y') }}</td>
                                             <td>{{$request->nama_kategori}}</td>
                                             <td>{{$request->name}}</td>
-                                            <td>{{$request->tanggal_konfirmasi}}</td>
+                                            <td>{{ \Carbon\Carbon::parse($request->tanggal_konfirmasi)->translatedFormat('l, j F Y') }}</td>
                                             <td>
                                                 <a type="button" href="/lihatrequestdetail/{{$request->id_order_iklan}}"
                                                    class="btn btn-primary">{{$request->status_order}}</a>
@@ -81,15 +81,15 @@
                                     @foreach($lihat_requests2 as $request)
                                         <tr>
                                             <td>{{$request->id_order_iklan}}</td>
-                                            <td>{{$request->tanggal_request}}</td>
+                                            <td>{{ \Carbon\Carbon::parse($request->tanggal_request)->translatedFormat('l, j F Y') }}</td>
                                             <td>{{$request->nama_jenis_iklan}}</td>
                                             <td>{{$request->nama_client}}</td>
                                             <td>{{$request->nama_produk}}</td>
                                             <td>{{$request->versi_iklan}}</td>
-                                            <td>{{$request->priode_awal . " s.d. " . $request->priode_akhir}}</td>
+                                            <td>{{\Carbon\Carbon::parse($request->priode_awal)->translatedFormat('l, j F Y') . " s.d. " . \Carbon\Carbon::parse($request->priode_akhir)->translatedFormat('l, j F Y') }}</td>
                                             <td>{{$request->nama_kategori}}</td>
                                             <td>{{$request->name}}</td>
-                                            <td>{{$request->tanggal_konfirmasi}}</td>
+                                            <td>{{ \Carbon\Carbon::parse($request->tanggal_konfirmasi)->translatedFormat('l, j F Y') }}</td>
                                             <td>
                                                 <a type="button" href="/lihatrequestdetail/{{$request->id_order_iklan}}"
                                                    class="btn btn-primary">{{$request->status_order}}</a>

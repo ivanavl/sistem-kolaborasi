@@ -44,16 +44,13 @@ function countSelected(){
         $('input[name="jadwal[]"]:not(:checked)').attr('disabled',false);
         $('#keep-jadwal').attr('disabled',true);
 	}
-    
+
 }
 
 $(function () {
     $("#tooltip").tooltip();
 });
 
-$(document).ready(function() {
 
-	$(".alert").fadeTo(2000, 500).slideUp(500, function() {
-		$(".alert").slideUp(500);
-	});
-});
+$('#messageModal').modal('show')
+// setTimeout(() => { $("#messageModal").modal('hide')},5000)

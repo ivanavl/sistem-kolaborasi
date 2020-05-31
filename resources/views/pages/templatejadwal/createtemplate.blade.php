@@ -10,16 +10,16 @@
                 <div class="card-body align-center-vh">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-2">
+                            <div class="col-3">
                                 <label for="jam_awal" class="col-form-label">Waktu Segmen</label>
                             </div>
-                            <div class="col-3">
+                            <div class="col-2">
                                 <input type="time" name="jam_awal" class="form-control">
                             </div>
-                            <div class="col-2">
+                            <div class="col-3">
                                 <label for="durasi_template" class="col-form-label">Durasi (dalam menit)</label>
                             </div>
-                            <div class="col-3">
+                            <div class="col-2">
                                 <input type="number" name="durasi_template" class="form-control">
                             </div>
                             <div class="col-2">
@@ -77,27 +77,30 @@
                                 <div class="col-3">
                                     <label for="nama_template" class="col-form-label">Nama Templat</label>
                                 </div>
-                                <div class="col-7">
+                                <div class="col-9">
                                     <input name="nama_template" class="form-control">
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-3">
                                     <label for="jenis_iklan" class="col-form-label">Jenis Iklan</label>
                                 </div>
-                                <select id="jenis_iklan" name="jenis_iklan" class="form-control">
-                                    @foreach ($jenis_iklan as $js)
-                                        @if($loop->iteration == 1)
-                                            <option value="{{ $js->id_jenis_iklan }}" selected="selected">
-                                        @else
-                                            <option value="{{ $js->id_jenis_iklan }}">
-                                        @endif
-                                        {{ $js->nama_jenis_iklan }}
-                                        </option>
-                                        @endforeach
-                                </select>
-                                <div class="col-2">
-                                    <input class="btn btn-primary" type="submit" value="Buat">
+                                <div class="col-9">
+                                    <select id="jenis_iklan" name="jenis_iklan" class="form-control">
+                                        @foreach ($jenis_iklan as $js)
+                                            @if($loop->iteration == 1)
+                                                <option value="{{ $js->id_jenis_iklan }}" selected="selected">
+                                            @else
+                                                <option value="{{ $js->id_jenis_iklan }}">
+                                                    @endif
+                                                    {{ $js->nama_jenis_iklan }}
+                                                </option>
+                                                @endforeach
+                                    </select>
                                 </div>
                             </div>
+                            <br>
+                            <input class="btn btn-primary" type="submit" value="Buat" style="float:right">
                         </div>
                     </div>
                     {{ Form::close() }}

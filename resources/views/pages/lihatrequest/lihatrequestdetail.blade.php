@@ -23,7 +23,7 @@
                                     @foreach($lihat_request as $request)
                                         <tr>
                                             <td>{{$request->nama_jenis_iklan}}</td>
-                                            <td>{{$request->tanggal_jadwal}}</td>
+                                            <td>{{ \Carbon\Carbon::parse($request->tanggal_jadwal)->translatedFormat('l, j F Y') }}</td>
                                             <td>{{$request->jam_jadwal}}</td>
                                             <td>{{$request->nama_produk}}</td>
                                             <td>{{$request->nama_kategori}}</td>
