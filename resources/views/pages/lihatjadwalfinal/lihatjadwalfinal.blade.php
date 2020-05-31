@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="col-5">Jadwal Akhir
+                    <div class="col-12">Jadwal Akhir
                         @if($request->jenis_iklan == 1)
                             Spot Iklan
                         @elseif($request->jenis_iklan == 2)
@@ -45,8 +45,7 @@
                                                         @if(is_null($jadwal->priode_awal))
                                                             <td></td>
                                                         @else
-                                                            <td>{{ \Carbon\Carbon::parse($jadwal->priode_awal)->translatedFormat('l, j F Y')}}
-                                                                s.d. {{ \Carbon\Carbon::parse($jadwal->priode_akhir)->translatedFormat('l, j F Y') }}</td>
+                                                            <td>{{\Carbon\Carbon::parse($jadwal->priode_awal)->translatedFormat('l, j F Y') . " s.d. " . \Carbon\Carbon::parse($jadwal->priode_akhir)->translatedFormat('l, j F Y') }}</td>
                                                         @endif
                                                         <td>{{$jadwal->id_order_iklan}}</td>
                                                         <td>{{$jadwal->name}}</td>
