@@ -78,7 +78,7 @@
                                             <td>{{$result->versi_iklan}}</td>
                                             <td>{{$result->nama_kategori}}</td>
                                             @if($result->priode_awal != null)
-                                                <td>{{\Carbon\Carbon::parse($request->priode_awal)->translatedFormat('l, j F Y') . " s.d. " . \Carbon\Carbon::parse($request->priode_akhir)->translatedFormat('l, j F Y') }}</td>
+                                                <td>{{\Carbon\Carbon::parse($result->priode_awal)->translatedFormat('l, j F Y') . " s.d. " . \Carbon\Carbon::parse($result->priode_akhir)->translatedFormat('l, j F Y') }}</td>
                                             @else
                                                 <td></td>
                                             @endif

@@ -51,8 +51,7 @@
                                     @if(is_null($jadwal->priode_awal))
                                         <td></td>
                                     @else
-                                        <td>{{$jadwal->priode_awal}}
-                                            - {{$jadwal->priode_akhir}}</td>
+                                        <td>{{\Carbon\Carbon::parse($jadwal->priode_awal)->translatedFormat('l, j F Y') . " s.d. " . \Carbon\Carbon::parse($jadwal->priode_akhir)->translatedFormat('l, j F Y') }}</td>
                                     @endif
                                     <td>{{$jadwal->nama_kategori}}</td>
                                     <td>{{$jadwal->id_order_iklan}}</td>
@@ -105,8 +104,7 @@
                                     @if(is_null($jadwal->priode_awal))
                                         <td></td>
                                     @else
-                                        <td>{{$jadwal->priode_awal}}
-                                            - {{$jadwal->priode_akhir}}</td>
+                                        <td>{{\Carbon\Carbon::parse($jadwal->priode_awal)->translatedFormat('l, j F Y') . " s.d. " . \Carbon\Carbon::parse($jadwal->priode_akhir)->translatedFormat('l, j F Y') }}</td>
                                     @endif
                                     <td>{{$jadwal->id_order_iklan}}</td>
                                     <td>{{$jadwal->name}}</td>
