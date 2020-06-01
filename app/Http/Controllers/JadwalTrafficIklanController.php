@@ -407,6 +407,7 @@ class JadwalTrafficIklanController extends Controller
                     'order_iklans.nama_produk as nama_produk',
                     'kategoris.nama_kategori as nama_kategori'
                 )
+                ->orderBy('jam_jadwal')
                 ->orderBy('tanggal_jadwal');
 
             if ($waktu_tayang == 1) {
@@ -516,6 +517,7 @@ class JadwalTrafficIklanController extends Controller
                         'order_iklans.nama_produk as nama_produk',
                         'kategoris.nama_kategori as nama_kategori'
                     )
+                    ->orderBy('jam_jadwal')
                     ->orderBy('tanggal_jadwal');
 
                 if ($i == 1) {
