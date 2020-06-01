@@ -52,7 +52,6 @@ class JadwalTrafficIklanController extends Controller
             $check = 0;
             while ($tanggal_awal <= $tanggal_akhir) {
                 $tanggal_awal = date('Y-m-d', $tanggal_awal);
-                echo $tanggal_awal;
                 $cek_jadwal = JadwalTrafficIklan::where('tanggal_jadwal', '=', $tanggal_awal)
                     ->where('id_jenis_iklan', '=', $jenis_iklan)->get();
                 if (!$cek_jadwal->isEmpty()) {
@@ -185,15 +184,11 @@ class JadwalTrafficIklanController extends Controller
                             $request->input('tanggal_awal'))
                             ->where('jam_jadwal', '=', $jam_jadwal)
                             ->where('id_jenis_iklan', '=', $jenis_iklan)->get();
-                        echo $cek_jadwal;
-                        echo '-';
-                        echo $jam_jadwal;
                         if (!$cek_jadwal->isEmpty()) {
                             $check = 1;
                         }
                         $jam_jadwal = date('H:i:s', strtotime('-1 minutes', strtotime($jam_jadwal)));
                         $count++;
-                        echo $check;
                     }
                 }
 
