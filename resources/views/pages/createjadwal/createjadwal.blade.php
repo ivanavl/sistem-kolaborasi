@@ -18,7 +18,7 @@
                                     <label for="tanggal_awal" class="col-form-label">Tanggal Awal</label>
                                 </div>
                                 <div class="col-8">
-                                    <input name="tanggal_awal" type="date" class="form-control">
+                                    <input name="tanggal_awal" type="date" min={{\Carbon\Carbon::now()}} class="form-control">
                                 </div>
                             </div>
                             <div class="row">
@@ -26,7 +26,7 @@
                                     <label for="tanggal_akhir" class="col-form-label">Tanggal Akhir</label>
                                 </div>
                                 <div class="col-8">
-                                    <input name="tanggal_akhir" type="date" class="form-control">
+                                    <input name="tanggal_akhir" type="date"  min={{\Carbon\Carbon::now()}} class="form-control">
                                 </div>
                             </div>
                             <div class="row">

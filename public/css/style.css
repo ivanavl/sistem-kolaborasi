@@ -91,7 +91,7 @@ span {
 }
 
 #main-container {
-    width: 70vw;
+    width: 73vw;
 }
 
 #main-container.active {
@@ -109,7 +109,7 @@ span {
 }
 
 #sidebar {
-    width: 30vw;
+    width: 27vw;
     background: #444444;
     color: #fff;
     transition: all 0.3s;
@@ -341,7 +341,7 @@ a.article:hover {
 
 .modal-message{
     background-color: #EEE;
-    font-size: 2rem;
+    font-size: 1.5rem;
     display: flex;
     align-items: center;
     padding: 1rem;
@@ -369,6 +369,7 @@ a.article:hover {
     color: green;
     margin-right: 1rem;
 }
+
 
 /* ---------------------------------------------------
     CUSTOM TABLE

@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="col-9">
                                     <label for="priode_tayang"
-                                           class="col-form-label">{{\Carbon\Carbon::parse($collection->get('priode_awal')->translatedFormat('l, j F Y') . " s.d. " . \Carbon\Carbon::parse($collection->get('priode_akhir'))->translatedFormat('l, j F Y') }}</label>
+                                           class="col-form-label">{{\Carbon\Carbon::parse($collection->get('priode_awal'))->translatedFormat('l, j F Y') . " - " . \Carbon\Carbon::parse($collection->get('priode_akhir'))->translatedFormat('l, j F Y') }}</label>
                                 </div>
                             </div>
                         @endif

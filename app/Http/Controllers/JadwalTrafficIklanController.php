@@ -58,7 +58,7 @@ class JadwalTrafficIklanController extends Controller
                 if (!$cek_jadwal->isEmpty()) {
                     $check = 1;
                     return redirect('/buatjadwal')->with('error',
-                        'Jadwal tanggal ' . $tanggal_awal . ' sudah ada');
+                        'Jadwal ' . \Carbon\Carbon::parse($tanggal_awal)->translatedFormat('l, j F Y') . ' sudah ada');
                 }
 
                 $tanggal_awal = strtotime($tanggal_awal);
@@ -125,7 +125,7 @@ class JadwalTrafficIklanController extends Controller
                     if (!$cek_jadwal->isEmpty()) {
                         $check = 1;
                         return redirect('/buatjadwal')->with('error',
-                            'Jadwal tanggal ' . $tanggal_awal . ' sudah ada');
+                            'Jadwal ' . \Carbon\Carbon::parse($tanggal_awal)->translatedFormat('l, j F Y') . ' sudah ada');
                     }
                     $tanggal_awal = strtotime($tanggal_awal);
                     $tanggal_awal = strtotime('+1 days', $tanggal_awal);
@@ -207,8 +207,9 @@ class JadwalTrafficIklanController extends Controller
                     return redirect('/buatjadwal')->with('success', 'Jadwal berhasil dibuat');
                 } else {
                     return redirect('/buatjadwal')->with('error',
-                        'Jadwal jam ' . $request->input('jam_jadwal') . ' tanggal ' .
-                        $request->input('tanggal_awal') . ' sudah ada');
+                        'Jadwal jam ' . $request->input('jam_jadwal') . ' untuk ' . 
+                        \Carbon\Carbon::parse($request->input('tanggal_awal'))->translatedFormat('l, j F Y')
+                         . ' sudah ada');
                 }
             }
         } else if ($jenis_iklan == 3) {
@@ -231,7 +232,7 @@ class JadwalTrafficIklanController extends Controller
                 if (!$cek_jadwal->isEmpty()) {
                     $check = 1;
                     return redirect('/buatjadwal')->with('error',
-                        'Jadwal tanggal ' . $tanggal_awal . ' sudah ada');
+                        'Jadwal ' . \Carbon\Carbon::parse($tanggal_awal)->translatedFormat('l, j F Y') . ' sudah ada');
                 }
                 $tanggal_awal = strtotime($tanggal_awal);
                 $tanggal_awal = strtotime('+1 days', $tanggal_awal);

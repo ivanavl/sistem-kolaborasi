@@ -60,13 +60,13 @@
                                 <label for="jumlah_tayang" class="col-form-label">Periode Tayang</label>
                             </div>
                             <div class="col-4">
-                                <input type="date" class="form-control" name="priode_awal">
+                                <input type="date" class="form-control" min={{\Carbon\Carbon::now()}} name="priode_awal">
                             </div>
                             <div class="col-1 align-center-vh">
-                                <label class="col-form-label"> s.d. </label>
+                                <label class="col-form-label"> - </label>
                             </div>
                             <div class="col-4">
-                                <input type="date" class="form-control" name="priode_akhir">
+                                <input type="date" class="form-control" min={{\Carbon\Carbon::now()}} name="priode_akhir">
                             </div>
                         </div>
                         <div class="row">

@@ -49,7 +49,7 @@
                                             <td>{{$order->nama_jenis_iklan}}</td>
                                             <td>{{$order->nama_client}}</td>
                                             <td>{{$order->nama_produk}}</td>
-                                            <td>{{\Carbon\Carbon::parse($order->priode_awal)->translatedFormat('l, j F Y') . " s.d. " . \Carbon\Carbon::parse($order->priode_akhir)->translatedFormat('l, j F Y')}}</td>
+                                            <td>{{\Carbon\Carbon::parse($order->priode_awal)->translatedFormat('l, j F Y') . " - " . \Carbon\Carbon::parse($order->priode_akhir)->translatedFormat('l, j F Y')}}</td>
                                             <td>{{ \Carbon\Carbon::parse($order->tanggal_konfirmasi)->translatedFormat('l, j F Y') }}</td>
                                             <td>{{$order->versi_iklan}}</td>
                                             <td>
