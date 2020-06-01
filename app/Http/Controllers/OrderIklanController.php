@@ -210,7 +210,7 @@ class OrderIklanController extends Controller
         ->join('clients', 'order_iklans.id_client','=','clients.id_client')
         ->where('status_order', 'Confirmed')
         ->where('order_iklans.id_jenis_iklan',1)
-        ->orderBy('order_iklans.id_order_iklan', 'ASC')
+        ->orderByRaw('versi_iklan IS NOT NULL, versi_iklan DESC', 'order_iklans.id_order_iklan ASC')
         ->get();
 
         return view('pages.updateversi.lihatorder')->with('lihat_orders', $lihat_orders);
@@ -230,7 +230,7 @@ class OrderIklanController extends Controller
         ->orwhere('nama_client', 'LIKE','%'.$search.'%')
         ->orwhere('id_order_iklan', 'LIKE','%'.$search.'%');
         })
-        ->orderBy('order_iklans.id_order_iklan', 'ASC')
+        ->orderByRaw('versi_iklan IS NOT NULL, versi_iklan DESC', 'order_iklans.id_order_iklan ASC')
         ->get();
 
         return view('pages.updateversi.lihatorder')->with('lihat_orders', $lihat_orders);
