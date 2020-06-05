@@ -18,7 +18,7 @@
                                     <label for="tanggal_awal" class="col-form-label">Tanggal Awal</label>
                                 </div>
                                 <div class="col-8">
-                                    <input name="tanggal_awal" type="date" min={{\Carbon\Carbon::now()}} class="form-control">
+                                    <input name="tanggal_awal" type="date" class="form-control">
                                 </div>
                             </div>
                             <div class="row">
@@ -26,7 +26,7 @@
                                     <label for="tanggal_akhir" class="col-form-label">Tanggal Akhir</label>
                                 </div>
                                 <div class="col-8">
-                                    <input name="tanggal_akhir" type="date"  min={{\Carbon\Carbon::now()}} class="form-control">
+                                    <input name="tanggal_akhir" type="date" class="form-control">
                                 </div>
                             </div>
                             <div class="row">
@@ -105,7 +105,7 @@
                             </div>
                             <div class="row" id="bat_time" style="display: none">
                                 <div class="col-4">
-                                    <label for="template_jadwal" class="col-form-label">Templat Jadwal</label>
+                                    <label for="template_jadwal" class="col-form-label">Jam Jadwal</label>
                                 </div>
                                 <div class="col-8">
                                     <input class="form-control" type="time" name="jam_jadwal">
@@ -161,16 +161,8 @@
                                                     @endif
                                                     {{ $tj3->nama_template }}
                                                 </option>
-                                                @endforeach
+                                        @endforeach
                                     </select>
-                                </div>
-                            </div>
-                            <div class="row" id="bat_time" style="display: none">
-                                <div class="col-4">
-                                    <label for="template_jadwal" class="col-form-label">Template Jadwal</label>
-                                </div>
-                                <div class="col-8">
-                                    <input class="form-control" type="time" name="jam_jadwal">
                                 </div>
                             </div>
                         </div>

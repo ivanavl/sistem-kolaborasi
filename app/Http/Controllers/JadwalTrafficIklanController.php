@@ -273,6 +273,7 @@ class JadwalTrafficIklanController extends Controller
         ]);
 
         $date = $request->input('tanggal_jadwal');
+        $id_jenis_iklan = 0;
         if ($request->jenis_iklan == "Spot Iklan") {
             $id_jenis_iklan = 1;
         } else if ($request->jenis_iklan == "Talkshow") {
@@ -281,7 +282,8 @@ class JadwalTrafficIklanController extends Controller
             $id_jenis_iklan = 3;
         }
         if ($date != "") {
-            $query = DB::table('jadwal_traffic_iklans')
+            if($id_jenis_iklan > 0){
+                $query = DB::table('jadwal_traffic_iklans')
                 ->join('jenis_iklans', 'jadwal_traffic_iklans.id_jenis_iklan',
                     '=', 'jenis_iklans.id_jenis_iklan')
                 ->leftJoin('order_iklans', 'jadwal_traffic_iklans.id_order_iklan',
@@ -291,6 +293,19 @@ class JadwalTrafficIklanController extends Controller
                 ->where('jadwal_traffic_iklans.tanggal_jadwal', '=', $date)
                 ->where('jadwal_traffic_iklans.id_jenis_iklan', $id_jenis_iklan)
                 ->get();
+            }else{
+                $query = DB::table('jadwal_traffic_iklans')
+                ->join('jenis_iklans', 'jadwal_traffic_iklans.id_jenis_iklan',
+                    '=', 'jenis_iklans.id_jenis_iklan')
+                ->leftJoin('order_iklans', 'jadwal_traffic_iklans.id_order_iklan',
+                    '=', 'order_iklans.id_order_iklan')
+                ->leftJoin('kategoris', 'kategoris.id_kategori', '=', 'order_iklans.id_kategori')
+                ->leftJoin('users', 'users.username', '=', 'order_iklans.username')
+                ->where('jadwal_traffic_iklans.tanggal_jadwal', '=', $date)
+                ->orderBy('jam_jadwal')
+                ->get();
+            }
+
             if (count($query) > 0) {
                 return view('pages.lihatjadwal.showjadwal')->with('results', $query)->with('request', $request);
             }
@@ -596,7 +611,9 @@ class JadwalTrafficIklanController extends Controller
             'required' => ':attribute tidak boleh kosong'
         ]);
 
-        $jadwal_final = DB::table('jadwal_traffic_iklans')
+        if($request->input('jenis_iklan') > 0)
+        {
+            $jadwal_final = DB::table('jadwal_traffic_iklans')
             ->join('jenis_iklans', 'jadwal_traffic_iklans.id_jenis_iklan'
                 , '=', 'jenis_iklans.id_jenis_iklan')
             ->leftJoin('order_iklans', 'jadwal_traffic_iklans.id_order_iklan'
@@ -606,6 +623,18 @@ class JadwalTrafficIklanController extends Controller
             ->where('jadwal_traffic_iklans.tanggal_jadwal', '=', $request->input('tanggal_jadwal'))
             ->where('jadwal_traffic_iklans.id_jenis_iklan', '=', $request->input('jenis_iklan'))
             ->get();
+        }else{
+            $jadwal_final = DB::table('jadwal_traffic_iklans')
+            ->join('jenis_iklans', 'jadwal_traffic_iklans.id_jenis_iklan'
+                , '=', 'jenis_iklans.id_jenis_iklan')
+            ->leftJoin('order_iklans', 'jadwal_traffic_iklans.id_order_iklan'
+                , '=', 'order_iklans.id_order_iklan')
+            ->leftJoin('kategoris', 'kategoris.id_kategori', '=', 'order_iklans.id_kategori')
+            ->leftJoin('users', 'users.username', '=', 'order_iklans.username')
+            ->where('jadwal_traffic_iklans.tanggal_jadwal', '=', $request->input('tanggal_jadwal'))
+            ->orderBy('jam_jadwal')
+            ->get();
+        }
 
         if (!$jadwal_final->isEmpty()) {
             return view('pages.lihatjadwalfinal.lihatjadwalfinal')->with('jadwal_final', $jadwal_final)
@@ -618,7 +647,9 @@ class JadwalTrafficIklanController extends Controller
 
     public function exportjadwal(Request $request)
     {
-        $jadwal_final = DB::table('jadwal_traffic_iklans')
+        if($request->input('jenis_iklan') > 0)
+        {
+            $jadwal_final = DB::table('jadwal_traffic_iklans')
             ->join('jenis_iklans', 'jadwal_traffic_iklans.id_jenis_iklan'
                 , '=', 'jenis_iklans.id_jenis_iklan')
             ->leftJoin('order_iklans', 'jadwal_traffic_iklans.id_order_iklan'
@@ -628,6 +659,18 @@ class JadwalTrafficIklanController extends Controller
             ->where('jadwal_traffic_iklans.tanggal_jadwal', '=', $request->input('tanggal_jadwal'))
             ->where('jadwal_traffic_iklans.id_jenis_iklan', '=', $request->input('jenis_iklan'))
             ->get();
+        }else{
+            $jadwal_final = DB::table('jadwal_traffic_iklans')
+            ->join('jenis_iklans', 'jadwal_traffic_iklans.id_jenis_iklan'
+                , '=', 'jenis_iklans.id_jenis_iklan')
+            ->leftJoin('order_iklans', 'jadwal_traffic_iklans.id_order_iklan'
+                , '=', 'order_iklans.id_order_iklan')
+            ->leftJoin('kategoris', 'kategoris.id_kategori', '=', 'order_iklans.id_kategori')
+            ->leftJoin('users', 'users.username', '=', 'order_iklans.username')
+            ->where('jadwal_traffic_iklans.tanggal_jadwal', '=', $request->input('tanggal_jadwal'))
+            ->orderBy('jam_jadwal')
+            ->get();
+        }
 
         return view('pages.lihatjadwalfinal.exportjadwal')->with('jadwal_final', $jadwal_final)
             ->with('request', $request);

@@ -62,7 +62,7 @@
                                                                 <td>
                                                                 </td>
                                                                 <td>{{ $data->jam_jadwal }}</td>
-                                                                <td>Slot tidak tersedia karena kategori</td>
+                                                                <td>Slot tidak dapat digunakan karena <br/> kategori sebelum/sesudahnya sama</td>
                                                                 <td></td>
                                                             </tr>
                                                         @endif
@@ -92,7 +92,7 @@
                                                                 <td>
                                                                 </td>
                                                                 <td>{{ $data->jam_jadwal }}</td>
-                                                                <td>Slot tidak tersedia karena kategori</td>
+                                                                <td>Slot tidak dapat digunakan karena <br/> kategori sebelum/sesudahnya sama</td>
                                                                 <td></td>
                                                             </tr>
                                                         @endif
@@ -119,7 +119,7 @@
                                         lagi.
                                     </div>
                                     <div class="col-4">
-                                        <input class="btn btn-primary" id="keep-jadwal" type="submit" value="Next"
+                                        <input class="btn btn-primary" id="keep-jadwal" type="submit" value="Berikut"
                                                disabled="disabled">
                                     </div>
                                 </div>

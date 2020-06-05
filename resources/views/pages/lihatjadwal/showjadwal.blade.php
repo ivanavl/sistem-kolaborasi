@@ -13,10 +13,15 @@
                             <div class="col-3">
                                 <label for="jenis_iklan" class="col-form-label">Jenis Iklan</label>
                             </div>
-                            <div class="col-5">
+                            <div class="col-7">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="jenis_iklan" id="jenis_iklan"
-                                           value="Spot Iklan" checked>
+                                           value="Semua Iklan" checked>
+                                    <label class="form-check-label" for="jenis_iklan">Semua Iklan</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="jenis_iklan" id="jenis_iklan"
+                                           value="Spot Iklan">
                                     <label class="form-check-label" for="jenis_iklan">Spot Iklan</label>
                                 </div>
                                 <div class="form-check form-check-inline">
@@ -52,7 +57,7 @@
                                 <table class="table table-striped table-custom table-bordered">
                                     <thead>
                                     <tr class="table-title">
-                                        <th colspan="9">
+                                        <th colspan="10">
                                             <h3>Jadwal {{$request->jenis_iklan}}
                                                 {{ \Carbon\Carbon::parse($request->tanggal_jadwal)->translatedFormat('l, j F Y') }}</h3>
                                         </th>
@@ -60,8 +65,13 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Jam Jadwal</th>
+                                        @if($request->jenis_iklan == "Semua Iklan")
+                                            <th>Jenis Iklan</th>
+                                        @endif
                                         <th>Nama Produk</th>
-                                        <th>Versi</th>
+                                        @if($request->jenis_iklan == "Spot Iklan" || $request->jenis_iklan == "Semua Iklan")
+                                            <th>Versi</th>
+                                        @endif
                                         <th>Kategori</th>
                                         <th>Periode Tayang</th>
                                         <th>No Order</th>
@@ -74,8 +84,13 @@
                                         <tr>
                                             <th>{{ $loop->iteration }}</th>
                                             <td>{{$result->jam_jadwal}}</td>
+                                            @if($request->jenis_iklan == "Semua Iklan")
+                                                <td>{{$result->nama_jenis_iklan}}</td>
+                                            @endif
                                             <td>{{$result->nama_produk}}</td>
-                                            <td>{{$result->versi_iklan}}</td>
+                                            @if($request->jenis_iklan == "Spot Iklan" || $request->jenis_iklan == "Semua Iklan")
+                                                <td>{{$result->versi_iklan}}</td>
+                                            @endif
                                             <td>{{$result->nama_kategori}}</td>
                                             @if($result->priode_awal != null)
                                                 <td>{{\Carbon\Carbon::parse($result->priode_awal)->translatedFormat('l, j F Y') . " - " . \Carbon\Carbon::parse($result->priode_akhir)->translatedFormat('l, j F Y') }}</td>

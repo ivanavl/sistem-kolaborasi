@@ -13,10 +13,15 @@
                             <div class="col-3">
                                 <label for="jenis_iklan" class="col-form-label">Jenis Iklan</label>
                             </div>
-                            <div class="col-5">
+                            <div class="col-7">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="jenis_iklan" id="jenis_iklan"
-                                           value="1" checked>
+                                           value="0" checked>
+                                    <label class="form-check-label" for="jenis_iklan">Semua Iklan</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="jenis_iklan" id="jenis_iklan"
+                                           value="1">
                                     <label class="form-check-label" for="jenis_iklan">Spot Iklan</label>
                                 </div>
                                 <div class="form-check form-check-inline">

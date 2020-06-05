@@ -20,19 +20,23 @@
     <div class="row justify-content-center full-height">
         <div class="col-md-12">
             <div class="card-body">
-                @if($request->jenis_iklan == 1)
-                    @if(isset($jadwal_final))
+                @if(isset($jadwal_final))
                     <table class="table table-bordered">
                         <thead>
                             <tr class="table-title">
-                                <th colspan="8">
+                                <th colspan="9">
                                     <h3>Jadwal Traffic Iklan Spot Iklan {{ \Carbon\Carbon::parse($request->tanggal_jadwal)->translatedFormat('l, j F Y') }}</h3>
                                 </th>
                             </tr>
                             <tr>
                                 <th>Jam</th>
+                                @if($request->jenis_iklan == 0)
+                                    <th>Jenis Iklan</th>
+                                @endif
                                 <th>Nama Produk</th>
-                                <th>Versi</th>
+                                @if($request->jenis_iklan == 1 || $request->jenis_iklan == 0)
+                                    <th>Versi</th>
+                                @endif
                                 <th>Kategori</th>
                                 <th>Periode Tayang</th>
                                 <th>Kategori</th>
@@ -44,9 +48,14 @@
                             @foreach($jadwal_final as $jadwal)
                             <tr>
                                 <td>{{$jadwal->jam_jadwal}}</td>
+                                @if($request->jenis_iklan == 0)
+                                    <td>{{$jadwal->nama_jenis_iklan}}</td>
+                                @endif
                                 @if($jadwal->status_order == 'Confirmed')
                                     <td>{{$jadwal->nama_produk}}</td>
-                                    <td>{{$jadwal->versi_iklan}}</td>
+                                    @if($request->jenis_iklan == 1 || $request->jenis_iklan == 0)
+                                        <td>{{$jadwal->versi_iklan}}</td>
+                                    @endif
                                     <td>{{$jadwal->nama_kategori}}</td>
                                     @if(is_null($jadwal->priode_awal))
                                         <td></td>
@@ -59,57 +68,9 @@
                                 @else
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                @endif
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    @endif
-                @else
-                    @if(isset($jadwal_final))
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr class="table-title">
-                                <th colspan="8">
-                                    <h3>Jadwal Traffic Iklan
-                                    @if($request->jenis_iklan == 2)
-                                        Talkshow
-                                    @else
-                                        Ads Lips
-                                    @endif
-                                        {{ \Carbon\Carbon::parse($request->tanggal_jadwal)->translatedFormat('l, j F Y') }}</h3>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th>Jam</th>
-                                <th>Nama Produk</th>
-                                <th>Kategori</th>
-                                <th>Periode Tayang</th>
-                                <th>No Order</th>
-                                <th>AE</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($jadwal_final as $jadwal)
-                            <tr>
-                                <td>{{$jadwal->jam_jadwal}}</td>
-                                @if($jadwal->status_order == 'Confirmed')
-                                    <td>{{$jadwal->nama_produk}}</td>
-                                    <td>{{$jadwal->nama_kategori}}</td>
-                                    @if(is_null($jadwal->priode_awal))
+                                    @if($request->jenis_iklan == 1 || $request->jenis_iklan == 0)
                                         <td></td>
-                                    @else
-                                        <td>{{\Carbon\Carbon::parse($jadwal->priode_awal)->translatedFormat('l, j F Y') . " - " . \Carbon\Carbon::parse($jadwal->priode_akhir)->translatedFormat('l, j F Y') }}</td>
                                     @endif
-                                    <td>{{$jadwal->id_order_iklan}}</td>
-                                    <td>{{$jadwal->name}}</td>
-                                @else
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -119,7 +80,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                    @endif
                 @endif
             </div>
         </div>

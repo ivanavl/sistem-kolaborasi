@@ -33,7 +33,7 @@
                         </div>
                         <div class="row">
                             <div class="col-3">
-                                <label for="kategori" class="col-form-label">Kategori Jadwal</label>
+                                <label for="kategori" class="col-form-label">Kategori Produk</label>
                             </div>
                             <div class="col-9">
                                 <select id="id_kategori" name="id_kategori" class="form-control"
@@ -71,7 +71,7 @@
                         </div>
                         <div class="row">
                             <div class="col-3">
-                                <label for="jumlah_tayang" class="col-form-label">Jumlah Tayang</label>
+                                <label for="jumlah_tayang" class="col-form-label">Waktu Tayang</label>
                             </div>
                             <div class="col-9">
                                 <div class="row">
