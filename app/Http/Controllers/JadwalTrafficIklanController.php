@@ -388,19 +388,22 @@ class JadwalTrafficIklanController extends Controller
             }
             $count++;
         }
-        $resultCount = DB::query()->fromSub($result, 'res')
-            ->select('tanggal_jadwal', DB::raw('count(*) as total'))
-            ->groupBy('tanggal_jadwal')
-            ->get()
-            ->groupBy('tanggal_jadwal');
-        $result = $result
-            ->get()
-            ->groupBy('tanggal_jadwal');
-        $finalResult = [];
-        foreach ($result as $date => $data){
-            $finalResult[$date] = [];
-            foreach ($data as $d){
-                array_push ($finalResult[$date], $d->id_jadwal);
+
+        if(isset($result)){
+            $resultCount = DB::query()->fromSub($result, 'res')
+                ->select('tanggal_jadwal', DB::raw('count(*) as total'))
+                ->groupBy('tanggal_jadwal')
+                ->get()
+                ->groupBy('tanggal_jadwal');
+            $result = $result
+                ->get()
+                ->groupBy('tanggal_jadwal');
+            $finalResult = [];
+            foreach ($result as $date => $data){
+                $finalResult[$date] = [];
+                foreach ($data as $d){
+                    array_push ($finalResult[$date], $d->id_jadwal);
+                }
             }
         }
 
@@ -497,19 +500,21 @@ class JadwalTrafficIklanController extends Controller
                 $count++;
             }
         }
-        $resultAltCount = DB::query()->fromSub($resultAlt, 'res')
-            ->select('tanggal_jadwal', DB::raw('count(*) as total'))
-            ->groupBy('tanggal_jadwal')
-            ->get()
-            ->groupBy('tanggal_jadwal');
-        $resultAlt = $resultAlt
-            ->get()
-            ->groupBy('tanggal_jadwal');
-        $finalResultAlt = [];
-        foreach ($resultAlt as $date => $data){
-            $finalResultAlt[$date] = [];
-            foreach ($data as $d){
-                array_push ($finalResultAlt[$date], $d->id_jadwal);
+        if (isset($resultAlt)){
+            $resultAltCount = DB::query()->fromSub($resultAlt, 'res')
+                ->select('tanggal_jadwal', DB::raw('count(*) as total'))
+                ->groupBy('tanggal_jadwal')
+                ->get()
+                ->groupBy('tanggal_jadwal');
+            $resultAlt = $resultAlt
+                ->get()
+                ->groupBy('tanggal_jadwal');
+            $finalResultAlt = [];
+            foreach ($resultAlt as $date => $data){
+                $finalResultAlt[$date] = [];
+                foreach ($data as $d){
+                    array_push ($finalResultAlt[$date], $d->id_jadwal);
+                }
             }
         }
 
