@@ -202,7 +202,7 @@ class JadwalTrafficIklanController extends Controller
                     return redirect('/buatjadwal')->with('success', 'Jadwal berhasil dibuat');
                 } else {
                     return redirect('/buatjadwal')->with('error',
-                        'Jadwal jam ' . $request->input('jam_jadwal') . ' untuk ' . 
+                        'Jadwal jam ' . $request->input('jam_jadwal') . ' untuk ' .
                         \Carbon\Carbon::parse($request->input('tanggal_awal'))->translatedFormat('l, j F Y')
                          . ' sudah ada');
                 }
@@ -586,12 +586,17 @@ class JadwalTrafficIklanController extends Controller
                 }
             }
 
+            $start = \DateTime::createFromFormat('Y-m-d', date('Y-m-d', $tanggal_awal));
+            $end = \DateTime::createFromFormat('Y-m-d', date('Y-m-d', $tanggal_akhir));
+            $interval = \DateInterval::createFromDateString('1 day');
+            $period = new \DatePeriod($start, $interval, $end->add($interval));
+
             Session::put('id_kategori', $id_kategori);
             Session::put('id_jenis_iklan', $request->input('jenis_iklan'));
             return view('pages.CariJadwalKosong.searchresult')->with('result', $finalResult)
                 ->with('resultCount', $resultCount)->with('resultAlt', $finalResultAlt)
                 ->with('resultAltCount', $resultAltCount)->with('counter', $request->jumlah_tayang)
-                ->with('all', $all)->with('allAlt', $allAlt);
+                ->with('all', $all)->with('allAlt', $allAlt)->with('period', $period);
         }
 
         return redirect('/carijadwalkosong')->with('error', 'Jadwal tidak ditemukan');

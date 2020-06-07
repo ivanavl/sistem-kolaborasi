@@ -5,19 +5,19 @@
         @if(isset($result))
             {{ Form::open(['action' => 'OrderIklanController@keepjadwal', 'method' => 'POST', 'style="width: 100%"']) }}
             <div class="col-md-12 accordion" id="accordion-menu">
-                @foreach($all as $k => $v)
+                @foreach($period as $dt)
                     <div class="card">
                         <div class="card-header" id="accordion-heading-{{ $loop->iteration }}"
                              data-toggle="collapse"
                              data-target="#accordion-menu-{{ $loop->iteration }}" aria-expanded="true"
                              aria-controls="accordion-menu-{{ $loop->iteration }}">
-                            {{ \Carbon\Carbon::parse($k)->translatedFormat('l, j F Y') }}
-                            @if (isset($resultCount[$k][0]))
-                                ({{$resultCount[$k][0]->total}} slot tersedia)
-                            @elseif (isset($resultAltCount[$k][0]))
-                                ({{$resultAltCount[$k][0]->total}} slot alternatif tersedia)
+                            {{ \Carbon\Carbon::parse($dt)->translatedFormat('l, j F Y') }}
+                            @if (isset($resultCount[$dt->format('Y-m-d')]) and isset($resultCount[$dt->format('Y-m-d')][0]))
+                                (<i class="fas fa-check-circle" style="color: green"></i> {{$resultCount[$dt->format('Y-m-d')][0]->total}} slot tersedia)
+                            @elseif (isset($resultAltCount[$dt->format('Y-m-d')]) and isset($resultAltCount[$dt->format('Y-m-d')][0]))
+                                (<i class="fas fa-exclamation-circle" style="color: yellow"></i> {{$resultAltCount[$dt->format('Y-m-d')][0]->total}} slot alternatif tersedia)
                             @else
-                                (Tidak ada slot tersedia)
+                                (<i class="fas fa-times-circle" style="color: red"></i> Tidak ada slot tersedia)
                             @endif
                         </div>
                         <div id="accordion-menu-{{ $loop->iteration }}" class="collapse"
@@ -25,21 +25,21 @@
                              data-parent="#accordion-menu">
                             <div class="card-body align-center-vh">
                                 <div class="content-width">
-                                    @if (isset($resultCount[$k][0]) or isset($resultAltCount[$k][0]))
+                                    @if (isset($resultCount[$dt->format('Y-m-d')]) or isset($resultAltCount[$dt->format('Y-m-d')]))
                                         <div class="table-container">
                                             <table class="table table-striped table-custom table-bordered">
                                                 <thead>
-                                                    <tr>
-                                                        <th>Pilih</th>
-                                                        <th>Jam</th>
-                                                        <th>Nama Produk</th>
-                                                        <th>Kategori</th>
-                                                    </tr>
+                                                <tr>
+                                                    <th>Pilih</th>
+                                                    <th>Jam</th>
+                                                    <th>Nama Produk</th>
+                                                    <th>Kategori</th>
+                                                </tr>
                                                 </thead>
                                                 <tbody>
-                                                @if (isset($resultCount[$k][0]))
-                                                    @foreach($v as $data)
-                                                        @if (in_array($data->id_jadwal, $result[$k]))
+                                                @if (isset($resultCount[$dt->format('Y-m-d')]))
+                                                    @foreach($all[$dt->format('Y-m-d')] as $data)
+                                                        @if (in_array($data->id_jadwal, $result[$dt->format('Y-m-d')]))
                                                             <tr>
                                                                 <td>
                                                                     <input name="jadwal[]" type="checkbox" class="form-check-input"
@@ -68,8 +68,8 @@
                                                         @endif
                                                     @endforeach
                                                 @else
-                                                    @foreach($allAlt[$k] as $data)
-                                                        @if (in_array($data->id_jadwal, $resultAlt[$k]))
+                                                    @foreach($allAlt[$dt->format('Y-m-d')] as $data)
+                                                        @if (in_array($data->id_jadwal, $resultAlt[$dt->format('Y-m-d')]))
                                                             <tr>
                                                                 <td>
                                                                     <input name="jadwal[]" type="checkbox" class="form-check-input"
