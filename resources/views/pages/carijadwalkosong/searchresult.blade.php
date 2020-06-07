@@ -4,7 +4,7 @@
     <div class="row justify-content-center full-height">
         @if(isset($result))
             {{ Form::open(['action' => 'OrderIklanController@keepjadwal', 'method' => 'POST', 'style="width: 100%"']) }}
-            <div class="col-md-12 accordion" id="accordion-menu">
+            <div class="col-md-12 accordion accordion-float" id="accordion-menu">
                 @foreach($period as $dt)
                     <div class="card">
                         <div class="card-header" id="accordion-heading-{{ $loop->iteration }}"
@@ -110,23 +110,21 @@
                             </div>
                         </div>
                     </div>
-                    @if($loop->last)
-                        <div class="card">
-                            <div class="card-footer">
-                                <div class="row">
-                                    <div class="col-8">
-                                        Pilih <strong><span id="checkbox_counter">{{ $counter }}</span></strong> jadwal
-                                        lagi.
-                                    </div>
-                                    <div class="col-4">
-                                        <input class="btn btn-primary" id="keep-jadwal" type="submit" value="Berikut"
-                                               disabled="disabled">
-                                    </div>
+                @endforeach
+                    <div class="card card-float">
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-8">
+                                    Pilih <strong><span id="checkbox_counter">{{ $counter }}</span></strong> jadwal
+                                    lagi.
+                                </div>
+                                <div class="col-4">
+                                    <input class="btn btn-primary" id="keep-jadwal" type="submit" value="Berikut"
+                                           disabled="disabled">
                                 </div>
                             </div>
                         </div>
-                    @endif
-                @endforeach
+                    </div>
             </div>
             {{ Form::close() }}
         @else
