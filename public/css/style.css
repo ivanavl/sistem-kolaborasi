@@ -524,6 +524,17 @@ td .form-check-input{
     margin-bottom: 20px;
 }
 
+.accordion-float{
+    overflow-y: scroll;
+    height: 84vh;
+}
+
+.accordion-float .card-float{
+    position:sticky;
+    bottom: 0;
+    z-index: 1;
+}
+
 form{
     margin-block-end: 0;
 }
