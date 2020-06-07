@@ -110,23 +110,21 @@
                             </div>
                         </div>
                     </div>
-                    @if($loop->last)
-                        <div class="card">
-                            <div class="card-footer">
-                                <div class="row">
-                                    <div class="col-8">
-                                        Pilih <strong><span id="checkbox_counter">{{ $counter }}</span></strong> jadwal
-                                        lagi.
-                                    </div>
-                                    <div class="col-4">
-                                        <input class="btn btn-primary" id="keep-jadwal" type="submit" value="Berikut"
-                                               disabled="disabled">
-                                    </div>
+                @endforeach
+                    <div class="card">
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-8">
+                                    Pilih <strong><span id="checkbox_counter">{{ $counter }}</span></strong> jadwal
+                                    lagi.
+                                </div>
+                                <div class="col-4">
+                                    <input class="btn btn-primary" id="keep-jadwal" type="submit" value="Berikut"
+                                           disabled="disabled">
                                 </div>
                             </div>
                         </div>
-                    @endif
-                @endforeach
+                    </div>
             </div>
             {{ Form::close() }}
         @else
