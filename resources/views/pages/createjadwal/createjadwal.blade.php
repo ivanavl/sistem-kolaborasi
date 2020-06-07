@@ -148,7 +148,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-4">
-                                    <label for="template_jadwal_talkshow" class="col-form-label">Template Jadwal</label>
+                                    <label for="template_jadwal_talkshow" class="col-form-label">Templat Jadwal</label>
                                 </div>
                                 <div class="col-8">
                                     <select id="template_jadwal_talkshow" name="template_jadwal" class="form-control"
