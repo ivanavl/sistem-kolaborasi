@@ -14,7 +14,7 @@ class KategorisTableSeeder extends Seeder
         DB::table('kategoris')->insert([
             ['nama_kategori' => 'Lain-Lain'],
             ['nama_kategori' => 'Motivasi'],
-            ['nama_kategori' => 'Event'],
+            ['nama_kategori' => 'Acara'],
             ['nama_kategori' => 'Berita'],
             ['nama_kategori' => 'Program'],
             ['nama_kategori' => 'Rehab'],
@@ -28,14 +28,12 @@ class KategorisTableSeeder extends Seeder
             ['nama_kategori' => 'Bank'],
             ['nama_kategori' => 'Resto'],
             ['nama_kategori' => 'Aksesoris'],
-            ['nama_kategori' => 'Coffee Shop'],
             ['nama_kategori' => 'Penyewaan Tempat'],
             ['nama_kategori' => 'Pemakaman'],
             ['nama_kategori' => 'Kesehatan'],
             ['nama_kategori' => 'Pelatihan'],
             ['nama_kategori' => 'Himbauan'],
             ['nama_kategori' => 'Air Minum'],
-            ['nama_kategori' => 'Fashion'],
         ]);
     }
 }

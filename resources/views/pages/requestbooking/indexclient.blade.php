@@ -15,7 +15,7 @@
                             </div>
                             <div class="col-7">
                                 <input class="form-control" name="search" type="text"
-                                       placeholder="input nama client/alamat/contact person">
+                                       placeholder="input nama client/alamat/narahubung">
                             </div>
                             <div class="col-2">
                                 <input class="btn btn-primary" type="submit" value="Cari">
@@ -39,7 +39,7 @@
                                         <th>ID</th>
                                         <th>Nama Klien</th>
                                         <th>Alamat</th>
-                                        <th>Contact Person</th>
+                                        <th>Narahubung</th>
                                         <th><i class="fas fa-check"></i></th>
                                     </tr>
                                     </thead>

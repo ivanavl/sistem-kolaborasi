@@ -14,7 +14,7 @@
                             </div>
                             <div class="col-7">
                                 <input class="form-control" name="search" type="text"
-                                       placeholder="input nama client/alamat/contact person">
+                                       placeholder="input nama client/alamat/narahubung">
                             </div>
                             <div class="col-2">
                                 <input class="btn btn-primary" type="submit" value="Cari">

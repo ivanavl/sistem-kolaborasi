@@ -130,7 +130,7 @@
                     @guest
                         <li class="nav-item dropdown">
                             <a class="nav-item nav-link mr-2" href="{{ route('login') }}">
-                                Login
+                                Masuk
                             </a>
                         </li>
                     @else
@@ -138,7 +138,7 @@
                             <a class="nav-item nav-link mr-2" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();">
-                                Logout
+                                Keluar
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

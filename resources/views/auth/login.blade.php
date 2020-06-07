@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">{{ __('Masuk Sistem Kolaborasi') }}</div>
 
                 <form method="POST" action="{{ route('login') }}">
                     <div class="card-body">
@@ -12,7 +12,7 @@
                         <div class="form-group">
                             <div class="row">
                                 <label for="username"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
+                                       class="col-md-4 col-form-label text-md-right">{{ __('Nama Pengguna') }}</label>
 
                                 <div class="col-md-8">
                                     <input id="username" type="text"
@@ -29,7 +29,7 @@
 
                             <div class="row">
                                 <label for="password"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                       class="col-md-4 col-form-label text-md-right">{{ __('Kata Sandi') }}</label>
 
                                 <div class="col-md-8">
                                     <input id="password" type="password"
@@ -51,7 +51,7 @@
                                                id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                         <label class="form-check-label" for="remember">
-                                            {{ __('Remember Me') }}
+                                            {{ __('Ingat Saya') }}
                                         </label>
                                     </div>
                                 </div>
@@ -61,7 +61,7 @@
                                 <div class="col-md-8 offset-md-4">
                                     @if (Route::has('password.request'))
                                         <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
+                                            {{ __('Lupa kata sandi?') }}
                                         </a>
                                     @endif
                                 </div>
@@ -70,7 +70,7 @@
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">
-                            {{ __('Login') }}
+                            {{ __('Masuk') }}
                         </button>
                     </div>
                 </form>

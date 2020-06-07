@@ -35,7 +35,7 @@
                         </div>
                         <div class="row">
                             <div class="col-3">
-                                <label for="contact_person" class="col-form-label">Contact Person</label>
+                                <label for="contact_person" class="col-form-label">Narahubung</label>
                             </div>
                             <div class="col-9">
                                 <input type="text" class="form-control" name="contact_person">
